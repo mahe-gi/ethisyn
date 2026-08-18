@@ -32,7 +32,7 @@ export const siteConfig: SiteConfig = {
   description:
     "Ethisyn is an independent product technology company developing thoughtful digital products across software, artificial intelligence, cloud and emerging technologies.",
   url: "https://ethisyn.in",
-  founded: 2026,
+  founded: 2025,
   location: {
     city: "Hyderabad",
     state: "Telangana",

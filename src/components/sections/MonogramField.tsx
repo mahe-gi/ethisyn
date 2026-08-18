@@ -121,7 +121,7 @@ export function MonogramField() {
           fontSize="9"
           letterSpacing="0.1em"
         >
-          EST. 2026 / HYD
+          EST. 2025 / HYD
         </text>
         <text
           x="360"

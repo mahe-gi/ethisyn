@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="font-mono text-xs text-brand-faint mt-4">
-            LAST UPDATED: AUGUST 2026 • HYDERABAD, TELANGANA, INDIA
+            LAST UPDATED: AUGUST 2025 • HYDERABAD, TELANGANA, INDIA
           </p>
         </div>
 

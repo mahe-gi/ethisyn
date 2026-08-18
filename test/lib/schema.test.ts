@@ -11,7 +11,7 @@ describe("JSON-LD Structured Data Generators", () => {
     expect(org["@type"]).toBe("Organization");
     expect(org.name).toBe("Ethisyn");
     expect(org.url).toBe("https://ethisyn.in");
-    expect(org.foundingDate).toBe("2026");
+    expect(org.foundingDate).toBe("2025");
     expect(org.address).toEqual({
       "@type": "PostalAddress",
       addressLocality: "Hyderabad",

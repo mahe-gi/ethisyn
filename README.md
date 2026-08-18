@@ -2,7 +2,7 @@
 
 > Building technology with purpose.
 
-Official repository for [ethisyn.in](https://ethisyn.in) — an independent product technology company founded in Hyderabad in 2026.
+Official repository for [ethisyn.in](https://ethisyn.in) — an independent product technology company founded in Hyderabad in 2025.
 
 ---
 
@@ -51,4 +51,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## License
 
-© 2026 Ethisyn. All rights reserved.
+© 2025 Ethisyn. All rights reserved.

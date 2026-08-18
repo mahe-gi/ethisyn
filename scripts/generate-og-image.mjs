@@ -25,7 +25,7 @@ async function generateAssets() {
         ETHISYN / INDEPENDENT PRODUCT TECHNOLOGY
       </text>
       <text x="1000" y="90" fill="rgba(245,244,239,0.4)" font-family="monospace" font-size="14" letter-spacing="3" font-weight="500">
-        HYD / EST. 2026
+        HYD / EST. 2025
       </text>
 
       <!-- Center Typography -->
