@@ -15,8 +15,10 @@ export interface SiteConfig {
   type: string;
   focus: string[];
   contactEmail: string;
+  googleBusinessProfile: string;
   social: {
     linkedin: string;
+    googleBusinessProfile: string;
   };
   status: {
     state: string;
@@ -48,8 +50,10 @@ export const siteConfig: SiteConfig = {
     "Emerging Technology",
   ],
   contactEmail: "hello@ethisyn.in",
+  googleBusinessProfile: "https://share.google/r2HXy33z6VSWRdJ2J",
   social: {
     linkedin: "https://www.linkedin.com/company/ethisyn",
+    googleBusinessProfile: "https://share.google/r2HXy33z6VSWRdJ2J",
   },
   status: {
     state: "STATUS / BUILDING",

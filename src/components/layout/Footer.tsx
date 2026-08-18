@@ -68,6 +68,7 @@ export function Footer() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={item.ariaLabel}
                         className="font-sans text-sm text-brand-muted hover:text-brand-white transition-colors inline-flex items-center gap-1.5"
                       >
                         <span>{item.label}</span>

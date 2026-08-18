@@ -82,6 +82,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
             rel="noopener noreferrer"
             className={baseClasses}
             ref={ref as React.Ref<HTMLAnchorElement>}
+            {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
           >
             {content}
           </a>
@@ -92,6 +93,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           href={href}
           className={baseClasses}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {content}
         </Link>

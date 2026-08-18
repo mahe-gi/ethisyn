@@ -1,8 +1,11 @@
+import { siteConfig } from "./site";
+
 export interface NavItem {
   label: string;
   href: string;
   index?: string;
   isExternal?: boolean;
+  ariaLabel?: string;
 }
 
 export const mainNavItems: NavItem[] = [
@@ -39,13 +42,21 @@ export const footerNavLinks: {
     { label: "Start a Conversation", href: "/#contact" },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/company/ethisyn",
+      href: siteConfig.social.linkedin,
       isExternal: true,
+      ariaLabel: "Visit Ethisyn on LinkedIn",
     },
     {
-      label: "hello@ethisyn.in",
-      href: "mailto:hello@ethisyn.in",
+      label: "Google Business Profile",
+      href: siteConfig.googleBusinessProfile,
       isExternal: true,
+      ariaLabel: "View Ethisyn’s Business Profile on Google",
+    },
+    {
+      label: siteConfig.contactEmail,
+      href: `mailto:${siteConfig.contactEmail}`,
+      isExternal: true,
+      ariaLabel: `Send email to ${siteConfig.contactEmail}`,
     },
   ],
   legal: [{ label: "Privacy Policy", href: "/privacy" }],

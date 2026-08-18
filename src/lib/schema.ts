@@ -15,7 +15,10 @@ export function generateOrganizationSchema() {
       addressRegion: siteConfig.location.state,
       addressCountry: "IN",
     },
-    sameAs: [siteConfig.social.linkedin],
+    sameAs: [
+      siteConfig.social.linkedin,
+      siteConfig.googleBusinessProfile,
+    ],
     knowsAbout: siteConfig.focus,
   };
 }

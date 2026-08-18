@@ -40,14 +40,26 @@ export function FinalCTA() {
                   variant="outline"
                   size="md"
                   showArrow
+                  aria-label="Visit Ethisyn on LinkedIn"
                 >
                   Follow on LinkedIn
+                </Button>
+                <Button
+                  href={siteConfig.googleBusinessProfile}
+                  isExternal
+                  variant="outline"
+                  size="md"
+                  showArrow
+                  aria-label="View Ethisyn’s Business Profile on Google"
+                >
+                  View Ethisyn on Google
                 </Button>
                 <Button
                   href={`mailto:${siteConfig.contactEmail}`}
                   isExternal
                   variant="secondary"
                   size="md"
+                  aria-label={`Send email to ${siteConfig.contactEmail}`}
                 >
                   {siteConfig.contactEmail}
                 </Button>

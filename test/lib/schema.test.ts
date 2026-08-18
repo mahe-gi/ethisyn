@@ -18,7 +18,10 @@ describe("JSON-LD Structured Data Generators", () => {
       addressRegion: "Telangana",
       addressCountry: "IN",
     });
-    expect(org.sameAs).toContain("https://www.linkedin.com/company/ethisyn");
+    expect(org.sameAs).toEqual([
+      "https://www.linkedin.com/company/ethisyn",
+      "https://share.google/r2HXy33z6VSWRdJ2J",
+    ]);
   });
 
   it("generates valid WebSite schema", () => {
