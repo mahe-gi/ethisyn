@@ -1,0 +1,65 @@
+"use client";
+
+import { useEffect } from "react";
+import Lenis from "lenis";
+
+export function SmoothScroll() {
+  useEffect(() => {
+    // Respect user's motion preferences
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+    });
+
+    // Handle internal anchor links smoothly through Lenis
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest("a");
+      if (!target) return;
+      const href = target.getAttribute("href");
+      if (!href) return;
+
+      if (href.startsWith("/#")) {
+        const id = href.replace("/#", "");
+        const element = document.getElementById(id);
+        if (element && window.location.pathname === "/") {
+          e.preventDefault();
+          lenis.scrollTo(element, { offset: -60, duration: 1.2 });
+        }
+      } else if (href.startsWith("#") && href.length > 1) {
+        const id = href.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          e.preventDefault();
+          lenis.scrollTo(element, { offset: -60, duration: 1.2 });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      document.removeEventListener("click", handleAnchorClick);
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
+}

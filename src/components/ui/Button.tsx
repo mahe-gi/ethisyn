@@ -37,14 +37,14 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 
     const variantClasses = {
       primary:
-        "bg-brand-white text-brand-black hover:bg-brand-offwhite active:scale-[0.97] border border-transparent shadow-[0_1px_2px_rgba(0,0,0,0.4)]",
+        "bg-white text-black hover:bg-neutral-200 active:scale-[0.97] border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.5)]",
       secondary:
-        "bg-white/[0.06] text-brand-offwhite hover:bg-white/[0.12] hover:text-white active:scale-[0.97] border border-brand-border",
+        "bg-white/[0.05] text-[#EDEDED] hover:bg-white/[0.1] hover:text-white active:scale-[0.97] border border-white/[0.08]",
       outline:
-        "bg-transparent text-brand-offwhite hover:border-brand-border-strong hover:text-white active:scale-[0.97] border border-brand-border",
-      text: "bg-transparent text-brand-muted hover:text-white p-0 min-h-0 border-0 hover:underline underline-offset-4",
+        "bg-transparent text-[#EDEDED] hover:border-white/[0.2] hover:text-white active:scale-[0.97] border border-white/[0.08]",
+      text: "bg-transparent text-[#A1A1AA] hover:text-white p-0 min-h-0 border-0 hover:underline underline-offset-4",
       inverted:
-        "bg-brand-black text-brand-offwhite hover:bg-black/90 active:scale-[0.97] border border-brand-inverted-border",
+        "bg-black text-white hover:bg-neutral-900 active:scale-[0.97] border border-white/[0.12]",
     };
 
     const baseClasses = cn(

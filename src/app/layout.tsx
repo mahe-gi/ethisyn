@@ -2,11 +2,16 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { siteConfig } from "@/content/site";
-import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateProfessionalServiceSchema,
+  generateSoftwareSchemas,
+} from "@/lib/schema";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+import { AutonomousCompanion } from "@/components/ui/AutonomousCompanion";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -34,18 +39,19 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Ethisyn — Websites, AI Automation & Growth",
+    default: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
     template: "%s | Ethisyn",
   },
   description: siteConfig.description,
   keywords: [
-    "Web Development Hyderabad",
-    "AI Voice Agents India",
-    "Business Automation Hyderabad",
-    "Custom Software Development",
-    "Mobile App Development",
-    "SEO & Digital Growth",
-    "SaaS Development India",
+    "Web Engineering Studio Hyderabad",
+    "Autonomous AI Agents India",
+    "AI Voice Agents Hyderabad",
+    "Full-Stack Next.js Product Engineering",
+    "Mobile App Development iOS Android",
+    "Generative Engine Optimization GEO",
+    "Enterprise Automation Hyderabad",
+    "Custom Software Studio",
     "Ethisyn",
   ],
   authors: [{ name: "Ethisyn", url: siteConfig.url }],
@@ -59,7 +65,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Ethisyn — Websites, AI Automation & Growth",
+    title: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
     description: siteConfig.description,
     images: [
       {
@@ -72,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ethisyn — Websites, AI Automation & Growth",
+    title: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
     description: siteConfig.description,
     images: ["/brand/opengraph-image.png"],
   },
@@ -95,10 +101,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    "geo.region": "IN-TG",
+    "geo.placename": "Hyderabad",
+    "ai-agent-manifest": "/llms.txt",
+    "ai-agent-full-manifest": "/llms-full.txt",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  themeColor: "#000000",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -111,6 +123,8 @@ export default function RootLayout({
 }>) {
   const orgSchema = generateOrganizationSchema();
   const webSiteSchema = generateWebSiteSchema();
+  const profServiceSchema = generateProfessionalServiceSchema();
+  const softwareSchemas = generateSoftwareSchemas();
 
   return (
     <html
@@ -126,8 +140,23 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profServiceSchema) }}
+        />
+        {softwareSchemas.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchemas) }}
+          />
+        )}
+        <link rel="author" href="/llms.txt" />
+        <link rel="help" href="/llms-full.txt" />
       </head>
-      <body className="font-sans bg-brand-black text-brand-offwhite antialiased selection:bg-brand-offwhite selection:text-brand-black min-h-screen flex flex-col">
+      <body className="font-sans bg-black text-[#EDEDED] antialiased selection:bg-white selection:text-black min-h-screen flex flex-col">
+        {/* Lenis Smooth Scroll Engine */}
+        <SmoothScroll />
+
         {/* Accessible Skip to Main Content */}
         <a
           href="#main-content"
@@ -135,10 +164,6 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-
-        {/* Global Isolated Client Progressive Enhancements */}
-        <CustomCursor />
-        <NoiseOverlay />
 
         {/* Persistent Site Header */}
         <Header />
@@ -150,6 +175,9 @@ export default function RootLayout({
 
         {/* Persistent Site Footer */}
         <Footer />
+
+        {/* Autonomous Site-Wide Studio Companion */}
+        <AutonomousCompanion />
       </body>
     </html>
   );

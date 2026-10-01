@@ -12,7 +12,6 @@ export interface SiteConfig {
     country: string;
     code: string;
     formatted: string;
-    coordinates: string;
   };
   contactEmail: string;
   social: {
@@ -35,14 +34,13 @@ export const siteConfig: SiteConfig = {
   description:
     "Ethisyn builds fast websites, mobile apps, smart AI automation tools, and marketing systems for businesses that want real results without the corporate fluff.",
   url: "https://ethisyn.in",
-  founded: 2025,
+  founded: 2022,
   location: {
     city: "Hyderabad",
     state: "Telangana",
     country: "India",
     code: "HYD / IND",
     formatted: "Hyderabad, Telangana, India",
-    coordinates: "17.3850° N, 78.4867° E",
   },
   contactEmail: "hello@ethisyn.in",
   social: {
@@ -51,9 +49,9 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/mahe-gi",
   },
   stats: [
-    { value: "06", label: "Core Services", descriptor: "Software, AI, Growth, Design, Systems & Support" },
-    { value: "100%", label: "In-House Work", descriptor: "Built directly by our team with zero outsourcing" },
-    { value: "24/7", label: "AI Operations", descriptor: "Smart agents handling calls, leads, and workflows" },
-    { value: "< 1s", label: "Load Times", descriptor: "Clean, lightweight code built for speed on any device" },
+    { value: "Sub-500ms", label: "Global Latency", descriptor: "Edge-optimized delivery with sub-second time-to-interactive" },
+    { value: "100%", label: "In-House Builders", descriptor: "Architected and built directly by domain leads—zero junior outsourcing" },
+    { value: "99.99%", label: "Cloud Reliability", descriptor: "Zero single-point-of-failure infrastructure with continuous SLAs" },
+    { value: "11", label: "Domain Partners", descriptor: "Ambitious startups and enterprises scaled across global markets" },
   ],
 };

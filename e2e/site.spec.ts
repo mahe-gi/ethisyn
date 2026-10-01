@@ -6,12 +6,12 @@ test.describe("Ethisyn Web Platform E2E & Accessibility Suite", () => {
     await page.goto("/");
 
     // Document title
-    await expect(page).toHaveTitle(/Ethisyn — Websites, AI Automation & Growth/i);
+    await expect(page).toHaveTitle(/Ethisyn/i);
 
     // H1 Heading
     const h1 = page.locator("h1");
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText("We build digital products");
+    await expect(h1).toContainText("We engineer high-speed digital products");
 
     // All key section landmarks
     await expect(page.locator("#services")).toBeVisible();
@@ -38,8 +38,12 @@ test.describe("Ethisyn Web Platform E2E & Accessibility Suite", () => {
     await expect(h1).toBeVisible();
     await expect(h1).toContainText("The people who actually");
 
-    // Check founder presence
-    await expect(page.getByText("Mahesh Babu")).toBeVisible();
+    // Check team leader presence
+    await expect(page.getByText("Mahesh Ch")).toBeVisible();
+
+    // Toggle AI Lab tab
+    await page.getByRole("button", { name: /AI Lab \(Coming Soon\)/i }).click();
+    await expect(page.getByText("Sentry Agent")).toBeVisible();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

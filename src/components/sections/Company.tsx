@@ -1,89 +1,109 @@
 import React from "react";
-import { SectionLabel } from "../ui/SectionLabel";
 import { siteConfig } from "@/content/site";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { MapPin, Calendar, Building, Layers, CheckCircle2 } from "lucide-react";
 
 export function Company() {
   return (
     <section
       id="company"
-      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 border-b border-brand-border bg-brand-black"
+      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 bg-black"
       aria-labelledby="company-heading"
     >
       <div className="max-w-[1520px] mx-auto">
-        <SectionLabel index="07" title="Company" />
-
-        {/* 12-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-4">
-          {/* Left: Headline & Primary Copy (7 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left: Headline & Narrative (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+              ABOUT ETHISYN
+            </span>
             <h2
               id="company-heading"
-              className="font-sans font-medium text-brand-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight"
+              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
             >
               Built in Hyderabad.{" "}
-              <span className="font-serif italic font-normal text-brand-offwhite">
-                Working worldwide.
+              <span className="font-serif italic font-normal text-white">
+                Engineering for clients worldwide.
               </span>
             </h2>
 
-            <div className="space-y-6 text-brand-muted text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              <p className="text-brand-offwhite">
-                Founded in Hyderabad in {siteConfig.founded}, Ethisyn is an independent studio that builds modern websites, web applications, and autonomous AI systems.
+            <div className="space-y-6 text-[#A1A1AA] text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+              <p className="text-white">
+                Conceived as an independent engineering idea in Hyderabad in {siteConfig.founded}, Ethisyn is a full-spectrum digital product studio. We build modern web platforms, native mobile applications, intelligent AI automation pipelines, and digital growth engines.
               </p>
               <p>
-                We believe in keeping things simple: clean engineering, thoughtful design, and direct communication with clients. No bloated agencies, no corporate runaround.
+                We believe in simple, honest principles: clean code that loads in under a second, thoughtful design that feels natural to users, and transparent direct communication with clients. No bloated account managers, no junior runarounds.
               </p>
             </div>
           </div>
 
-          {/* Right: Company Details Fact Grid (5 cols) */}
-          <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-brand-border pt-8 lg:pt-0 lg:pl-12 flex flex-col justify-between space-y-8">
-            <div>
-              <p className="font-mono text-xs text-brand-faint uppercase tracking-[0.18em] mb-6">
-                Company Details
-              </p>
+          {/* Right: Company Fact Grid (5 cols) */}
+          <div className="lg:col-span-5">
+            <Card variant="default" className="p-8 space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs text-[#71717A] uppercase tracking-wider block">
+                  STUDIO ESSENTIALS
+                </span>
+                <Badge variant="neutral">INDEPENDENT</Badge>
+              </div>
 
-              <div className="space-y-4 font-mono text-xs">
-                <div className="flex justify-between items-baseline border-b border-brand-border/40 pb-3">
-                  <span className="text-brand-muted">Founded</span>
-                  <span className="text-brand-white font-medium">{siteConfig.founded}</span>
-                </div>
-                <div className="flex justify-between items-baseline border-b border-brand-border/40 pb-3">
-                  <span className="text-brand-muted">Location</span>
-                  <span className="text-brand-white font-medium">{siteConfig.location.formatted}</span>
-                </div>
-                <div className="flex justify-between items-baseline border-b border-brand-border/40 pb-3">
-                  <span className="text-brand-muted">Structure</span>
-                  <span className="text-brand-white font-medium">Independent Product & Systems Studio</span>
-                </div>
-                <div className="flex justify-between items-baseline border-b border-brand-border/40 pb-3">
-                  <span className="text-brand-muted">Services</span>
-                  <span className="text-brand-white font-medium text-right max-w-[220px]">
-                    Software, AI, Growth, Design, Systems
+              <div className="space-y-4 font-sans text-sm">
+                <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
+                  <span className="flex items-center gap-2 text-[#A1A1AA]">
+                    <Calendar className="w-4 h-4 text-white" />
+                    Started
                   </span>
+                  <span className="text-white font-medium">{siteConfig.founded}</span>
                 </div>
-                <div className="flex justify-between items-baseline border-b border-brand-border/40 pb-3">
-                  <span className="text-brand-muted">Availability</span>
-                  <span className="text-brand-white font-medium">Open for Projects</span>
+
+                <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
+                  <span className="flex items-center gap-2 text-[#A1A1AA]">
+                    <MapPin className="w-4 h-4 text-white" />
+                    Location
+                  </span>
+                  <span className="text-white font-medium">{siteConfig.location.formatted}</span>
+                </div>
+
+                <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
+                  <span className="flex items-center gap-2 text-[#A1A1AA]">
+                    <Building className="w-4 h-4 text-white" />
+                    Structure
+                  </span>
+                  <span className="text-white font-medium">Independent Product Studio</span>
+                </div>
+
+                <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
+                  <span className="flex items-center gap-2 text-[#A1A1AA]">
+                    <Layers className="w-4 h-4 text-white" />
+                    Core Team
+                  </span>
+                  <span className="text-white font-medium">Founding Team & Partners</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="flex items-center gap-2 text-[#A1A1AA]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    Availability
+                  </span>
+                  <Badge variant="success" dot>
+                    Open for Q4 Projects
+                  </Badge>
                 </div>
               </div>
-            </div>
 
-            <div className="p-4 border border-brand-border/60 bg-white/[0.02]">
-              <p className="font-mono text-[11px] text-brand-faint uppercase tracking-wider">
-                Direct Contact
-              </p>
-              <p className="font-mono text-xs text-brand-offwhite mt-1">
-                For project discussions, email us directly at{" "}
-                <a
-                  href={`mailto:${siteConfig.contactEmail}`}
-                  className="underline underline-offset-2 hover:text-brand-white"
-                >
-                  {siteConfig.contactEmail}
-                </a>
-                .
-              </p>
-            </div>
+              <div className="pt-4 border-t border-white/[0.05] text-xs font-sans text-[#A1A1AA] font-light">
+                <p>
+                  Direct inquiries:{" "}
+                  <a
+                    href={`mailto:${siteConfig.contactEmail}`}
+                    className="text-white underline hover:text-white"
+                  >
+                    {siteConfig.contactEmail}
+                  </a>
+                </p>
+              </div>
+            </Card>
           </div>
         </div>
       </div>

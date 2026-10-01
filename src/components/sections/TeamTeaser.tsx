@@ -1,44 +1,139 @@
 import React from "react";
-import { SectionLabel } from "../ui/SectionLabel";
-import { Button } from "../ui/Button";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { teamContent } from "@/content/team";
+import { ArrowUpRight, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 
 export function TeamTeaser() {
+  // Feature the first 6 founding domain leads for the homepage preview
+  const featuredPartners = teamContent.members.slice(0, 6);
+
   return (
     <section
-      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 border-b border-brand-border bg-brand-black"
+      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 bg-black relative overflow-hidden"
       aria-labelledby="team-teaser-heading"
     >
       <div className="max-w-[1520px] mx-auto">
-        <SectionLabel index="06" title="The Builders" />
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-8 space-y-6">
+          {/* Left Column: Studio Narrative & Direct Access */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#71717A]">
+                HYDERABAD ENGINEERING HUB • 11 PARTNERS
+              </span>
+            </div>
+
             <h2
               id="team-teaser-heading"
-              className="font-sans font-medium text-brand-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
+              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
             >
-              Meet the people who actually{" "}
-              <span className="font-serif italic font-normal text-brand-offwhite">
-                write your code.
+              The builders behind{" "}
+              <span className="font-serif italic font-normal text-white">
+                every system.
               </span>
             </h2>
 
-            <p className="font-sans text-brand-muted text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              We are an independent team of engineers, designers, and growth experts based in Hyderabad. We do not use sales middlemen or outsource your project to mystery freelancers. You talk directly with the people building your product.
+            <p className="font-sans text-[#A1A1AA] text-base sm:text-lg font-light leading-relaxed">
+              We are an independent assembly of 11 founding domain partners in Hyderabad directing your engineering, design, and growth. We eliminate middleman account managers and mystery outsourcing — you collaborate directly with the architects writing your code and designing your systems.
             </p>
 
-            <div className="pt-2">
+            {/* Direct Guarantees */}
+            <div className="space-y-3 pt-2 font-sans text-xs sm:text-sm text-[#D4D4D8] font-light">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Direct daily Slack & WhatsApp access to founding partners</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>100% In-house engineering hub headquartered in Hyderabad</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Zero account managers, zero mystery outsourcing</span>
+              </div>
+            </div>
+
+            <div className="pt-4 flex flex-wrap items-center gap-4">
               <Button href="/team" variant="primary" size="lg" showArrow>
-                Meet our full team
+                Meet all 11 founding partners
               </Button>
             </div>
           </div>
 
-          <div className="lg:col-span-4 border-l border-brand-border/40 pl-8 space-y-4 font-mono text-xs text-brand-faint">
-            <p className="tracking-[0.16em] uppercase">BASED IN HYDERABAD</p>
-            <p className="text-brand-offwhite font-sans text-sm font-light">
-              “Direct builder access. Zero junk code. We use the tools we build. Honest advice always.”
-            </p>
+          {/* Right Column: Prominent Classy Founder Portrait Gallery */}
+          <div className="lg:col-span-7">
+            <div className="rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[#0e0e0e] via-[#090909] to-[#040404] p-6 sm:p-8 space-y-6 shadow-2xl">
+              {/* Dossier Meta Header */}
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
+                <span className="font-mono text-[11px] text-[#A1A1AA] uppercase tracking-[0.18em]">
+                  FOUNDING PARTNERS • ACTIVE DOSSIER
+                </span>
+                <span className="font-mono text-[11px] text-[#71717A] uppercase tracking-[0.16em] flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  HYDERABAD, INDIA
+                </span>
+              </div>
+
+              {/* Founder Portraits Grid: Substantially Bigger, Classy Frames */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4">
+                {featuredPartners.map((member) => (
+                  <Link
+                    key={member.id}
+                    href="/team"
+                    className="group/lead relative rounded-2xl border border-white/[0.07] bg-white/[0.02] p-3 hover:border-white/[0.22] hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between space-y-3"
+                  >
+                    {/* Portrait Frame */}
+                    <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-white/[0.1] bg-[#141414] shadow-lg">
+                      {member.image ? (
+                        <>
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            sizes="(max-width: 640px) 140px, (max-width: 1024px) 180px, 160px"
+                            className="object-cover object-center group-hover/lead:scale-108 transition-transform duration-700 ease-editorial"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center font-mono text-base font-medium text-white bg-white/[0.05]">
+                          {member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Meta info */}
+                    <div className="space-y-0.5 min-w-0">
+                      <p className="font-sans text-xs sm:text-sm font-medium text-white truncate group-hover/lead:text-white transition-colors">
+                        {member.name}
+                      </p>
+                      <p className="font-mono text-[10px] text-[#A1A1AA] truncate">
+                        {member.discipline}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Teaser Footer Bar */}
+              <div className="pt-4 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+                <span className="text-[#71717A] tracking-wider uppercase text-[10px] sm:text-[11px]">
+                  + 5 ADDITIONAL DOMAIN PARTNERS IN HYDERABAD
+                </span>
+                <Link
+                  href="/team"
+                  className="group/all inline-flex items-center gap-1.5 text-white/90 hover:text-white transition-colors"
+                >
+                  <span>Explore full roster</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#71717A] group-hover/all:text-white group-hover/all:translate-x-0.5 group-hover/all:-translate-y-0.5 transition-transform" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

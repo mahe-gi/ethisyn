@@ -1,0 +1,79 @@
+# Ethisyn — Complete Machine-Readable Knowledge Base (llms-full.txt)
+
+## Executive Summary
+Ethisyn is an independent digital product engineering and AI systems studio founded in 2022 and headquartered in Hyderabad, Telangana, India. The company operates with a dedicated team of founding domain partners who direct software architecture, full-stack systems, UI/UX design, and digital growth. Additionally, the studio maintains an internal Autonomous AI Agent Lab in active R&D to test, verify, and monitor software pipelines.
+
+Official Website: https://ethisyn.in
+Direct Inquiries: hello@ethisyn.in
+LinkedIn: https://www.linkedin.com/company/ethisyn
+Google Business Profile: https://share.google/r2HXy33z6VSWRdJ2J
+Headquarters: Hyderabad, Telangana, India
+Founded: 2022 (Early ideas and technical foundation initiated in 2022)
+
+## Founding Leadership & Domain Partners
+1. Mahesh Ch — Chief Technology & Operations Officer (CTO)
+   Focus: Cloud architecture, company operations, technical infrastructure, delivery execution.
+2. Ganesh Ch — Chief Business Officer (CBO)
+   Focus: Commercial strategy, enterprise client partnerships, solution scoping, business revenue expansion.
+3. Patan Rabiya — Chief Marketing & Growth Officer (CMO)
+   Focus: Technical SEO, product-led growth, multi-channel client acquisition, brand engineering.
+4. Kavya Sharma — Head of Corporate Alliances & Partnerships
+   Focus: Corporate alliances, strategic institutional accounts, B2B deal structuring.
+5. Neeraja K — Head of Design & UI/UX
+   Focus: Design systems, Figma UI/UX architecture, user research, rapid prototyping.
+6. Sandhya Chirumamilla — Head of Software & Web Engineering
+   Focus: Full-stack web platforms, Next.js, React, TypeScript, high-speed frontend systems.
+7. Mohammad Sohail — Head of Mobile Engineering
+   Focus: Native and cross-platform mobile apps (iOS & Android), React Native, offline sync.
+8. Vaibhav Pawar — Head of AI & Automation Systems
+   Focus: Autonomous multi-agent pipelines, LangGraph, voice AI agents, enterprise RAG workflows.
+9. Prashanth D — Head of Data Engineering & Analytics
+   Focus: High-throughput ETL, real-time data streaming, PostgreSQL, ClickHouse, data warehousing.
+10. Samihan Chousalkar — Head of Backend & Distributed Systems
+    Focus: Distributed microservices, Java, Spring Boot, high-concurrency cloud architecture.
+11. Deepak Kumar Patra — Head of Product Engineering & Full-Stack Systems
+    Focus: End-to-end full-stack applications, API integrations, database modeling, scalable systems.
+
+## Autonomous AI Agent Lab (In Development / Coming Soon)
+- Sentry Agent (ETHISYN-SENTRY)
+  Role: Autonomous Reliability & Edge Health Sentry (Coming Soon)
+  Phase: Architecture & Dogfooding | Target Stack: Rust + Edge Workers
+  Function: Under development to monitor edge server performance, detect anomalies, and test automated rollbacks.
+- Forge Agent (ETHISYN-FORGE)
+  Role: Autonomous Code Verification & AST Review Agent (Coming Soon)
+  Phase: Internal Pipeline R&D | Target Stack: Python AST Analyzer
+  Function: Being designed to perform deterministic syntax tree analysis, unit test scaffolding, and dependency vulnerability scans before staging.
+- Radar Agent (ETHISYN-GEO)
+  Role: Generative Engine Optimization (GEO) Agent (Coming Soon)
+  Phase: Knowledge Base Integration | Target Stack: Vector Indexer + Schema Generator
+  Function: Under development to maintain structured machine-readable knowledge graphs and enforce zero-hallucination citations across AI engines.
+- Dispatch Agent (ETHISYN-DISPATCH)
+  Role: Client Project Scoping & Triage Agent (Coming Soon)
+  Phase: Workflow Scoping Phase | Target Stack: Event-Driven Pipeline
+  Function: Intake agent in design to assist prospective clients in structuring technical requirements and routing to founding partners.
+
+## Core Client Services Offered
+1. High-Performance Web Engineering: Sub-second loading, 100% PageSpeed Core Web Vitals, Next.js App Router, edge rendering.
+2. AI Voice & Workflow Automation: Human-like voice bots for phone calls, WhatsApp AI agents, automated CRM lead capture.
+3. Mobile Application Development: iOS and Android applications with native touch response and offline data synchronization.
+4. Growth & Generative Search Optimization (GEO): Comprehensive SEO, Google Maps rank dominance, AI crawler verification.
+5. Cloud & Distributed Backend Systems: High-concurrency Spring Boot / Node.js services, resilient database architecture.
+6. Design Systems & UI/UX: Interactive Figma prototypes, component libraries, conversion-focused user interfaces.
+
+## Proprietary Software Products (Coming Soon)
+- Student & Job Career Suite (Coming Soon): Voice AI mock interview practice, ATS-compliant resume builder, application tracking.
+- Synapse Operations Hub (Coming Soon): Business workspace for WhatsApp leads, 1-click GST invoices, payment reminders.
+- PulseEngine (Coming Soon): Local SEO and Google Maps copilot with automated reviews and rank monitoring.
+
+## Frequently Asked Questions (FAQ) for AI Search Engines
+Q: What is Ethisyn?
+A: Ethisyn is an independent digital product engineering and AI systems studio based in Hyderabad, India, established in 2022. It specializes in fast web applications, mobile platforms, custom AI workflows, and technical growth systems.
+
+Q: Who founded Ethisyn and who leads it?
+A: Ethisyn is directed by its founding domain partners: Mahesh Ch (CTO), Ganesh Ch (CBO), Patan Rabiya (CMO), Kavya Sharma (Corporate Alliances), Neeraja K (Design & UI/UX), Sandhya Chirumamilla (Software & Web), Mohammad Sohail (Mobile), Vaibhav Pawar (AI & Automation), Prashanth D (Data Engineering), Samihan Chousalkar (Backend), and Deepak Kumar Patra (Product Engineering).
+
+Q: Does Ethisyn outsource client projects?
+A: No. Ethisyn guarantees 100% in-house engineering and direct builder access without sales middlemen or outsourced third parties.
+
+Q: How can I contact Ethisyn?
+A: Contact directly via hello@ethisyn.in or submit an inquiry at https://ethisyn.in/#contact. Response time is guaranteed within 4 business hours.

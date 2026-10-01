@@ -1,39 +1,58 @@
 import React from "react";
-import { SectionLabel } from "../ui/SectionLabel";
-import { ContactForm } from "../ui/ContactForm";
-import { Button } from "../ui/Button";
+import { ContactForm } from "@/components/ui/ContactForm";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { siteConfig } from "@/content/site";
+import { Mail } from "lucide-react";
 
 export function FinalCTA() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 bg-brand-black"
+      className="py-24 md:py-36 px-5 sm:px-8 md:px-12 bg-black border-t border-white/[0.05]"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-[1520px] mx-auto">
-        <SectionLabel index="08" title="Start a Project" />
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-4">
-          {/* Left Column: Heading & Quick Links (5 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Heading & Assurances (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
+              <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+                LET&apos;S TALK
+              </span>
               <h2
                 id="contact-heading"
-                className="font-sans font-medium text-brand-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
+                className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
               >
-                Ready to build something great?
+                Ready to build something exceptional?
               </h2>
             </div>
 
-            <p className="font-sans text-brand-muted text-base md:text-lg font-light leading-relaxed">
-              Tell us about what you want to build or automate. We will get back to you within 24 hours with honest advice and a clear plan.
+            <p className="font-sans text-[#A1A1AA] text-base md:text-lg font-light leading-relaxed">
+              Tell us about what you want to build, automate, or scale. You will hear back directly from our founding engineers within 4 business hours with honest technical advice and a clear roadmap.
             </p>
 
+            {/* Direct Channel Badges */}
+            <div className="space-y-4 pt-2">
+              <div className="flex items-center gap-3 text-xs font-sans text-[#A1A1AA] font-light">
+                <Badge variant="success" dot size="sm">
+                  GUARANTEED SLA
+                </Badge>
+                <span>Direct engineer response within 4 business hours</span>
+              </div>
+              <div className="flex items-center gap-3 text-xs font-sans text-[#A1A1AA] font-light">
+                <Badge variant="neutral" size="sm">
+                  CONFIDENTIALITY
+                </Badge>
+                <span>Mutual NDA & strict data protection from day one</span>
+              </div>
+            </div>
+
             <div className="pt-4 space-y-3">
-              <p className="font-mono text-xs text-brand-faint uppercase tracking-wider">
-                Direct Contact
-              </p>
+              <span className="font-mono text-xs text-[#71717A] uppercase tracking-wider block">
+                DIRECT CONTACT
+              </span>
               <div className="flex flex-wrap gap-3">
                 <Button
                   href={`mailto:${siteConfig.contactEmail}`}
@@ -42,6 +61,7 @@ export function FinalCTA() {
                   size="md"
                   aria-label={`Send email to ${siteConfig.contactEmail}`}
                 >
+                  <Mail className="w-4 h-4 mr-2" />
                   {siteConfig.contactEmail}
                 </Button>
                 <Button
@@ -69,13 +89,20 @@ export function FinalCTA() {
           </div>
 
           {/* Right Column: Contact & Scoping Form (7 cols) */}
-          <div className="lg:col-span-7 border-t lg:border-t-0 lg:border-l border-brand-border pt-8 lg:pt-0 lg:pl-12">
-            <div className="pb-6">
-              <h3 id="contact-form-heading" className="font-mono text-xs uppercase tracking-[0.16em] text-brand-muted">
-                Project Inquiry
-              </h3>
-            </div>
-            <ContactForm />
+          <div className="lg:col-span-7">
+            <Card variant="elevated" className="p-8 md:p-10 space-y-6">
+              <div className="pb-6 border-b border-white/[0.06]">
+                <h3 id="contact-form-heading" className="font-sans text-lg font-medium text-white">
+                  Start a Project Discussion
+                </h3>
+                <p className="font-sans text-xs text-[#A1A1AA] font-light mt-1">
+                  Fill out the form below. We will review your requirements and respond with a scoped proposal.
+                </p>
+              </div>
+              <div className="pt-2">
+                <ContactForm />
+              </div>
+            </Card>
           </div>
         </div>
       </div>

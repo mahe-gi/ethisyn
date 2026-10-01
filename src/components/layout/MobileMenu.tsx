@@ -68,10 +68,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Site Navigation Menu"
-      className="fixed inset-0 z-50 bg-brand-black flex flex-col justify-between p-6 sm:p-8 animate-fade-in"
+      className="fixed inset-0 z-50 bg-black flex flex-col justify-between p-6 sm:p-8 animate-fade-in"
     >
       {/* Drawer Header */}
-      <div className="flex items-center justify-between pb-6 border-b border-brand-border">
+      <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
         <Link
           href="/"
           onClick={onClose}
@@ -86,7 +86,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           ref={closeBtnRef}
           type="button"
           onClick={onClose}
-          className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-brand-muted hover:text-white border border-brand-border transition-colors focus-visible:outline-2"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-[#A1A1AA] hover:text-white border border-white/[0.08] hover:border-white/[0.2] transition-colors focus-visible:outline-2 rounded-lg"
           aria-label="Close navigation menu"
         >
           <X className="w-5 h-5" aria-hidden="true" />
@@ -100,18 +100,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             key={item.href}
             href={item.href}
             onClick={onClose}
-            className="flex items-center justify-between py-2 text-2xl font-medium text-brand-white hover:text-brand-offwhite transition-colors group"
+            className="flex items-center justify-between py-2 text-2xl font-medium text-white hover:text-white/80 transition-colors group"
           >
             <div className="flex items-baseline gap-4">
               {item.index && (
-                <span className="font-mono text-xs text-brand-faint">
+                <span className="font-mono text-xs text-[#71717A]">
                   {item.index}
                 </span>
               )}
               <span>{item.label}</span>
             </div>
             <ArrowUpRight
-              className="w-5 h-5 text-brand-faint group-hover:text-brand-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+              className="w-5 h-5 text-[#71717A] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
               aria-hidden="true"
             />
           </Link>
@@ -119,8 +119,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       </nav>
 
       {/* Drawer Footer Actions */}
-      <div className="pt-6 border-t border-brand-border space-y-4">
-        <div className="flex justify-between items-center text-xs font-mono text-brand-faint uppercase tracking-wider">
+      <div className="pt-6 border-t border-white/[0.08] space-y-4">
+        <div className="flex justify-between items-center text-xs font-mono text-[#71717A] uppercase tracking-wider">
           <span>{siteConfig.location.formatted}</span>
           <span>EST. {siteConfig.founded}</span>
         </div>

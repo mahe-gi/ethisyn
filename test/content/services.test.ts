@@ -5,12 +5,12 @@ describe("Services Content", () => {
   it("contains all 6 core services", () => {
     expect(servicesData).toHaveLength(6);
     const titles = servicesData.map((s) => s.title);
-    expect(titles).toContain("Websites & Software");
-    expect(titles).toContain("AI & Business Automation");
+    expect(titles).toContain("Web & Software Engineering");
+    expect(titles).toContain("AI & Automation");
     expect(titles).toContain("Digital Growth & SEO");
-    expect(titles).toContain("Creative, Design & Video");
+    expect(titles).toContain("Creative Design & UI/UX");
     expect(titles).toContain("Business Systems & Cloud");
-    expect(titles).toContain("Support & Fast Maintenance");
+    expect(titles).toContain("Continuous SLA & Retainers");
   });
 
   it("ensures each service has whatWeBuild items and tools", () => {

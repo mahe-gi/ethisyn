@@ -6,10 +6,8 @@ import { Menu } from "lucide-react";
 import { Logo } from "../ui/Logo";
 import { Wordmark } from "../ui/Wordmark";
 import { Button } from "../ui/Button";
-import { StatusLabel } from "../ui/StatusLabel";
 import { MobileMenu } from "./MobileMenu";
 import { mainNavItems } from "@/content/navigation";
-import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -35,7 +33,7 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300 select-none",
           isScrolled
-            ? "bg-brand-black/90 backdrop-blur-md border-b border-brand-border py-3.5"
+            ? "bg-black/90 backdrop-blur-md border-b border-white/[0.08] py-3.5"
             : "bg-transparent border-b border-transparent py-5"
         )}
       >
@@ -59,23 +57,15 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-sans text-xs uppercase tracking-[0.14em] text-brand-muted hover:text-brand-white transition-colors duration-150 py-1"
+                className="font-sans text-xs uppercase tracking-[0.14em] text-[#A1A1AA] hover:text-white transition-colors duration-150 py-1"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right Action: Status Pill + Contact CTA + Mobile Menu Button */}
-          <div className="flex items-center gap-4 lg:gap-6">
-            <div className="hidden xl:block">
-              <StatusLabel
-                label={`${siteConfig.location.code} • EST. ${siteConfig.founded}`}
-                dot
-                variant="faint"
-              />
-            </div>
-
+          {/* Right Action: Contact CTA + Mobile Menu Button */}
+          <div className="flex items-center gap-4">
             <div className="hidden sm:block">
               <Button href="/#contact" variant="primary" size="sm" showArrow>
                 Start a project
@@ -86,7 +76,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-brand-muted hover:text-white border border-brand-border hover:border-brand-border-strong transition-colors focus-visible:outline-2"
+              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-[#A1A1AA] hover:text-white border border-white/[0.08] hover:border-white/[0.2] transition-colors focus-visible:outline-2 rounded-lg"
               aria-label="Open navigation menu"
               aria-expanded={isMobileMenuOpen}
             >

@@ -1,76 +1,78 @@
 import React from "react";
 import { Button } from "../ui/Button";
-import { StatusLabel } from "../ui/StatusLabel";
-import { MonogramField } from "./MonogramField";
 import { siteConfig } from "@/content/site";
 
 export function Hero() {
   return (
     <section
-      className="relative min-h-[92vh] md:min-h-screen flex flex-col justify-between pt-28 md:pt-36 pb-12 md:pb-16 px-5 sm:px-8 md:px-12 border-b border-brand-border"
-      aria-label="Hero Introduction"
+      className="relative min-h-[92vh] md:min-h-screen flex flex-col justify-between pt-32 sm:pt-36 md:pt-44 pb-16 md:pb-24 px-5 sm:px-8 md:px-12 bg-black overflow-hidden"
+      aria-label="Ethisyn Studio Introduction"
     >
-      <div className="max-w-[1520px] mx-auto w-full flex-1 flex flex-col justify-center">
-        {/* Top Status & Geolocation Row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 md:pb-12 border-b border-brand-border/40 font-mono text-[11px] md:text-xs text-brand-muted uppercase tracking-[0.18em]">
-          <div className="flex items-center gap-3">
-            <span
-              className="w-1.5 h-1.5 bg-brand-white rounded-full flex-shrink-0 animate-pulse-subtle"
-              aria-hidden="true"
-            />
-            <span>PRODUCT ENGINEERING & AI AUTOMATION STUDIO</span>
+      {/* Subtle Awwwards-tier atmospheric ambient glow (no harsh lines, whisper-quiet luxury) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] sm:w-[1100px] h-[520px] bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.06),_rgba(255,255,255,0.01)_45%,_transparent_75%)] blur-2xl"
+      />
+
+      <div className="max-w-[1520px] mx-auto w-full flex-1 flex flex-col justify-center relative z-10">
+        {/* Top Status Bar: Studio Identifier with Live Pulse Dot */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-12 sm:pb-16 md:pb-20 font-mono text-[11px] sm:text-xs uppercase tracking-[0.16em]">
+          <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            </span>
+            <span className="text-white/90 font-medium">
+              INDEPENDENT PRODUCT STUDIO • HYDERABAD, INDIA
+            </span>
           </div>
-          <div className="flex items-center gap-6">
-            <span>
-              {siteConfig.location.city.toUpperCase()}, {siteConfig.location.country.toUpperCase()} • EST. {siteConfig.founded}
+
+          <div className="hidden sm:flex items-center gap-3 text-zinc-400 text-[11px] tracking-[0.16em]">
+            <span className="text-zinc-600">AVAILABILITY //</span>
+            <span className="text-zinc-300">SELECT Q2–Q3 ENGAGEMENTS</span>
+          </div>
+        </div>
+
+        {/* Central Display Heading & Narrative (Classy luxury whitespace) */}
+        <div className="py-6 sm:py-10 md:py-14 max-w-5xl space-y-8 md:space-y-10">
+          <h1 className="font-sans font-medium text-white text-[clamp(2.75rem,5.6vw,5.75rem)] leading-[1.02] tracking-[-0.03em]">
+            We build high-velocity software,{" "}
+            <span className="font-serif italic font-normal text-white">
+              intelligent AI systems
+            </span>
+            , and scalable digital platforms.
+          </h1>
+
+          <p className="font-sans text-[#A1A1AA] text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl font-light">
+            An independent product studio partnering directly with ambitious founders and enterprises. We architect sub-second web platforms, autonomous AI workflows, and resilient digital systems that generate compound commercial value—engineered entirely in-house without agency bloat.
+          </p>
+
+          {/* High-Contrast, Polished CTAs */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 sm:pt-4">
+            <Button href="/#contact" variant="primary" size="lg" showArrow>
+              Start a Project
+            </Button>
+            <Button href="/#services" variant="outline" size="lg">
+              Explore Capabilities
+            </Button>
+
+            <span className="font-mono text-xs text-zinc-500 sm:pl-4 pt-1 sm:pt-0">
+              Avg. 4-week MVP sprint • Direct founder execution
             </span>
           </div>
         </div>
 
-        {/* Central Asymmetric 12-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-10 md:py-16">
-          {/* Left Column: Primary Typography (7 cols) */}
-          <div className="lg:col-span-7 space-y-8">
-            <h1 className="font-sans font-medium text-brand-white text-[clamp(2.85rem,6.5vw,6.5rem)] leading-[0.96] tracking-tight">
-              We build digital products,{" "}
-              <span className="font-serif italic font-normal text-brand-offwhite">
-                automate your operations
-              </span>
-              , and help your business grow online.
-            </h1>
-
-            <p className="font-sans text-brand-muted text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl font-light">
-              Ethisyn is an independent studio in Hyderabad. We build modern websites, mobile apps, smart AI voice agents, and digital growth engines for businesses that want real results without the corporate fluff.
-            </p>
-
-            {/* Actions */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <Button href="/#services" variant="primary" size="lg" showArrow>
-                See our services
-              </Button>
-              <Button href="/#contact" variant="outline" size="lg">
-                Start a project
-              </Button>
-            </div>
-          </div>
-
-          {/* Right Column: Visual Anchor Monogram (5 cols) */}
-          <div className="lg:col-span-5 flex items-center justify-center">
-            <MonogramField />
-          </div>
-        </div>
-
-        {/* Bottom 4-Metric Bar */}
-        <div className="pt-8 border-t border-brand-border/40 grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* Bottom 4-Stat Proof Bar */}
+        <div className="mt-12 md:mt-20 pt-10 md:pt-14 border-t border-white/[0.06] grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {siteConfig.stats.map((stat) => (
-            <div key={stat.label} className="space-y-1">
-              <span className="font-sans text-2xl sm:text-3xl md:text-4xl font-medium text-brand-white tracking-tight">
+            <div key={stat.label} className="space-y-1.5 group">
+              <div className="font-sans text-3xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight">
                 {stat.value}
-              </span>
-              <p className="font-mono text-xs uppercase tracking-wider text-brand-offwhite">
+              </div>
+              <div className="font-mono text-xs uppercase tracking-wider text-white/90 font-medium">
                 {stat.label}
-              </p>
-              <p className="font-sans text-xs text-brand-muted/70 font-light hidden sm:block">
+              </div>
+              <p className="font-sans text-xs text-[#71717A] font-light leading-relaxed hidden sm:block">
                 {stat.descriptor}
               </p>
             </div>

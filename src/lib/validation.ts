@@ -1,12 +1,12 @@
 import { z } from "zod";
 
 export const availableServices = [
-  "Websites & Software",
+  "Web & Software Engineering",
   "AI & Automation",
   "Digital Growth & SEO",
-  "Creative, Design & Video",
+  "Creative Design & UI/UX",
   "Business Systems & Cloud",
-  "Support & Maintenance",
+  "Continuous SLA & Retainers",
   "Other / Custom Project",
 ] as const;
 
