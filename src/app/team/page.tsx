@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
@@ -94,12 +95,24 @@ export default function TeamPage() {
                 <div className="space-y-4">
                   {/* Top Avatar Badge & Discipline */}
                   <div className="flex items-center justify-between border-b border-brand-border/40 pb-4">
-                    <div className="w-10 h-10 border border-brand-border flex items-center justify-center font-mono text-xs font-semibold text-brand-white bg-white/[0.03]">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
+                    {member.image ? (
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-brand-white/40 relative flex-shrink-0 bg-white/[0.05]">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 border border-brand-border flex items-center justify-center font-mono text-xs font-semibold text-brand-white bg-white/[0.03]">
+                        {member.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </div>
+                    )}
                     <span className="font-mono text-[10px] text-brand-faint uppercase tracking-wider">
                       {member.discipline}
                     </span>

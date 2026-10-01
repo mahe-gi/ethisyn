@@ -4,10 +4,12 @@ export interface TeamMember {
   role: string;
   discipline: string;
   bio: string;
+  image?: string;
   skills: string[];
   social: {
     linkedin?: string;
     github?: string;
+    twitter?: string;
   };
 }
 
@@ -24,12 +26,12 @@ export const teamContent: TeamPageContent = {
   subtitle:
     "We are an independent team of engineers, designers, and growth experts based in Hyderabad. We build clean software that works, without the corporate runaround.",
   manifesto:
-    "We don't use sales middlemen or outsource your project to mystery freelancers. When you work with Ethisyn, you talk directly with the people who design your screens and write your code.",
+    "We don't use sales middlemen or outsource your project to mystery freelancers. When you work with Ethisyn, you talk directly with the people who design your screens, write your code, and scale your brand.",
   rules: [
     {
       title: "Direct Access to Builders",
       explanation:
-        "No account managers playing telephone. You communicate directly with the engineer or designer working on your project.",
+        "No account managers playing telephone. You communicate directly with the engineer, designer, or growth partner working on your project.",
     },
     {
       title: "Zero Junk Code",
@@ -39,7 +41,7 @@ export const teamContent: TeamPageContent = {
     {
       title: "We Dogfood Our Own Tools",
       explanation:
-        "We run our own company using the exact same AI agents, automations, and systems we build for our clients.",
+        "We run our own company using the exact same AI agents, automations, and growth systems we build for our clients.",
     },
     {
       title: "Honest Advice Always",
@@ -52,12 +54,24 @@ export const teamContent: TeamPageContent = {
       id: "mahesh-babu",
       name: "Mahesh Babu",
       role: "Founder & Lead Architect",
-      discipline: "Engineering & Architecture",
+      discipline: "Leadership & Engineering",
       bio: "Leads technical architecture and product engineering at Ethisyn. Specializes in building high-speed web apps, autonomous AI agent pipelines, and clean cloud systems.",
       skills: ["Full-Stack Architecture", "Next.js & React", "AI Agent Workflows", "Cloud Infrastructure", "System Design"],
       social: {
         linkedin: "https://www.linkedin.com/company/ethisyn",
         github: "https://github.com/mahe-gi",
+      },
+    },
+    {
+      id: "cmo-lead",
+      name: "Ananya Reddy",
+      role: "Co-Founder & Chief Marketing Officer (CMO)",
+      discipline: "Leadership & Growth",
+      bio: "Leads global marketing, brand strategy, and client acquisition at Ethisyn. Specializes in multi-channel organic growth, high-retention video storytelling, and positioning modern tech products to dominate their market.",
+      image: "/team/cmo.png",
+      skills: ["Brand Strategy", "Digital Growth & SEO", "Client Acquisition", "Content Direction", "Performance Marketing"],
+      social: {
+        linkedin: "https://www.linkedin.com/company/ethisyn",
       },
     },
     {
