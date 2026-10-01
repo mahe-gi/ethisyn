@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { siteConfig } from "@/content/site";
 import {
@@ -7,43 +7,29 @@ import {
   generateWebSiteSchema,
   generateProfessionalServiceSchema,
   generateSoftwareSchemas,
+  generateCoreServicesSchema,
 } from "@/lib/schema";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { AutonomousCompanion } from "@/components/ui/AutonomousCompanion";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
-  display: "optional",
-  preload: true,
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  display: "optional",
-  preload: true,
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-  display: "optional",
+  display: "swap",
   preload: true,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
+    default: "Ethisyn | Build. Automate. Grow. Create.",
     template: "%s | Ethisyn",
   },
-  description: siteConfig.description,
+  description: siteConfig.tagline,
   keywords: [
+    "BUILD AUTOMATE GROW CREATE",
+    "Build Automate Grow Create",
     "Web Engineering Studio Hyderabad",
     "Autonomous AI Agents India",
     "AI Voice Agents Hyderabad",
@@ -65,29 +51,31 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
-    description: siteConfig.description,
+    title: "Ethisyn | Build. Automate. Grow. Create.",
+    description: siteConfig.tagline,
     images: [
       {
         url: "/brand/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Ethisyn — We build software, automate your operations, and help your business grow.",
+        alt: "Ethisyn: Build. Automate. Grow. Create. | Technology, AI and digital growth for ambitious businesses.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ethisyn — High-Performance Software, AI Automation & Digital Systems",
-    description: siteConfig.description,
+    title: "Ethisyn | Build. Automate. Grow. Create.",
+    description: siteConfig.tagline,
     images: ["/brand/opengraph-image.png"],
   },
   icons: {
     icon: [
-      { url: "/brand/ethisyn-monogram-white.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico" },
+      { url: "/brand/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [
-      { url: "/brand/ethisyn-monogram-white.png", sizes: "180x180", type: "image/png" },
+      { url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
   manifest: "/manifest.webmanifest",
@@ -125,11 +113,12 @@ export default function RootLayout({
   const webSiteSchema = generateWebSiteSchema();
   const profServiceSchema = generateProfessionalServiceSchema();
   const softwareSchemas = generateSoftwareSchemas();
+  const coreServicesSchema = generateCoreServicesSchema();
 
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable}`}
+      className={`${instrumentSans.variable} font-sans`}
     >
       <head>
         <script
@@ -144,12 +133,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profServiceSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(coreServicesSchema) }}
+        />
         {softwareSchemas.length > 0 && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchemas) }}
           />
         )}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
         <link rel="author" href="/llms.txt" />
         <link rel="help" href="/llms-full.txt" />
       </head>
@@ -160,7 +156,7 @@ export default function RootLayout({
         {/* Accessible Skip to Main Content */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-white focus:text-brand-black font-mono text-xs font-semibold focus:outline-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-white focus:text-brand-black text-xs font-semibold focus:outline-2"
         >
           Skip to main content
         </a>
@@ -175,9 +171,6 @@ export default function RootLayout({
 
         {/* Persistent Site Footer */}
         <Footer />
-
-        {/* Autonomous Site-Wide Studio Companion */}
-        <AutonomousCompanion />
       </body>
     </html>
   );

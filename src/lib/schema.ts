@@ -2,6 +2,7 @@ import { siteConfig } from "@/content/site";
 import { teamContent } from "@/content/team";
 import { proprietaryProducts } from "@/content/products";
 import type { BlogPost } from "@/content/blog";
+import { careersData } from "@/content/careers";
 
 export function generateOrganizationSchema() {
   return {
@@ -67,6 +68,10 @@ export function generateOrganizationSchema() {
       sameAs: member.social.linkedin || siteConfig.social.linkedin,
     })),
     knowsAbout: [
+      "BUILD: Web & Software Engineering (Next.js, React Native, Cloud)",
+      "AUTOMATE: Autonomous Multi-Agent AI Pipelines & Voice Agents",
+      "GROW: Digital Growth, Technical SEO & Generative Engine Optimization (GEO)",
+      "CREATE: UI/UX Design Systems, Figma Tokens & Brand Identity",
       "Web Engineering & High-Speed Next.js",
       "Autonomous Multi-Agent AI Pipelines",
       "Mobile Applications (iOS & Android)",
@@ -100,6 +105,8 @@ export function generateProfessionalServiceSchema() {
     "@type": "ProfessionalService",
     "@id": `${siteConfig.url}/#service`,
     name: "Ethisyn Product Engineering & AI Studio",
+    slogan: siteConfig.tagline,
+    description: siteConfig.description,
     url: siteConfig.url,
     image: `${siteConfig.url}/brand/opengraph-image.png`,
     priceRange: "$$",
@@ -129,6 +136,196 @@ export function generateProfessionalServiceSchema() {
         closes: "20:00",
       },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Core Pillars: BUILD • AUTOMATE • GROW • CREATE",
+      itemListElement: [
+        {
+          "@type": "OfferCatalog",
+          name: "BUILD: Web & Software Engineering",
+          description:
+            "Sub-second web platforms, enterprise customer portals, iOS/Android mobile apps, and transactional software architectures.",
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "AUTOMATE: AI & Automation Systems",
+          description:
+            "Autonomous multi-agent workflows, conversational voice intelligence (sub-800ms latency), and enterprise AI copilots.",
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "GROW: Digital Growth & SEO",
+          description:
+            "Generative Engine Optimization (GEO for LLMs), technical SEO dominance, Google Business Profile ranking, and high-intent acquisition.",
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "CREATE: Creative & Content",
+          description:
+            "Video production, videography, video editing, social media content, brand promotions, and marketing creatives.",
+        },
+      ],
+    },
+  };
+}
+
+export function generateCoreServicesSchema() {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${siteConfig.url}/#service-build`,
+      name: "BUILD: Web & Software Engineering",
+      serviceType: "Software Engineering & Web Development",
+      category: "BUILD",
+      description:
+        "High-velocity web applications, multi-tenant SaaS platforms, sub-second Next.js engineering, and native iOS/Android mobile experiences.",
+      provider: {
+        "@id": `${siteConfig.url}/#organization`,
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Worldwide",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${siteConfig.url}/#service-automate`,
+      name: "AUTOMATE: AI & Automation Systems",
+      serviceType: "Artificial Intelligence & Workflow Automation",
+      category: "AUTOMATE",
+      description:
+        "Autonomous multi-agent workflows, conversational voice intelligence (sub-800ms latency), context-aware copilots, and operational pipelines.",
+      provider: {
+        "@id": `${siteConfig.url}/#organization`,
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Worldwide",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${siteConfig.url}/#service-grow`,
+      name: "GROW: Digital Growth & SEO",
+      serviceType: "Digital Growth & Generative Search Optimization",
+      category: "GROW",
+      description:
+        "Generative Engine Optimization (GEO) across ChatGPT, Perplexity, and Claude; technical SEO; local map packs; and revenue-focused acquisition funnels.",
+      provider: {
+        "@id": `${siteConfig.url}/#organization`,
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Worldwide",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${siteConfig.url}/#service-create`,
+      name: "CREATE: Creative Design & UI/UX",
+      serviceType: "Product Design & Brand Engineering",
+      category: "CREATE",
+      description:
+        "Tactile product interfaces, scalable Figma design tokens, interactive prototypes, cinematic motion design, and brand identity systems.",
+      provider: {
+        "@id": `${siteConfig.url}/#organization`,
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Worldwide",
+      },
+    },
+  ];
+}
+
+export function generateJobPostingSchemas() {
+  return careersData.roles.map((role) => ({
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "@id": `${siteConfig.url}/careers#${role.id}`,
+    title: role.title,
+    description: `${role.shortSummary} ${role.overview}`,
+    datePosted: "2025-01-01T00:00:00Z",
+    validThrough: "2026-12-31T23:59:59Z",
+    employmentType: "FULL_TIME",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      sameAs: siteConfig.url,
+      logo: `${siteConfig.url}/brand/ethisyn-monogram-original.png`,
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Hyderabad",
+        addressRegion: "Telangana",
+        addressCountry: "IN",
+      },
+    },
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "India",
+    },
+    jobLocationType: "TELECOMMUTE",
+    directApply: true,
+  }));
+}
+
+export function generateCareersPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteConfig.url}/careers#webpage`,
+    name: "Careers | Ethisyn | BUILD • AUTOMATE • GROW • CREATE",
+    headline: "Join Our Founding Engineering, AI & Design Studio in Hyderabad",
+    description:
+      "Explore engineering, AI automation, digital growth, and design careers at Ethisyn. We build high-performance software and autonomous AI systems.",
+    url: `${siteConfig.url}/careers`,
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    about: {
+      "@id": `${siteConfig.url}/#organization`,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Career Opportunities Across Core Pillars",
+      description: "Open roles across BUILD, AUTOMATE, GROW, and CREATE.",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "BUILD: Web & Software Engineering (Next.js, React Native, Full-Stack)",
+          url: `${siteConfig.url}/careers#build`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "AUTOMATE: AI Systems & Voice Intelligence (LangGraph, Python)",
+          url: `${siteConfig.url}/careers#automate`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "GROW: Digital Growth & GEO Engineering (Technical SEO, Analytics)",
+          url: `${siteConfig.url}/careers#grow`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "CREATE: Product UI/UX & Brand Design (Figma, Motion)",
+          url: `${siteConfig.url}/careers#create`,
+        },
+      ],
+    },
   };
 }
 

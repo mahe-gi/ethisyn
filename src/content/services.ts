@@ -1,134 +1,226 @@
+export interface ServiceMetric {
+  value: string;
+  label: string;
+  descriptor: string;
+}
+
 export interface ServiceItem {
   id: string;
   index: string;
+  pillar: "BUILD" | "AUTOMATE" | "GROW" | "CREATE";
   title: string;
   tagline: string;
+  badge: string;
   description: string;
-  whatWeBuild: string[];
+  features: string[];
+  whatWeBuild: string[]; // Preserves backwards-compatibility with existing UI components
+  deliverables: string[];
+  metrics: ServiceMetric[];
   whyItMatters: string;
-  schematicType: "code" | "agents" | "growth" | "creative" | "systems" | "support";
+  schematicType: "code" | "agents" | "growth" | "creative";
   tools: string[];
 }
 
 export const servicesData: ServiceItem[] = [
   {
-    id: "software-engineering",
+    id: "build",
     index: "01",
-    title: "Web & Software Engineering",
-    tagline: "High-velocity web applications, multi-tenant SaaS platforms, and native mobile experiences.",
+    pillar: "BUILD",
+    title: "Software & Digital Product Development",
+    tagline: "High-velocity web applications, cross-platform mobile apps, custom business software, and enterprise SaaS platforms.",
+    badge: "SOFTWARE & PRODUCT ENGINEERING",
     description:
-      "We architect and engineer sub-second web platforms, enterprise customer portals, iOS/Android apps, and transactional software. Built with clean TypeScript, edge infrastructure, and responsive precision that scales effortlessly.",
+      "We design and build digital products that help businesses operate, serve customers and scale. From business websites and mobile apps to SaaS products, custom business software, CRM systems, admin portals, and resilient database backends, we build reliable digital systems around your business needs.",
+    features: [
+      "Business Websites",
+      "Web Applications",
+      "Mobile Applications (iOS & Android)",
+      "SaaS Products",
+      "Custom Business Software",
+      "CRM Systems",
+      "Admin & Management Portals",
+      "APIs & Third-Party Integrations",
+      "E-commerce Solutions",
+      "Custom Dashboards",
+      "Database & Backend Systems",
+      "Product Development",
+    ],
     whatWeBuild: [
-      "Full-Stack Next.js & React Web Apps",
-      "iOS & Android Mobile Apps (React Native)",
+      "Business Websites & Brand Portals",
+      "Full-Stack Web Applications (Next.js & React)",
+      "Mobile Apps (iOS & Android React Native)",
       "B2B SaaS MVPs & Customer Portals",
-      "High-Conversion Headless E-Commerce",
-      "Resilient REST & GraphQL APIs",
-      "Database Architecture & Edge Caching",
+      "Custom CRM Systems & Admin Dashboards",
+      "APIs, Integrations & Cloud Backends",
+    ],
+    deliverables: [
+      "Production-ready Next.js & React web applications with edge SSR/SSG",
+      "App Store & Google Play Store native app deployment pipelines",
+      "Role-based access control (RBAC) admin portals and operational dashboards",
+      "Scalable Postgres / Supabase database architecture with zero-latency edge caching",
+      "Comprehensive REST / GraphQL API documentation and third-party webhook integrations",
+      "Automated CI/CD pipelines with zero-downtime deployment on AWS / Vercel",
+    ],
+    metrics: [
+      { value: "< 500ms", label: "Global Edge Latency", descriptor: "Optimized time-to-interactive on global edge networks" },
+      { value: "99.99%", label: "Platform Reliability", descriptor: "Zero single-point-of-failure cloud architectures" },
+      { value: "100/100", label: "Lighthouse Performance", descriptor: "Perfect Core Web Vitals across mobile and desktop" },
+      { value: "100%", label: "In-House Senior Engineers", descriptor: "Direct partner and lead engineering architecture" },
     ],
     whyItMatters:
-      "Sub-second latency and rock-solid architecture convert casual visitors into enterprise customers. We engineer software people love using.",
+      "Sub-second performance and rock-solid architecture convert visitors into high-LTV customers and eliminate technical debt before it starts.",
     schematicType: "code",
-    tools: ["Next.js", "React", "TypeScript", "React Native", "Tailwind CSS", "Node.js"],
+    tools: ["Next.js", "React", "TypeScript", "React Native", "Node.js", "PostgreSQL", "Supabase", "Tailwind CSS", "AWS / Vercel"],
   },
   {
-    id: "ai-automation",
+    id: "automate",
     index: "02",
-    title: "AI & Automation",
-    tagline: "Autonomous multi-agent workflows, conversational voice intelligence, and self-operating pipelines.",
+    pillar: "AUTOMATE",
+    title: "AI & Business Automation",
+    tagline: "Autonomous multi-agent workflows, conversational voice intelligence, and self-operating operational pipelines.",
+    badge: "AI & INTELLIGENT SYSTEMS",
     description:
-      "We build and deploy production-grade autonomous agent systems, low-latency AI voice agents for live client calls, document intelligence, and automated operational pipelines that replace repetitive manual overhead.",
+      "We use AI and automation to reduce repetitive work, improve workflows and help businesses operate more efficiently. We connect AI, software and business workflows to automate repetitive processes, qualify leads, and make operations seamless.",
+    features: [
+      "AI Agents",
+      "AI Voice Agents",
+      "AI Chatbots",
+      "AI Workflow Automation",
+      "Business Process Automation",
+      "CRM Automation",
+      "AI Integrations",
+      "Document & Data Automation",
+      "Customer Support Automation",
+      "Lead Management Automation",
+      "Internal Business Tools",
+      "API-based Automation",
+    ],
     whatWeBuild: [
-      "Autonomous Voice Agents (Sub-800ms Latency)",
-      "Context-Aware AI Chatbots & Copilots",
-      "Multi-Agent LangGraph Workflows",
-      "Automated Lead Qualification & CRM Sync",
-      "Internal Semantic Document Search & RAG",
-      "Automated Invoicing & Operational Flows",
+      "Autonomous AI Voice Agents (Inbound / Outbound)",
+      "Context-Aware AI Chatbots & Customer Support Bots",
+      "AI Workflow Automation (Make, n8n, Custom Engines)",
+      "Automated CRM Lead Routing & Instant Ingestion",
+      "Intelligent Document Extraction & Data Automation",
+      "Business Process Automation & Ops Tooling",
+    ],
+    deliverables: [
+      "Low-latency voice calling bots integrated with Twilio / SIP infrastructure",
+      "Multi-agent LangGraph orchestration pipelines with self-correcting state machines",
+      "Enterprise semantic search and RAG knowledge-bases on proprietary company documents",
+      "Bi-directional CRM sync pipelines across HubSpot, Salesforce, Zoho, and custom databases",
+      "Automated multi-step document intake, data verification, and accounting exports",
+      "Operational anomaly alerting, real-time fallback routing, and observability dashboards",
+    ],
+    metrics: [
+      { value: "< 800ms", label: "Voice Latency", descriptor: "Natural, human-like voice response time on live phone calls" },
+      { value: "24/7", label: "Autonomous Availability", descriptor: "Instant lead qualification and continuous process execution" },
+      { value: "85%+", label: "Manual Time Saved", descriptor: "Elimination of repetitive administrative and data entry tasks" },
+      { value: "0", label: "Dropped Inquiries", descriptor: "Instant multichannel capture across web, WhatsApp, and phone" },
     ],
     whyItMatters:
-      "Eliminate repetitive manual hours. Autonomous agents execute tasks 24/7 with zero latency and zero dropped leads.",
+      "Eliminate hundreds of manual hours every month. Autonomous AI agents qualify leads, route tickets, and execute operations at machine speed.",
     schematicType: "agents",
-    tools: ["LangGraph", "Python", "OpenAI / Claude", "Voice AI", "Make", "FastAPI"],
+    tools: ["LangGraph", "Python", "OpenAI / Claude", "Voice AI", "Make", "n8n", "FastAPI", "Pinecone / pgvector"],
   },
   {
-    id: "digital-growth",
+    id: "grow",
     index: "03",
-    title: "Digital Growth & SEO",
-    tagline: "Search dominance, generative engine optimization (GEO), and revenue-focused acquisition.",
+    pillar: "GROW",
+    title: "Digital Marketing & Growth",
+    tagline: "Search engine optimization, Google Business Profile rankings, Meta & Google ad campaigns, and social media growth.",
+    badge: "REVENUE & MARKET ACQUISITION",
     description:
-      "We position your business at the pinnacle of Google Search, local map packs, and emerging generative engines like ChatGPT and Perplexity. Driven by organic technical excellence and high-intent funnel architecture.",
+      "We help businesses build their online presence, reach customers and generate opportunities through digital channels. We help businesses become more visible online, reach the right audience and turn digital attention into real business opportunities.",
+    features: [
+      "Search Engine Optimization (SEO)",
+      "Local SEO",
+      "Google Business Profile Optimization",
+      "Google Ads",
+      "Meta Ads (Facebook & Instagram)",
+      "Social Media Management",
+      "Instagram Marketing",
+      "LinkedIn Marketing",
+      "Content Marketing",
+      "Email Marketing",
+      "SMS Campaigns",
+      "Analytics & Reporting",
+      "Lead Generation",
+      "Online Brand Promotion",
+    ],
     whatWeBuild: [
-      "Technical SEO & Sub-Second Core Web Vitals",
-      "Generative Engine Optimization (GEO for LLMs)",
-      "Google Business Profile & Map-Pack Ranking",
-      "High-Intent Editorial Content Architecture",
-      "Conversion Rate Optimization (CRO) Audits",
-      "Revenue Attribution & PostHog Analytics",
+      "Local SEO & Google Business 3-Pack Rankings",
+      "Technical SEO & Generative Engine Optimization (GEO)",
+      "High-Converting Google & Meta Paid Ad Campaigns",
+      "Social Media Management (Instagram & LinkedIn)",
+      "Email Marketing & SMS Lead Nurture Campaigns",
+      "Analytics, Conversion Reporting & Lead Attribution",
+    ],
+    deliverables: [
+      "Top-3 Local 3-Pack Map rankings and citation syndication network",
+      "Full technical SEO audit, structured schema markup, and LLM generative optimization",
+      "Audience-segmented Google Search, Performance Max, and Meta ad campaign builds",
+      "Weekly editorial calendars, visual content distribution, and thought leadership publishing",
+      "Automated lead capture landing pages with sub-second load times and A/B split testing",
+      "Multi-touch revenue attribution models and PostHog / Google Analytics 4 dashboards",
+    ],
+    metrics: [
+      { value: "3.4x - 6.2x", label: "Average Paid ROAS", descriptor: "Targeted return on ad spend across performance campaigns" },
+      { value: "300%+", label: "Organic Search Growth", descriptor: "Consistent growth in high-intent non-branded organic impressions" },
+      { value: "Top 3", label: "Map-Pack Placement", descriptor: "Dominant local search visibility for primary commercial queries" },
+      { value: "< 4h", label: "Lead Response Time", descriptor: "Instant synchronization from ad lead forms straight to sales CRM" },
     ],
     whyItMatters:
-      "A superior product is invisible without organic reach. We direct steady, qualified enterprise buyers straight to your door.",
+      "World-class software and products are invisible without traffic. We build repeatable acquisition channels that turn clicks into measurable revenue.",
     schematicType: "growth",
-    tools: ["Search Console", "PostHog", "Perplexity GEO", "Google Analytics", "Ahrefs"],
+    tools: ["Google Ads", "Meta Ads Manager", "Google Search Console", "PostHog", "Ahrefs", "Google Analytics 4", "Perplexity GEO"],
   },
   {
-    id: "creative-design",
+    id: "create",
     index: "04",
-    title: "Creative Design & UI/UX",
-    tagline: "Design systems, tactile product interfaces, and cinematic brand identities.",
+    pillar: "CREATE",
+    title: "Creative & Content",
+    tagline: "Video production, videography, video editing, social media content, and promotional brand campaigns.",
+    badge: "CINEMATIC PRODUCTION & CREATIVE DIRECTION",
     description:
-      "We shape memorable brands and craft intuitive user interfaces that convert visitors into loyal advocates. From comprehensive Figma design tokens to high-retention video collateral, our design conveys instant institutional authority.",
+      "We create clear, engaging content that helps businesses communicate their value and stay visible across digital channels. From video production and editing to social media content and brand promotions, we craft the visual assets you need to stand out.",
+    features: [
+      "Video Production",
+      "Videography",
+      "Video Editing",
+      "Social Media Content",
+      "Instagram Content",
+      "LinkedIn Content",
+      "Promotional Videos",
+      "Brand Promotions",
+      "Creative Campaigns",
+      "Marketing Creatives",
+      "Digital Content",
+    ],
     whatWeBuild: [
-      "End-to-End Product UI/UX Architecture",
-      "Figma Design Systems & Scalable Tokens",
-      "Brand Identity, Typography & Guidelines",
-      "Interactive Clickable Prototypes & Motion",
-      "Cinematic Product Demos & Social Video",
-      "High-Impact Investor Decks & Collateral",
+      "Cinematic Promotional & Brand Videos",
+      "On-Location Videography & Video Editing",
+      "Social Media Content (Instagram Reels & LinkedIn)",
+      "High-Converting Marketing Creatives & Ad Assets",
+      "Creative Campaigns & Brand Promotion",
+      "Digital Visual Content & Graphic Systems",
+    ],
+    deliverables: [
+      "Broadcast-grade 4K master video files with professional color grading and audio mastering",
+      "Multi-ratio video exports optimized for widescreen (16:9), vertical (9:16), and square (1:1)",
+      "Monthly batch-produced short-form content packages with dynamic captions and hooks",
+      "High-converting static and animated ad creatives formatted for Meta, LinkedIn, and YouTube",
+      "Comprehensive brand visual style guides, typography specs, and Figma design tokens",
+      "Raw 4K footage vaults and reusable modular B-roll video libraries",
+    ],
+    metrics: [
+      { value: "4K / 60fps", label: "Production Standard", descriptor: "Cinema-grade optics, lighting, and acoustic audio capture" },
+      { value: "2.8x", label: "Higher Engagement", descriptor: "Increased social watch-through rates and click-through vs static assets" },
+      { value: "100%", label: "Original Creative", descriptor: "No generic templates; tailored creative concepts built for your brand" },
+      { value: "72h", label: "Rapid Turnaround", descriptor: "Expedited editorial cutdowns for fast-paced marketing sprints" },
     ],
     whyItMatters:
-      "Buyers determine institutional credibility in 3 seconds. Flawless craft and typography justify premium market positioning.",
+      "Market credibility is established in three seconds. High-production video and clear creative justify premium pricing and inspire buyer trust.",
     schematicType: "creative",
-    tools: ["Figma", "Premiere Pro", "DaVinci Resolve", "After Effects", "Photoshop"],
-  },
-  {
-    id: "business-systems",
-    index: "05",
-    title: "Business Systems & Cloud",
-    tagline: "Bulletproof cloud architecture, custom internal operations hubs, and data reliability.",
-    description:
-      "We build the underlying digital infrastructure that allows scaling companies to run flawlessly. From multi-cloud hosting with automated failovers to internal Retool apps and consolidated CRM data flows.",
-    whatWeBuild: [
-      "AWS & Vercel Enterprise Cloud Infrastructure",
-      "Custom Internal Admin Portals & Retool Apps",
-      "Unified CRM & Data Synchronization Hubs",
-      "Automated CI/CD & Zero-Downtime Deploys",
-      "Enterprise Cloudflare Security, SSL & WAF",
-      "Encrypted Daily Backups & Disaster Recovery",
-    ],
-    whyItMatters:
-      "Running scaling operations on fragmented spreadsheets leads to chaos. We engineer clean systems that unlock effortless scale.",
-    schematicType: "systems",
-    tools: ["AWS", "Vercel", "Supabase", "Retool", "Cloudflare", "PostgreSQL"],
-  },
-  {
-    id: "sla-retainers",
-    index: "06",
-    title: "Continuous SLA & Retainers",
-    tagline: "Direct founding engineer access, proactive 24/7 monitoring, and ongoing feature sprints.",
-    description:
-      "An on-demand engineering extension to your company. We monitor uptime 24/7, deploy zero-day security patches, optimize real-world performance, and continuously ship product enhancements under strict guaranteed SLAs.",
-    whatWeBuild: [
-      "Proactive 24/7 Uptime & Anomaly Monitoring",
-      "Sub-4-Hour Critical Incident Response SLA",
-      "Continuous Performance & Core Web Vitals Tuning",
-      "Zero-Day Security Patching & Upgrades",
-      "Bi-Weekly Feature Sprints & Roadmapping",
-      "Direct Slack/WhatsApp with Founding Engineers",
-    ],
-    whyItMatters:
-      "When software or checkouts stall, revenue evaporates. Our retainer guarantees your critical platforms stay online and evolving.",
-    schematicType: "support",
-    tools: ["BetterUptime", "Sentry", "Cloudflare", "Lighthouse", "GitHub"],
+    tools: ["DaVinci Resolve", "Adobe Premiere Pro", "After Effects", "Figma", "Sony Cinema Line", "Adobe Photoshop", "Illustrator"],
   },
 ];

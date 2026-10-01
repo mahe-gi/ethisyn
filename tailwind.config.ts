@@ -29,8 +29,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-instrument-sans)", "Instrument Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        serif: ["var(--font-instrument-serif)", "Instrument Serif", "Georgia", "serif"],
-        mono: ["var(--font-ibm-plex-mono)", "IBM Plex Mono", "monospace"],
+        serif: ["var(--font-instrument-sans)", "Instrument Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["var(--font-instrument-sans)", "Instrument Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.23, 1, 0.32, 1)",

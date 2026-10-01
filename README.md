@@ -2,7 +2,7 @@
 
 > **We build software, automate your operations, and help your business grow online.**
 
-Official web platform for [Ethisyn](https://ethisyn.in) — an independent product engineering and digital systems studio started as an idea in Hyderabad in 2022.
+Official web platform for [Ethisyn](https://ethisyn.in), an independent product engineering and digital systems studio started as an idea in Hyderabad in 2022.
 
 ---
 

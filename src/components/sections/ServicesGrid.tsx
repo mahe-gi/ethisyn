@@ -19,8 +19,6 @@ const serviceIcons: Record<ServiceItem["schematicType"], React.ComponentType<{ c
   agents: Bot,
   growth: TrendingUp,
   creative: Palette,
-  systems: Server,
-  support: ShieldCheck,
 };
 
 const disciplineBadges: Record<ServiceItem["schematicType"], string> = {
@@ -28,8 +26,6 @@ const disciplineBadges: Record<ServiceItem["schematicType"], string> = {
   agents: "AUTONOMOUS AI",
   growth: "ORGANIC REACH",
   creative: "EXPERIENCE DESIGN",
-  systems: "CLOUD ARCHITECTURE",
-  support: "GUARANTEED SLA",
 };
 
 export function ServicesGrid() {
@@ -49,20 +45,16 @@ export function ServicesGrid() {
         {/* Editorial Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b border-white/[0.06]">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono tracking-widest text-zinc-400 uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs tracking-widest text-zinc-400 uppercase font-medium">
               Studio Disciplines // 06 Core Capabilities
             </div>
             <h2
               id="services-heading"
-              className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-medium tracking-tight leading-[1.08]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-medium tracking-tight leading-[1.08]"
             >
-              Engineered for velocity,{" "}
-              <span className="font-serif italic font-normal text-white">
-                clarity
-              </span>
-              , and enduring commercial scale.
+              Engineered for velocity, clarity, and enduring commercial scale.
             </h2>
-            <p className="font-sans text-base sm:text-lg text-zinc-400 font-light leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#A1A1AA] leading-relaxed max-w-2xl">
               We design, engineer, automate, and accelerate modern digital platforms under one roof with direct access to our founding domain leads.
             </p>
           </div>
@@ -90,11 +82,11 @@ export function ServicesGrid() {
                   {/* Top Bar: Monospace Index + Schematic Icon + Discipline Badge */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs sm:text-sm font-medium tracking-widest text-zinc-400 group-hover:text-white transition-colors">
+                      <span className="text-xs sm:text-sm font-medium tracking-widest text-zinc-400 group-hover:text-white transition-colors">
                         [ {service.index} ]
                       </span>
-                      <span className="text-zinc-600 font-mono text-xs">/</span>
-                      <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase">
+                      <span className="text-zinc-600 text-xs">/</span>
+                      <span className="text-xs tracking-widest text-zinc-400 uppercase font-medium">
                         {badgeLabel}
                       </span>
                     </div>
@@ -106,29 +98,29 @@ export function ServicesGrid() {
 
                   {/* Title & Tagline */}
                   <div className="space-y-2">
-                    <h3 className="font-sans text-2xl sm:text-3xl font-medium text-white tracking-tight leading-snug group-hover:text-white transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-tight leading-snug group-hover:text-white transition-colors">
                       {service.title}
                     </h3>
-                    <p className="font-sans text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
+                    <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                       {service.tagline}
                     </p>
                   </div>
 
                   {/* Editorial Description */}
-                  <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#D4D4D8] leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Focused Deliverable Tags */}
                   <div className="pt-2 space-y-3">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 font-medium">
+                    <p className="text-xs uppercase tracking-widest text-zinc-400 font-medium">
                       CORE DELIVERABLES
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {service.whatWeBuild.map((item) => (
                         <span
                           key={item}
-                          className="inline-flex items-center px-3 py-1.5 rounded-md bg-white/[0.025] group-hover:bg-white/[0.05] border border-white/[0.06] group-hover:border-white/[0.12] text-xs font-sans text-zinc-300 group-hover:text-white transition-all duration-200"
+                          className="inline-flex items-center px-3 py-1.5 rounded-md bg-white/[0.025] group-hover:bg-white/[0.05] border border-white/[0.06] group-hover:border-white/[0.12] text-xs text-zinc-300 group-hover:text-white transition-all duration-200"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/70 group-hover:bg-emerald-400 mr-2 flex-shrink-0 transition-colors" />
                           {item}
@@ -140,13 +132,13 @@ export function ServicesGrid() {
                   {/* Stack / Tools Micro-Badges */}
                   {service.tools && service.tools.length > 0 && (
                     <div className="pt-2 flex flex-wrap items-center gap-1.5">
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400 mr-1.5">
+                      <span className="text-xs uppercase tracking-wider text-zinc-400 mr-1.5 font-medium">
                         STACK:
                       </span>
                       {service.tools.map((tool) => (
                         <span
                           key={tool}
-                          className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.04] text-[10px] font-mono text-zinc-400"
+                          className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.04] text-[10px] text-zinc-400"
                         >
                           {tool}
                         </span>
@@ -157,13 +149,13 @@ export function ServicesGrid() {
 
                 {/* Card Footer: Value Proposition & Direct Inquiry Action */}
                 <div className="pt-6 mt-8 border-t border-white/[0.04] flex items-center justify-between">
-                  <span className="font-sans text-xs text-zinc-400 font-light italic truncate max-w-[280px] sm:max-w-[360px]">
+                  <span className="text-xs text-zinc-400 italic truncate max-w-[280px] sm:max-w-[360px]">
                     {service.whyItMatters}
                   </span>
 
                   <Link
                     href="/#contact"
-                    className="inline-flex items-center gap-1.5 font-mono text-xs text-zinc-300 hover:text-white group-hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-medium text-zinc-300 hover:text-white group-hover:text-white transition-colors"
                   >
                     <span>Inquire</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

@@ -30,7 +30,7 @@ export function CodeBlock({ language, code }: CodeBlockProps) {
           <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
           <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
           {language && (
-            <span className="ml-3 font-mono text-[11px] uppercase tracking-wider text-[#71717A]">
+            <span className="ml-3 text-xs uppercase tracking-widest font-medium text-zinc-400">
               {language}
             </span>
           )}
@@ -39,7 +39,7 @@ export function CodeBlock({ language, code }: CodeBlockProps) {
         <button
           type="button"
           onClick={handleCopy}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono text-[#A1A1AA] hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] transition-colors"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs text-[#A1A1AA] hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] transition-colors"
           aria-label="Copy code snippet"
         >
           {copied ? (
@@ -57,7 +57,7 @@ export function CodeBlock({ language, code }: CodeBlockProps) {
       </div>
 
       {/* Code Body */}
-      <div className="p-5 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed text-[#E4E4E7] selection:bg-white/20">
+      <div className="p-5 overflow-x-auto text-xs sm:text-sm leading-relaxed text-[#E4E4E7] selection:bg-white/20">
         <pre className="whitespace-pre">
           <code>{code}</code>
         </pre>

@@ -13,7 +13,7 @@ export default function Loading() {
         <div className="w-28 h-[2px] bg-white/[0.08] overflow-hidden relative rounded-full">
           <div className="absolute inset-0 bg-white animate-pulse" />
         </div>
-        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-faint">
+        <span className="text-xs uppercase tracking-widest font-medium text-brand-faint">
           Loading
         </span>
       </div>

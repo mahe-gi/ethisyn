@@ -23,6 +23,7 @@
   html {
     background-color: var(--bg);
     color: var(--fg);
+    font-family: var(--font-instrument-sans), "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -33,6 +34,7 @@
     overflow-x: hidden;
     background-color: var(--bg);
     color: var(--fg);
+    font-family: var(--font-instrument-sans), "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 

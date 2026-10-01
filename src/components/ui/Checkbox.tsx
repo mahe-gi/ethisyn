@@ -46,13 +46,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             </div>
           </div>
 
-          <span className="font-sans text-xs sm:text-sm text-[#A1A1AA] group-hover:text-white transition-colors leading-relaxed font-light">
+          <span className="text-xs sm:text-sm text-[#A1A1AA] group-hover:text-white transition-colors leading-relaxed">
             {label}
           </span>
         </label>
 
         {error && (
-          <p id={errorId} className="font-mono text-xs text-rose-400 pl-7 animate-in fade-in duration-150">
+          <p id={errorId} className="text-xs text-rose-400 pl-7 animate-in fade-in duration-150">
             {error}
           </p>
         )}

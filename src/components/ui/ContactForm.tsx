@@ -28,8 +28,8 @@ type FormState =
 
 const budgetOptions = [
   { value: "Under ₹50,000 / $600", label: "Under ₹50,000 / $600 (Small fix or mini site)" },
-  { value: "₹50,000 – ₹1,50,000 / $600 – $1,800", label: "₹50,000 – ₹1,50,000 / $600 – $1,800 (Full website or MVP)" },
-  { value: "₹1,50,000 – ₹5,00,000 / $1,800 – $6,000", label: "₹1,50,000 – ₹5,00,000 / $1,800 – $6,000 (Complete app / AI automation)" },
+  { value: "₹50,000 - ₹1,50,000 / $600 - $1,800", label: "₹50,000 - ₹1,50,000 / $600 - $1,800 (Full website or MVP)" },
+  { value: "₹1,50,000 - ₹5,00,000 / $1,800 - $6,000", label: "₹1,50,000 - ₹5,00,000 / $1,800 - $6,000 (Complete app / AI automation)" },
   { value: "₹5,00,000+ / $6,000+", label: "₹5,00,000+ / $6,000+ (Enterprise product or custom system)" },
   { value: "Undecided", label: "Not sure yet / Need consultation" },
 ];
@@ -39,7 +39,7 @@ const initialFormData: ContactFormData = {
   email: "",
   phone: "",
   company: "",
-  services: ["Web & Software Engineering"],
+  services: ["BUILD: Software & Digital Products"],
   budget: "",
   message: "",
   consent: false,
@@ -270,10 +270,10 @@ export function ContactForm() {
       {state.type === "success" ? (
         <div className="p-8 border border-white/[0.08] rounded-2xl bg-[#080808] space-y-6 text-center sm:text-left animate-in fade-in duration-300">
           <div className="space-y-2">
-            <h4 className="font-sans text-2xl font-medium text-white">
+            <h4 className="text-2xl font-medium text-white">
               We have received your project scope.
             </h4>
-            <p className="font-sans text-sm text-[#A1A1AA] font-light leading-relaxed max-w-xl">
+            <p className="text-sm text-[#A1A1AA] leading-relaxed max-w-xl">
               One of our founding engineers in Hyderabad will review your requirements and respond within 4 business hours.
             </p>
           </div>
@@ -306,7 +306,7 @@ export function ContactForm() {
 
           {/* Service Multi-Select Checkboxes */}
           <div className="space-y-3">
-            <label className="block font-mono text-xs uppercase tracking-wider text-brand-faint select-none">
+            <label className="block text-xs uppercase tracking-wider font-medium text-brand-faint select-none">
               Services Needed <span className="text-emerald-400">*</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -317,7 +317,7 @@ export function ContactForm() {
                     key={service}
                     type="button"
                     onClick={() => handleServiceToggle(service)}
-                    className={`flex items-center gap-3 p-3.5 text-left border rounded-xl text-xs font-sans transition-all duration-150 cursor-pointer ${
+                    className={`flex items-center gap-3 p-3.5 text-left border rounded-xl text-xs transition-all duration-150 cursor-pointer ${
                       isSelected
                         ? "bg-white/[0.08] border-white text-white font-medium shadow-sm"
                         : "bg-[#080808] border-white/[0.06] text-[#A1A1AA] hover:border-white/[0.15] hover:text-white"
@@ -339,7 +339,7 @@ export function ContactForm() {
               })}
             </div>
             {fieldErrors.services && (
-              <p className="font-mono text-xs text-rose-400" role="alert">
+              <p className="text-xs text-rose-400" role="alert">
                 {fieldErrors.services}
               </p>
             )}

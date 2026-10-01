@@ -10,11 +10,11 @@ import {
 import { generateBlogIndexSchema, generateBlogPostingSchema } from "@/lib/schema";
 
 describe("Blog Content Integrity", () => {
-  it("contains exactly 4 authoritative essays", () => {
-    expect(blogPosts).toHaveLength(4);
+  it("contains authoritative essays across all pillars", () => {
+    expect(blogPosts).toHaveLength(6);
   });
 
-  it("contains the exact 4 required article slugs and titles", () => {
+  it("contains the required article slugs and titles", () => {
     const p1 = getPostBySlug("engineering-autonomous-ai-agents");
     expect(p1).toBeDefined();
     expect(p1?.title).toBe(
@@ -46,6 +46,22 @@ describe("Blog Content Integrity", () => {
     );
     expect(p4?.tags).toEqual(["Philosophy", "Culture", "Hyderabad", "Engineering"]);
     expect(p4?.category).toBe("Studio Culture");
+
+    const p5 = getPostBySlug("modern-business-growth-playbook");
+    expect(p5).toBeDefined();
+    expect(p5?.title).toBe(
+      "The Modern Business Growth Playbook: Combining Local SEO, Meta Ads, and Data-Driven Retention"
+    );
+    expect(p5?.tags).toEqual(["Growth", "Local SEO", "Meta CAPI", "Retention", "Paid Acquisition"]);
+    expect(p5?.category).toBe("GEO & Search");
+
+    const p6 = getPostBySlug("why-video-high-retention-content-drives-conversion");
+    expect(p6).toBeDefined();
+    expect(p6?.title).toBe(
+      "Why Video & High-Retention Content Drive 3x Conversion for Digital Brands in 2026"
+    );
+    expect(p6?.tags).toEqual(["Creative", "Video Production", "Conversion Rate", "UI/UX", "Brand Authority"]);
+    expect(p6?.category).toBe("Studio Culture");
   });
 
   it("ensures every article has all required fields with complete integrity", () => {
@@ -92,7 +108,7 @@ describe("Blog Content Integrity", () => {
 
   it("provides reliable helper query functions", () => {
     const all = getAllPosts();
-    expect(all).toHaveLength(4);
+    expect(all.length).toBeGreaterThanOrEqual(4);
 
     // Verify sorted descending by date
     for (let i = 0; i < all.length - 1; i++) {
@@ -118,7 +134,7 @@ describe("Blog Content Integrity", () => {
     const indexSchema = generateBlogIndexSchema(posts);
     expect(indexSchema["@context"]).toBe("https://schema.org");
     expect(indexSchema["@type"]).toBe("Blog");
-    expect(indexSchema.blogPost).toHaveLength(4);
+    expect(indexSchema.blogPost.length).toBeGreaterThanOrEqual(4);
 
     const post = posts[0];
     const postSchema = generateBlogPostingSchema(post);

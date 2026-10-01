@@ -74,7 +74,7 @@ const systems: SystemSpec[] = [
       { timestamp: "12:04:18.140", level: "EXEC", event: "NODE:router_agent", detail: "Intent classified: ENTERPRISE_PROCUREMENT (conf: 0.994)" },
       { timestamp: "12:04:18.212", level: "EXEC", event: "NODE:crm_sync_agent", detail: "Tool call: fetch_account_profile(org_id='acct_842x')" },
       { timestamp: "12:04:18.289", level: "GATE", event: "VALIDATION_GATE", detail: "Schema verification passed [Zod: ContractReviewSchema]" },
-      { timestamp: "12:04:18.310", level: "SUCCESS", event: "STATE_CHECKPOINT", detail: "Commit snapshot: tx_8fa09e2 — State transition resolved" },
+      { timestamp: "12:04:18.310", level: "SUCCESS", event: "STATE_CHECKPOINT", detail: "Commit snapshot: tx_8fa09e2 | State transition resolved" },
     ],
     codeSnippet: `// Deterministic Agent State Machine Definition
 const ProcurementGraph = new StateGraph<AgentState>({
@@ -210,22 +210,19 @@ export function AISpotlight() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-white/[0.08]">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono tracking-widest text-[#A1A1AA] uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs tracking-widest text-[#A1A1AA] uppercase font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               AI & Cognitive Infrastructure // Production Telemetry
             </div>
 
             <h2
               id="ai-heading"
-              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.06]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-medium tracking-tight leading-[1.08]"
             >
-              Deterministic intelligence,{" "}
-              <span className="font-serif italic font-normal text-white">
-                not unpredictable chatbots.
-              </span>
+              Deterministic intelligence, not unpredictable chatbots.
             </h2>
 
-            <p className="font-sans text-[#A1A1AA] text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#A1A1AA] leading-relaxed max-w-2xl">
               We architect mission-critical AI systems engineered for enterprise SLAs: autonomous agent graphs, sub-300ms conversational voice pipelines, and zero-hallucination knowledge retrieval.
             </p>
           </div>
@@ -271,14 +268,14 @@ export function AISpotlight() {
 
                 <div className="space-y-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#71717A]">
+                    <span className="text-xs uppercase tracking-widest text-[#71717A] font-medium">
                       0{index + 1}
                     </span>
                     {isActive && (
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     )}
                   </div>
-                  <h3 className="font-sans text-sm sm:text-base font-medium truncate text-white">
+                  <h3 className="text-sm sm:text-base font-medium truncate text-white">
                     {system.title}
                   </h3>
                 </div>
@@ -292,19 +289,19 @@ export function AISpotlight() {
           {/* Left Column: Deep Narrative & Enterprise Architecture (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="font-mono text-xs uppercase tracking-[0.16em] text-emerald-400 block">
+              <span className="text-xs uppercase tracking-widest text-emerald-400 block font-medium">
                 {currentSystem.code}
               </span>
 
-              <h3 className="font-sans text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight leading-snug">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight leading-snug">
                 {currentSystem.title}
               </h3>
 
-              <p className="font-sans text-base text-[#D4D4D8] font-normal leading-relaxed">
+              <p className="text-base text-[#D4D4D8] font-normal leading-relaxed">
                 {currentSystem.tagline}
               </p>
 
-              <p className="font-sans text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed">
                 {currentSystem.description}
               </p>
             </div>
@@ -316,13 +313,13 @@ export function AISpotlight() {
                   key={m.label}
                   className="p-4 rounded-xl bg-[#080808] border border-white/[0.06] space-y-1"
                 >
-                  <div className="font-sans text-xl sm:text-2xl font-medium text-white tracking-tight">
+                  <div className="text-xl sm:text-2xl font-medium text-white tracking-tight">
                     {m.value}
                   </div>
-                  <div className="font-mono text-[11px] text-[#A1A1AA] uppercase tracking-wider">
+                  <div className="text-xs text-[#A1A1AA] uppercase tracking-wider font-medium">
                     {m.label}
                   </div>
-                  <div className="font-sans text-[11px] text-[#71717A]">
+                  <div className="text-[11px] text-[#71717A]">
                     {m.subtext}
                   </div>
                 </div>
@@ -331,14 +328,14 @@ export function AISpotlight() {
 
             {/* System Capabilities Checklist */}
             <div className="space-y-3 pt-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#71717A] block">
+              <span className="text-xs uppercase tracking-widest text-[#71717A] block font-medium">
                 ENGINEERING SPECIFICATIONS
               </span>
               <ul className="space-y-2.5">
                 {currentSystem.capabilities.map((cap) => (
                   <li key={cap} className="flex items-start gap-3 text-xs sm:text-sm text-[#D4D4D8]">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="font-light leading-relaxed">{cap}</span>
+                    <span className="leading-relaxed">{cap}</span>
                   </li>
                 ))}
               </ul>
@@ -363,18 +360,18 @@ export function AISpotlight() {
                     <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
                     <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
                   </div>
-                  <span className="font-mono text-xs text-[#71717A] hidden sm:inline-block">
+                  <span className="text-xs text-[#71717A] hidden sm:inline-block">
                     ethisyn-telemetry://cluster-prod-hyd-01/{currentSystem.id}
                   </span>
                 </div>
 
-                {/* View Switcher: Live Telemetry vs Monospace Schema Code */}
+                {/* View Switcher: Live Telemetry vs Schema Code */}
                 <div className="flex items-center gap-1.5 bg-black/60 p-1 rounded-lg border border-white/[0.06]">
                   <button
                     type="button"
                     onClick={() => setActiveConsoleView("telemetry")}
                     className={cn(
-                      "px-2.5 py-1 rounded text-[11px] font-mono transition-colors",
+                      "px-2.5 py-1 rounded text-xs transition-colors font-medium",
                       activeConsoleView === "telemetry"
                         ? "bg-white/[0.12] text-white font-medium"
                         : "text-[#71717A] hover:text-white"
@@ -386,7 +383,7 @@ export function AISpotlight() {
                     type="button"
                     onClick={() => setActiveConsoleView("code")}
                     className={cn(
-                      "px-2.5 py-1 rounded text-[11px] font-mono transition-colors",
+                      "px-2.5 py-1 rounded text-xs transition-colors font-medium",
                       activeConsoleView === "code"
                         ? "bg-white/[0.12] text-white font-medium"
                         : "text-[#71717A] hover:text-white"
@@ -398,9 +395,9 @@ export function AISpotlight() {
               </div>
 
               {/* Console Body */}
-              <div className="p-5 sm:p-6 font-mono text-xs sm:text-[13px] leading-relaxed overflow-x-auto min-h-[340px] bg-[#050505]">
+              <div className="p-5 sm:p-6 text-xs sm:text-[13px] leading-relaxed overflow-x-auto min-h-[340px] bg-[#050505]">
                 {activeConsoleView === "telemetry" ? (
-                  <div className="space-y-3 font-mono">
+                  <div className="space-y-3">
                     <div className="text-[#71717A] pb-2 border-b border-white/[0.06] flex items-center justify-between text-[11px]">
                       <span>STATUS: STREAMING SOCKET CONNECTED</span>
                       <span className="text-emerald-400">P99: 280ms // 0% ERRORS</span>
@@ -435,7 +432,7 @@ export function AISpotlight() {
                     </div>
                   </div>
                 ) : (
-                  <pre className="text-[#E4E4E7] font-mono text-xs overflow-x-auto leading-relaxed">
+                  <pre className="text-[#E4E4E7] text-xs overflow-x-auto leading-relaxed">
                     <code>{currentSystem.codeSnippet}</code>
                   </pre>
                 )}
@@ -443,23 +440,23 @@ export function AISpotlight() {
 
               {/* Console Footer: Architectural Comparison */}
               <div className="p-5 bg-[#0A0A0A] border-t border-white/[0.08] space-y-3">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#71717A] block">
+                <span className="text-xs uppercase tracking-widest text-[#71717A] block font-medium">
                   ARCHITECTURE COMPARISON // WHY THIS MATTERS
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="p-3 rounded-lg bg-rose-950/10 border border-rose-500/20 space-y-1">
-                    <span className="font-mono text-[10px] uppercase text-rose-400 font-medium block">
+                    <span className="text-[10px] uppercase text-rose-400 font-medium block">
                       Legacy Chatbot Wrappers
                     </span>
-                    <p className="text-[#A1A1AA] font-light leading-snug">
+                    <p className="text-[#A1A1AA] leading-snug">
                       {currentSystem.comparison.traditional}
                     </p>
                   </div>
                   <div className="p-3 rounded-lg bg-emerald-950/10 border border-emerald-500/20 space-y-1">
-                    <span className="font-mono text-[10px] uppercase text-emerald-400 font-medium block">
+                    <span className="text-[10px] uppercase text-emerald-400 font-medium block">
                       Ethisyn Deterministic Engine
                     </span>
-                    <p className="text-[#E4E4E7] font-light leading-snug">
+                    <p className="text-[#E4E4E7] leading-snug">
                       {currentSystem.comparison.ethisyn}
                     </p>
                   </div>

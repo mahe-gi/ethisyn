@@ -1,13 +1,11 @@
 import { z } from "zod";
 
 export const availableServices = [
-  "Web & Software Engineering",
-  "AI & Automation",
-  "Digital Growth & SEO",
-  "Creative Design & UI/UX",
-  "Business Systems & Cloud",
-  "Continuous SLA & Retainers",
-  "Other / Custom Project",
+  "BUILD: Software & Digital Products",
+  "AUTOMATE: AI & Business Automation",
+  "GROW: Digital Marketing & Growth",
+  "CREATE: Creative & Video Content",
+  "Full Multi-Pillar Studio Engagement",
 ] as const;
 
 export const contactFormSchema = z.object({

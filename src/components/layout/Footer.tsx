@@ -27,17 +27,21 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-3.5 group focus-visible:outline-2"
-              aria-label="Ethisyn — Back to top"
+              aria-label="Ethisyn: Back to top"
             >
               <Logo size={32} alt="" />
               <Wordmark />
             </Link>
 
-            <p className="font-sans text-[#A1A1AA] text-sm md:text-base leading-relaxed max-w-sm font-light">
+            <div className="text-xs uppercase tracking-widest text-white/90 font-medium">
+              BUILD • AUTOMATE • GROW • CREATE
+            </div>
+
+            <p className="text-[#A1A1AA] text-sm md:text-base leading-relaxed max-w-sm">
               {siteConfig.tagline}
             </p>
 
-            <div className="space-y-1 font-mono text-xs text-[#71717A] uppercase tracking-wider">
+            <div className="space-y-1 text-xs text-[#71717A] uppercase tracking-wider">
               <p>{siteConfig.location.formatted}</p>
               <p>
                 Direct:{" "}
@@ -53,10 +57,10 @@ export function Footer() {
 
           {/* Column 2: Services Index (4 cols) */}
           <div className="md:col-span-4 space-y-4">
-            <p className="font-mono text-xs text-[#71717A] uppercase tracking-[0.16em]">
+            <p className="text-xs text-zinc-400 uppercase tracking-widest font-medium">
               Services
             </p>
-            <ul className="space-y-2.5 font-sans text-sm">
+            <ul className="space-y-2.5 text-sm">
               {footerNavLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -72,10 +76,10 @@ export function Footer() {
 
           {/* Column 3: Company & Direct Channels (3 cols) */}
           <div className="md:col-span-3 space-y-4">
-            <p className="font-mono text-xs text-[#71717A] uppercase tracking-[0.16em]">
+            <p className="text-xs text-zinc-400 uppercase tracking-widest font-medium">
               Company
             </p>
-            <ul className="space-y-2.5 font-sans text-sm">
+            <ul className="space-y-2.5 text-sm">
               {footerNavLinks.company.map((link) => (
                 <li key={link.label}>
                   {link.isExternal ? (
@@ -112,7 +116,7 @@ export function Footer() {
         </div>
 
         {/* Minimal AI Verification & GEO Strip */}
-        <div className="py-2.5 px-4 sm:px-5 rounded-lg border border-white/[0.06] bg-[#080808] flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs">
+        <div className="py-2.5 px-4 sm:px-5 rounded-lg border border-white/[0.06] bg-[#080808] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           {/* Left: Ask AI Triggers */}
           <div className="flex flex-wrap items-center gap-2.5 text-[#A1A1AA]">
             <span className="flex items-center gap-1.5 text-white">
@@ -171,15 +175,15 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright, Location & Scroll to Top */}
-        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-[#71717A]">
+        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#71717A]">
           <div>
             <span>
-              © {siteConfig.founded}–{new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+              © {siteConfig.founded}-{new Date().getFullYear()} {siteConfig.name}. All rights reserved.
             </span>
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="hidden md:inline-block font-sans text-[#A1A1AA]">
+            <span className="hidden md:inline-block text-[#A1A1AA]">
               {siteConfig.location.formatted}
             </span>
             <button

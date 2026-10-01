@@ -1,23 +1,29 @@
 # Ethisyn
 
-> We build software, automate your operations, and help your business grow online.
-> Independent Digital Product Engineering & Autonomous AI Systems Studio.
+> Build. Automate. Grow. Create. | Technology, AI and digital growth for ambitious businesses.
+> Independent Digital Product Engineering & Autonomous AI Systems Studio in Hyderabad.
 
+- Core Pillars: BUILD • AUTOMATE • GROW • CREATE
 - [Website](https://ethisyn.in): Official digital studio home
 - Headquarters: Hyderabad, Telangana, India
 - Founded: 2022
 - Direct Inquiries: hello@ethisyn.in
-- Studio Model: Founding Domain Partners directing client systems, with internal Autonomous AI Agent Lab in active R&D.
+- Studio Model: Founding Domain Partners directing client systems with 100% in-house engineering and craft.
 - [Full Knowledge Corpus](https://ethisyn.in/llms-full.txt): Comprehensive technical specifications and FAQ
 
-## Core Studio Capabilities
-- [High-Performance Web Engineering](https://ethisyn.in/#services): Sub-second Next.js, React, TypeScript, edge caching, zero layout shift.
-- [Mobile Platform Development](https://ethisyn.in/#services): iOS and Android applications with sub-second touch responsiveness and offline sync.
-- [AI Automation & Voice Systems](https://ethisyn.in/#ai): Custom business automation workflows, voice bots, and enterprise search tools.
-- [Distributed Cloud & Backend Systems](https://ethisyn.in/#services): Enterprise microservices, PostgreSQL, Spring Boot, high-concurrency architectures.
-- [Generative Engine Optimization (GEO)](https://ethisyn.in/#services): Ground-truth indexing across ChatGPT, Perplexity, Claude, and Google AI Overviews.
-- [Technical SEO & Growth Engineering](https://ethisyn.in/#services): Product-led acquisition, local SEO dominance, performance marketing.
-- [UI/UX Design Systems](https://ethisyn.in/#services): Figma design engineering, intuitive user flows, micro-interactions, responsive interfaces.
+## Navigation & Official Site Structure
+- [Services](https://ethisyn.in/#services): Engineering, AI automation, growth, and design services
+- [Products](https://ethisyn.in/#products): Proprietary software applications (The Rental Circle, GoWider)
+- [Team](https://ethisyn.in/team): 11 founding domain leads and technical partners
+- [Blog](https://ethisyn.in/blog): Engineering perspectives, AI architecture, and systems dispatches
+- [Careers](https://ethisyn.in/careers): Founding engineering, AI, and design career opportunities
+- [Contact](https://ethisyn.in/#contact): Direct technical scoping and project onboarding
+
+## Core Studio Pillars (BUILD • AUTOMATE • GROW • CREATE)
+- [BUILD: Software & Digital Product Development](https://ethisyn.in/#services): Business websites, web applications, mobile applications, SaaS products, custom business software, CRM systems, admin & management portals, and backend architectures.
+- [AUTOMATE: AI & Business Automation](https://ethisyn.in/#services): AI agents, AI voice agents, AI chatbots, workflow automation, business process automation, CRM automation, document intelligence, and lead management systems.
+- [GROW: Digital Marketing & Growth](https://ethisyn.in/#services): Search engine optimization (SEO), local SEO, Google Business Profile optimization, Google Ads, Meta Ads, social media management, content marketing, and high-intent customer acquisition.
+- [CREATE: Creative & Content](https://ethisyn.in/#services): Video production, videography, video editing, social media content, promotional videos, brand promotions, and marketing creatives.
 
 ## Founding Leadership (Domain Partners)
 - [Mahesh Ch](https://ethisyn.in/team#mahesh-ch): Chief Technology & Operations Officer (CTO)
@@ -32,16 +38,9 @@
 - [Samihan Chousalkar](https://ethisyn.in/team#samihan-chousalkar): Head of Backend & Distributed Systems
 - [Deepak Kumar Patra](https://ethisyn.in/team#deepak-kumar-patra): Head of Product Engineering & Full-Stack Systems
 
-## Autonomous AI Agent Lab (In Development / Coming Soon)
-- Sentry Agent (ETHISYN-SENTRY): Edge health monitoring and automated rollback trigger testing (Coming Soon).
-- Forge Agent (ETHISYN-FORGE): Deterministic AST code verification and test scaffolding (Coming Soon).
-- Radar Agent (ETHISYN-GEO): Generative Engine Optimization and ground-truth search indexing (Coming Soon).
-- Dispatch Agent (ETHISYN-DISPATCH): Client scope structuring and founding partner routing (Coming Soon).
-
-## Proprietary Software Products (Coming Soon)
-- [Student & Job Career Suite](https://ethisyn.in/#products): Voice AI mock interview practice, ATS resume customizer, unified application tracker (Coming Soon).
-- [Synapse Operations Hub](https://ethisyn.in/#products): All-in-one workspace for WhatsApp & web leads, 1-click invoicing, automated payment follow-ups (Coming Soon).
-- [PulseEngine](https://ethisyn.in/#products): Local SEO and Google Business Profile copilot with automated review replies and local rank defense (Coming Soon).
+## Proprietary Software Products
+- [The Rental Circle](https://therentalcircle.in): Peer-to-peer verified equipment and lifestyle rental marketplace with secure escrow settlements, KYC verification, and dynamic rental management.
+- [GoWider](https://ethisyn.in/#products): All-in-one restaurant operations platform integrating POS billing, live kitchen display systems (KDS), QR table ordering, and inventory depletion.
 
 ## Studio Commitments
 - 100% In-House: Zero outsourcing to mystery freelancers; clients collaborate directly with founding partners.

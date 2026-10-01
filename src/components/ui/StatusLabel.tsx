@@ -17,7 +17,7 @@ export function StatusLabel({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 font-mono text-[11px] md:text-xs tracking-[0.14em] uppercase select-none transition-colors",
+        "inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium select-none transition-colors",
         variant === "default" && "text-brand-muted",
         variant === "inverted" && "text-brand-black/70",
         variant === "faint" && "text-brand-faint",

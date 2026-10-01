@@ -55,7 +55,7 @@ export function CardTitle({
   return (
     <h3
       className={cn(
-        "font-sans font-medium text-white text-xl sm:text-2xl tracking-tight leading-snug",
+        "font-medium text-white text-xl sm:text-2xl tracking-tight leading-snug",
         className
       )}
       {...props}
@@ -73,7 +73,7 @@ export function CardDescription({
   return (
     <p
       className={cn(
-        "font-sans text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed",
+        "text-xs sm:text-sm text-[#A1A1AA] leading-relaxed",
         className
       )}
       {...props}
@@ -103,7 +103,7 @@ export function CardFooter({
   return (
     <div
       className={cn(
-        "pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-brand-faint",
+        "pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-brand-faint",
         className
       )}
       {...props}

@@ -19,19 +19,16 @@ export function BlogTeaser() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4 max-w-3xl">
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+            <span className="text-xs uppercase tracking-widest font-medium text-zinc-400 block">
               LATEST INSIGHTS
             </span>
             <h2
               id="blog-teaser-heading"
-              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
+              className="font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]"
             >
-              Engineering essays &{" "}
-              <span className="font-serif italic font-normal text-white">
-                systems dispatches.
-              </span>
+              Engineering essays & systems dispatches.
             </h2>
-            <p className="font-sans text-[#A1A1AA] text-base sm:text-lg font-light leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#A1A1AA] leading-relaxed">
               Real architectural blueprints, production lessons, and systems thinking from our founding engineers in Hyderabad.
             </p>
           </div>
@@ -61,7 +58,7 @@ export function BlogTeaser() {
                     <Badge variant="neutral" size="sm">
                       {post.category}
                     </Badge>
-                    <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#71717A]">
+                    <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
                       <Clock className="w-3 h-3" aria-hidden="true" />
                       <span>{post.readingTime}</span>
                     </div>
@@ -69,10 +66,10 @@ export function BlogTeaser() {
 
                   {/* Title & Excerpt */}
                   <div className="space-y-2.5">
-                    <h3 className="font-sans text-xl font-medium text-white group-hover:text-white/90 transition-colors leading-snug tracking-tight">
+                    <h3 className="text-xl font-medium text-white group-hover:text-white/90 transition-colors leading-snug tracking-tight">
                       {post.title}
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed line-clamp-3">
+                    <p className="text-sm sm:text-base text-[#D4D4D8] leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
                   </div>
@@ -82,7 +79,7 @@ export function BlogTeaser() {
                     {post.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.02] border border-white/[0.05] text-[#71717A]"
+                        className="px-2 py-0.5 rounded text-[10px] bg-white/[0.02] border border-white/[0.05] text-[#71717A]"
                       >
                         #{tag}
                       </span>
@@ -103,10 +100,10 @@ export function BlogTeaser() {
                       />
                     </div>
                     <div className="text-left">
-                      <span className="font-sans text-xs font-medium text-white block">
+                      <span className="text-xs font-medium text-white block">
                         {post.author.name}
                       </span>
-                      <span className="font-mono text-[10px] text-[#71717A] flex items-center gap-1">
+                      <span className="text-[10px] text-[#71717A] flex items-center gap-1">
                         <Calendar className="w-2.5 h-2.5" aria-hidden="true" />
                         {post.formattedDate}
                       </span>

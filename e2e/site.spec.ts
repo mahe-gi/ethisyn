@@ -89,4 +89,21 @@ test.describe("Ethisyn Web Platform E2E & Accessibility Suite", () => {
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
+
+  test("/blog and /blog/[slug] render with correct content and pass accessibility audit", async ({ page }) => {
+    await page.goto("/blog");
+
+    await expect(page.locator("h1")).toContainText("Perspectives on software craft");
+    await expect(page.getByText("Engineering Autonomous AI Agents with LangGraph, Python & Next.js 15")).toBeVisible();
+
+    // Navigate to article
+    await page.goto("/blog/engineering-autonomous-ai-agents");
+    await expect(page.locator("h1")).toContainText("Engineering Autonomous AI Agents with LangGraph, Python & Next.js 15");
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
 });

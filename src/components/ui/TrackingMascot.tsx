@@ -136,7 +136,7 @@ export function TrackingMascot({
       }}
       className={`relative inline-flex items-center justify-center select-none ${className}`}
       style={{ width: size, height: size }}
-      aria-label="Syn — Interactive Studio Assistant Mascot"
+      aria-label="Syn: Interactive Studio Assistant Mascot"
     >
       {/* Optional Soft Ambient Glow */}
       {showGlow && (

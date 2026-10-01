@@ -264,7 +264,7 @@ export function AutonomousCompanion() {
           {/* Status Pill */}
           <div className="mb-1.5 px-2.5 py-0.5 rounded-full bg-brand-black/95 border border-brand-border shadow-xl backdrop-blur-md flex items-center gap-1.5 pointer-events-none">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-white animate-pulse" />
-            <span className="font-mono text-[9px] uppercase tracking-wider text-brand-offwhite font-medium">
+            <span className="text-[9px] uppercase tracking-wider text-brand-offwhite font-medium">
               Ask Syn
             </span>
           </div>
@@ -308,15 +308,15 @@ export function AutonomousCompanion() {
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-sans text-sm font-semibold text-brand-white">
+                  <h3 className="text-sm font-semibold text-brand-white">
                     Ethisyn Assistant
                   </h3>
-                  <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase px-1.5 py-0.5 rounded-full bg-white/[0.06] text-brand-offwhite border border-brand-border font-medium">
+                  <span className="inline-flex items-center gap-1 text-[9px] uppercase px-1.5 py-0.5 rounded-full bg-white/[0.06] text-brand-offwhite border border-brand-border font-medium">
                     <span className="w-1 h-1 rounded-full bg-brand-white" />
                     Online
                   </span>
                 </div>
-                <p className="font-mono text-[10px] text-brand-faint uppercase tracking-wider">
+                <p className="text-[10px] text-brand-faint uppercase tracking-wider">
                   Direct Technical Guidance
                 </p>
               </div>
@@ -350,7 +350,7 @@ export function AutonomousCompanion() {
           </div>
 
           {/* Conversation History */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 font-sans text-xs scrollbar-thin scrollbar-thumb-white/10">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs scrollbar-thin scrollbar-thumb-white/10">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -371,7 +371,7 @@ export function AutonomousCompanion() {
                       <a
                         href={msg.actionLink.href}
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-brand-white hover:text-brand-offwhite underline-offset-4 hover:underline font-medium transition-colors"
+                        className="inline-flex items-center gap-1.5 text-[11px] text-brand-white hover:text-brand-offwhite underline-offset-4 hover:underline font-medium transition-colors"
                       >
                         <span>{msg.actionLink.label}</span>
                         <ArrowUpRight className="w-3 h-3 text-brand-muted" />
@@ -380,7 +380,7 @@ export function AutonomousCompanion() {
                   )}
                 </div>
 
-                <span className="font-mono text-[9px] text-brand-faint mt-1 px-1">
+                <span className="text-[9px] text-brand-faint mt-1 px-1">
                   {msg.timestamp}
                 </span>
               </div>
@@ -425,7 +425,7 @@ export function AutonomousCompanion() {
               </button>
             </form>
 
-            <div className="mt-2 flex items-center justify-between font-mono text-[9px] text-brand-faint px-1">
+            <div className="mt-2 flex items-center justify-between text-[9px] text-brand-faint px-1">
               <span>Direct partner consultation</span>
               <a
                 href={`mailto:${siteConfig.contactEmail}`}

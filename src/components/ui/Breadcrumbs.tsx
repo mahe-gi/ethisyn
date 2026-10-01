@@ -14,11 +14,18 @@ export interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+  // Normalize items to ensure Home is never duplicated
+  const normalizedItems =
+    items.length > 0 &&
+    (items[0].label.trim().toLowerCase() === "home" || items[0].href === "/")
+      ? items.slice(1)
+      : items;
+
   return (
     <nav
       aria-label="Breadcrumb"
       className={cn(
-        "flex items-center gap-2 font-mono text-xs text-brand-faint uppercase tracking-wider select-none",
+        "flex items-center gap-2 text-xs text-brand-faint uppercase tracking-wider select-none",
         className
       )}
     >
@@ -29,8 +36,8 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         Home
       </Link>
 
-      {items.map((item, index) => {
-        const isLast = index === items.length - 1;
+      {normalizedItems.map((item, index) => {
+        const isLast = index === normalizedItems.length - 1;
 
         return (
           <React.Fragment key={item.label}>

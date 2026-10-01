@@ -27,20 +27,20 @@ export function SectionHeader({
     >
       <div className="space-y-4 max-w-3xl">
         {kicker && (
-          <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+          <span className="text-xs uppercase tracking-widest font-medium text-zinc-400 block">
             {kicker}
           </span>
         )}
 
         <h2
           id={id}
-          className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]"
+          className="font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]"
         >
           {heading}
         </h2>
 
         {subtitle && (
-          <p className="font-sans text-[#A1A1AA] text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+          <p className="text-[#A1A1AA] text-lg sm:text-xl md:text-2xl font-normal leading-relaxed max-w-2xl">
             {subtitle}
           </p>
         )}

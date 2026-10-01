@@ -15,20 +15,17 @@ export function Company() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: Headline & Narrative (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+            <span className="text-xs uppercase tracking-widest font-medium text-zinc-400 block">
               ABOUT ETHISYN
             </span>
             <h2
               id="company-heading"
-              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
+              className="font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]"
             >
-              Built in Hyderabad.{" "}
-              <span className="font-serif italic font-normal text-white">
-                Engineering for clients worldwide.
-              </span>
+              Built in Hyderabad. Engineering for clients worldwide.
             </h2>
 
-            <div className="space-y-6 text-[#A1A1AA] text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+            <div className="space-y-6 text-[#A1A1AA] text-lg sm:text-xl md:text-2xl font-normal leading-relaxed max-w-2xl">
               <p className="text-white">
                 Conceived as an independent engineering idea in Hyderabad in {siteConfig.founded}, Ethisyn is a full-spectrum digital product studio. We build modern web platforms, native mobile applications, intelligent AI automation pipelines, and digital growth engines.
               </p>
@@ -42,13 +39,13 @@ export function Company() {
           <div className="lg:col-span-5">
             <Card variant="default" className="p-8 space-y-6">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs text-[#71717A] uppercase tracking-wider block">
+                <span className="text-xs text-zinc-400 uppercase tracking-widest font-medium block">
                   STUDIO ESSENTIALS
                 </span>
                 <Badge variant="neutral">INDEPENDENT</Badge>
               </div>
 
-              <div className="space-y-4 font-sans text-sm">
+              <div className="space-y-4 text-sm">
                 <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
                   <span className="flex items-center gap-2 text-[#A1A1AA]">
                     <Calendar className="w-4 h-4 text-white" />
@@ -92,7 +89,7 @@ export function Company() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.05] text-xs font-sans text-[#A1A1AA] font-light">
+              <div className="pt-4 border-t border-white/[0.05] text-xs text-[#A1A1AA]">
                 <p>
                   Direct inquiries:{" "}
                   <a

@@ -25,7 +25,7 @@ export interface TeamPageContent {
 export const teamContent: TeamPageContent = {
   title: "The builders behind every system.",
   subtitle:
-    "An independent assembly of founding engineers, designers, and systems architects headquartered in Hyderabad. We build clean, high-performance software directly with our clients — zero intermediaries, zero outsourced guesswork.",
+    "An independent assembly of founding engineers, designers, and systems architects headquartered in Hyderabad. We build clean, high-performance software directly with our clients, with zero intermediaries and zero outsourced guesswork.",
   manifesto:
     "We do not believe in account managers acting as human routers, nor do we outsource your vision to anonymous subcontractors. Every line of code, design token, and system architecture is crafted directly by our founding partners right here in Hyderabad.",
   rules: [

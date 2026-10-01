@@ -17,7 +17,7 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
       {
-        src: "/brand/ethisyn-monogram-white.png",
+        src: "/brand/icon-512.png",
         sizes: "512x512",
         type: "image/png",
       },

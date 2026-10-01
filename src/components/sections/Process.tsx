@@ -62,7 +62,7 @@ const sprintStages: ProcessStage[] = [
   },
   {
     step: "03",
-    timeframe: "Weeks 03–04",
+    timeframe: "Weeks 03-04",
     kicker: "PRODUCTION-GRADE CODE",
     title: "Deterministic Engineering & Security Hardening",
     description:
@@ -111,22 +111,19 @@ export function Process() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-white/[0.08]">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono tracking-widest text-[#A1A1AA] uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs tracking-widest text-[#A1A1AA] uppercase font-medium">
               <Clock className="w-3.5 h-3.5 text-white" />
               Sprint Delivery Methodology // 4-Stage Playbook
             </div>
 
             <h2
               id="process-heading"
-              className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.06]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-medium tracking-tight leading-[1.08]"
             >
-              From technical specification to{" "}
-              <span className="font-serif italic font-normal text-white">
-                production at edge velocity.
-              </span>
+              From technical specification to production at edge velocity.
             </h2>
 
-            <p className="font-sans text-[#A1A1AA] text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#A1A1AA] leading-relaxed max-w-2xl">
               A transparent, deterministic engineering sprint with zero middleman telephone games. High-density execution from architectural scope definition to continuous 24/7 SLA handover.
             </p>
           </div>
@@ -165,7 +162,7 @@ export function Process() {
                       <div className="w-11 h-11 rounded-full bg-[#0A0A0A] border border-white/[0.15] group-hover:border-white/[0.4] group-hover:bg-white/[0.06] flex items-center justify-center transition-all duration-300 z-10 shadow-lg">
                         <StageIcon className="w-5 h-5 text-white transition-transform group-hover:scale-110" />
                       </div>
-                      <span className="font-mono text-xs uppercase tracking-widest text-[#71717A] group-hover:text-white transition-colors">
+                      <span className="text-xs uppercase tracking-widest text-[#71717A] group-hover:text-white transition-colors font-medium">
                         STAGE {stage.step}
                       </span>
                     </div>
@@ -177,28 +174,28 @@ export function Process() {
 
                   {/* Stage Content */}
                   <div className="space-y-4">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-400 block">
+                    <span className="text-xs uppercase tracking-widest text-emerald-400 block font-medium">
                       {stage.kicker}
                     </span>
 
-                    <h3 className="font-sans text-xl sm:text-2xl font-medium text-white tracking-tight leading-snug group-hover:text-white transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-medium text-white tracking-tight leading-snug group-hover:text-white transition-colors">
                       {stage.title}
                     </h3>
 
-                    <p className="font-sans text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#D4D4D8] leading-relaxed">
                       {stage.description}
                     </p>
 
                     {/* Deliverables List */}
                     <div className="pt-4 space-y-2 border-t border-white/[0.06]">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#71717A] block">
+                      <span className="text-xs uppercase tracking-widest text-[#71717A] block font-medium">
                         KEY DELIVERABLES
                       </span>
-                      <ul className="space-y-2 text-xs font-sans text-[#D4D4D8]">
+                      <ul className="space-y-2 text-xs text-[#D4D4D8]">
                         {stage.deliverables.map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
                             <CheckCircle2 className="w-3.5 h-3.5 text-white/40 group-hover:text-emerald-400 transition-colors mt-0.5 flex-shrink-0" />
-                            <span className="font-light leading-snug">{item}</span>
+                            <span className="leading-snug">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -209,7 +206,7 @@ export function Process() {
                       {stage.techTags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] font-mono text-[10px] text-[#71717A]"
+                          className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-[10px] text-[#71717A]"
                         >
                           {tag}
                         </span>
@@ -227,9 +224,9 @@ export function Process() {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <h4 className="font-sans text-sm font-medium text-white">100% IP & Code Ownership</h4>
+              <h4 className="text-sm font-medium text-white">100% IP & Code Ownership</h4>
             </div>
-            <p className="font-sans text-xs text-[#A1A1AA] font-light leading-relaxed">
+            <p className="text-xs text-[#A1A1AA] leading-relaxed">
               Every repository, Figma file, database migration, and CI/CD secret is transferred directly to your organization.
             </p>
           </div>
@@ -237,9 +234,9 @@ export function Process() {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4 text-emerald-400" />
-              <h4 className="font-sans text-sm font-medium text-white">Direct Architect Access</h4>
+              <h4 className="text-sm font-medium text-white">Direct Architect Access</h4>
             </div>
-            <p className="font-sans text-xs text-[#A1A1AA] font-light leading-relaxed">
+            <p className="text-xs text-[#A1A1AA] leading-relaxed">
               Zero junior account managers or sales reps. You collaborate directly with the founding engineers building your system.
             </p>
           </div>
@@ -247,9 +244,9 @@ export function Process() {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Globe2 className="w-4 h-4 text-emerald-400" />
-              <h4 className="font-sans text-sm font-medium text-white">Sub-Second Global Edge</h4>
+              <h4 className="text-sm font-medium text-white">Sub-Second Global Edge</h4>
             </div>
-            <p className="font-sans text-xs text-[#A1A1AA] font-light leading-relaxed">
+            <p className="text-xs text-[#A1A1AA] leading-relaxed">
               Guaranteed 100/100 Core Web Vitals, sub-300ms global TTFB, and zero-compromise production performance.
             </p>
           </div>
@@ -257,9 +254,9 @@ export function Process() {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <h4 className="font-sans text-sm font-medium text-white">24/7 SLA Handover</h4>
+              <h4 className="text-sm font-medium text-white">24/7 SLA Handover</h4>
             </div>
-            <p className="font-sans text-xs text-[#A1A1AA] font-light leading-relaxed">
+            <p className="text-xs text-[#A1A1AA] leading-relaxed">
               Continuous monitoring, automated incident alert channels, and proactive performance optimizations post-launch.
             </p>
           </div>

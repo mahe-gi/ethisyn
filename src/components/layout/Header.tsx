@@ -42,22 +42,22 @@ export function Header() {
           <Link
             href="/"
             className="flex items-center gap-3.5 group focus-visible:outline-2 py-1"
-            aria-label="Ethisyn — Home"
+            aria-label="Ethisyn: Home"
           >
-            <Logo size={28} priority alt="" />
-            <Wordmark />
+            <Logo size={36} priority alt="" />
+            <Wordmark className="text-base sm:text-[17px] tracking-[0.2em]" />
           </Link>
 
           {/* Desktop Navigation Links */}
           <nav
-            className="hidden md:flex items-center gap-8 lg:gap-10"
+            className="hidden md:flex items-center gap-5 lg:gap-8"
             aria-label="Main Navigation"
           >
             {mainNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-sans text-xs uppercase tracking-[0.14em] text-[#A1A1AA] hover:text-white transition-colors duration-150 py-1"
+                className="text-xs uppercase tracking-widest font-medium text-[#A1A1AA] hover:text-white transition-colors duration-150 py-1"
               >
                 {item.label}
               </Link>

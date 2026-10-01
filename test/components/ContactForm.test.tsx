@@ -9,7 +9,7 @@ describe("ContactForm Component", () => {
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/what are you looking to build/i)).toBeInTheDocument();
-    expect(screen.getByText(/Web & Software Engineering/i)).toBeInTheDocument();
+    expect(screen.getByText(/BUILD: Software & Digital Products/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /send project inquiry/i })).toBeInTheDocument();
   });
 

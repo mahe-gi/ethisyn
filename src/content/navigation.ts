@@ -9,33 +9,34 @@ export interface NavItem {
 
 export const mainNavItems: NavItem[] = [
   { label: "Services", href: "/#services", index: "01" },
-  { label: "AI Systems", href: "/#ai", index: "02" },
-  { label: "Process", href: "/#process", index: "03" },
-  { label: "Founding Team", href: "/team", index: "04" },
-  { label: "Blog", href: "/blog", index: "05" },
+  { label: "Products", href: "/#products", index: "02" },
+  { label: "Team", href: "/team", index: "03" },
+  { label: "Blog", href: "/blog", index: "04" },
+  { label: "Careers", href: "/careers", index: "05" },
+  { label: "Contact", href: "/#contact", index: "06" },
 ];
 
 export const allSectionNavItems: NavItem[] = [
   { label: "Services", href: "/#services", index: "01" },
-  { label: "AI Systems", href: "/#ai", index: "02" },
-  { label: "Process", href: "/#process", index: "03" },
-  { label: "Founding Team", href: "/team", index: "04" },
-  { label: "Perspectives & Blog", href: "/blog", index: "05" },
-  { label: "Start a Project", href: "/#contact", index: "06" },
+  { label: "Products", href: "/#products", index: "02" },
+  { label: "Team", href: "/team", index: "03" },
+  { label: "Blog", href: "/blog", index: "04" },
+  { label: "Careers", href: "/careers", index: "05" },
+  { label: "Contact", href: "/#contact", index: "06" },
 ];
 
 export const footerNavLinks = {
   services: [
-    { label: "Web & Software Engineering", href: "/#services" },
-    { label: "AI & Automation", href: "/#ai" },
-    { label: "Digital Growth & SEO", href: "/#services" },
-    { label: "Creative Design & UI/UX", href: "/#services" },
-    { label: "Business Systems & Cloud", href: "/#services" },
-    { label: "Continuous SLA & Retainers", href: "/#services" },
+    { label: "BUILD // Software & Web", href: "/#services" },
+    { label: "AUTOMATE // AI & Automation", href: "/#ai" },
+    { label: "GROW // Digital Growth & SEO", href: "/#services" },
+    { label: "CREATE // Creative & Content", href: "/#services" },
+    { label: "Proprietary Products", href: "/#products" },
   ],
   company: [
     { label: "Our Team", href: "/team" },
     { label: "Perspectives & Blog", href: "/blog" },
+    { label: "Careers", href: "/careers" },
     { label: "Start a Project", href: "/#contact" },
     { label: "LinkedIn", href: siteConfig.social.linkedin, isExternal: true },
     { label: "Google Profile", href: siteConfig.social.googleBusinessProfile, isExternal: true },

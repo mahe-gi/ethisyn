@@ -43,7 +43,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block font-mono text-xs uppercase tracking-wider text-brand-faint select-none"
+            className="block text-xs uppercase tracking-wider font-medium text-brand-faint select-none"
           >
             {label}
             {isRequired && <span className="text-emerald-400 ml-1">*</span>}
@@ -90,11 +90,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         </div>
 
         {error ? (
-          <p id={errorId} className="font-mono text-xs text-rose-400 animate-in fade-in duration-150">
+          <p id={errorId} className="text-xs text-rose-400 animate-in fade-in duration-150">
             {error}
           </p>
         ) : helperText ? (
-          <p id={helperId} className="font-sans text-xs text-[#A1A1AA] font-light">
+          <p id={helperId} className="text-xs text-[#A1A1AA]">
             {helperText}
           </p>
         ) : null}

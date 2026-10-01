@@ -9,7 +9,7 @@ describe("Validation and Sanitization", () => {
       phone: "+91 98765 43210",
       company: "Acme Studios",
       services: ["Websites & Software", "AI & Automation"],
-      budget: "₹1,50,000 – ₹5,00,000",
+      budget: "₹1,50,000 - ₹5,00,000",
       message: "We need a modern website and automated lead intake workflows.",
       consent: true,
       honeypot: "",

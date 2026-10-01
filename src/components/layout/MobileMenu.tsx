@@ -76,10 +76,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           href="/"
           onClick={onClose}
           className="flex items-center gap-3"
-          aria-label="Ethisyn — Home"
+          aria-label="Ethisyn: Home"
         >
-          <Logo size={28} alt="" />
-          <Wordmark />
+          <Logo size={34} alt="" />
+          <Wordmark className="text-base tracking-[0.2em]" />
         </Link>
 
         <button
@@ -104,7 +104,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             <div className="flex items-baseline gap-4">
               {item.index && (
-                <span className="font-mono text-xs text-[#71717A]">
+                <span className="text-xs text-[#71717A] tracking-wider font-medium">
                   {item.index}
                 </span>
               )}
@@ -120,7 +120,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
       {/* Drawer Footer Actions */}
       <div className="pt-6 border-t border-white/[0.08] space-y-4">
-        <div className="flex justify-between items-center text-xs font-mono text-[#71717A] uppercase tracking-wider">
+        <div className="flex justify-between items-center text-xs text-[#71717A] uppercase tracking-widest font-medium">
           <span>{siteConfig.location.formatted}</span>
           <span>EST. {siteConfig.founded}</span>
         </div>

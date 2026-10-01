@@ -52,7 +52,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
     <div className="space-y-12 md:space-y-16">
       {/* Category Filter Pills */}
       <div className="flex flex-wrap items-center gap-2.5 pb-4 border-b border-white/[0.06]">
-        <span className="font-mono text-xs uppercase tracking-wider text-[#71717A] mr-2 hidden sm:inline-block">
+        <span className="text-xs uppercase tracking-widest font-medium text-zinc-500 mr-2 hidden sm:inline-block">
           Filter:
         </span>
         {FILTER_CATEGORIES.map((cat) => {
@@ -68,7 +68,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
               type="button"
               onClick={() => setSelectedCategory(cat)}
               className={cn(
-                "group relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 select-none",
+                "group relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs transition-all duration-200 select-none",
                 isActive
                   ? "bg-white text-black font-semibold shadow-md shadow-white/10"
                   : "bg-white/[0.03] text-[#A1A1AA] hover:text-white hover:bg-white/[0.08] border border-white/[0.06] hover:border-white/[0.14]"
@@ -79,7 +79,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                 className={cn(
                   "text-[10px] px-1.5 py-0.2 rounded-full",
                   isActive
-                    ? "bg-black/15 text-black font-mono font-bold"
+                    ? "bg-black/15 text-black font-bold"
                     : "bg-white/[0.08] text-[#71717A] group-hover:text-white"
                 )}
               >
@@ -108,7 +108,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                 {/* Meta Bar */}
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase bg-white/10 text-white font-medium border border-white/20">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs uppercase tracking-widest font-medium bg-white/10 text-white border border-white/20">
                       <Sparkles className="w-3 h-3 text-amber-300" aria-hidden="true" />
                       FEATURED ESSAY
                     </span>
@@ -117,7 +117,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                     </Badge>
                   </div>
 
-                  <div className="flex items-center gap-4 text-xs font-mono text-[#71717A]">
+                  <div className="flex items-center gap-4 text-xs text-[#71717A]">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
                       {activeFeatured.formattedDate}
@@ -132,10 +132,10 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
 
                 {/* Title & Excerpt */}
                 <div className="space-y-4 max-w-4xl">
-                  <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white tracking-tight leading-[1.12] group-hover:text-white/90 transition-colors">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white tracking-tight leading-[1.12] group-hover:text-white/90 transition-colors">
                     {activeFeatured.title}
                   </h2>
-                  <p className="font-sans text-sm sm:text-base md:text-lg text-[#A1A1AA] font-light leading-relaxed max-w-3xl">
+                  <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-3xl">
                     {activeFeatured.excerpt}
                   </p>
                 </div>
@@ -153,16 +153,16 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                       />
                     </div>
                     <div>
-                      <span className="font-sans text-sm font-medium text-white block">
+                      <span className="text-sm font-medium text-white block">
                         {activeFeatured.author.name}
                       </span>
-                      <span className="font-mono text-xs text-[#71717A] block">
+                      <span className="text-xs text-[#71717A] block">
                         {activeFeatured.author.role}
                       </span>
                     </div>
                   </div>
 
-                  <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white group-hover:text-white transition-colors">
+                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white group-hover:text-white transition-colors">
                     <span>Read full dispatch</span>
                     <ArrowUpRight
                       className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
@@ -203,7 +203,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                       <Badge variant="neutral" size="sm">
                         {post.category}
                       </Badge>
-                      <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#71717A]">
+                      <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
                         <Clock className="w-3 h-3" aria-hidden="true" />
                         <span>{post.readingTime}</span>
                       </div>
@@ -211,10 +211,10 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
 
                     {/* Title & Excerpt */}
                     <div className="space-y-2.5">
-                      <h3 className="font-sans text-xl font-medium text-white group-hover:text-white/90 transition-colors leading-snug tracking-tight">
+                      <h3 className="text-xl font-medium text-white group-hover:text-white/90 transition-colors leading-snug tracking-tight">
                         {post.title}
                       </h3>
-                      <p className="font-sans text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
@@ -224,7 +224,7 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                       {post.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.02] border border-white/[0.05] text-[#71717A]"
+                          className="px-2 py-0.5 rounded text-xs font-medium bg-white/[0.02] border border-white/[0.05] text-[#71717A]"
                         >
                           #{tag}
                         </span>
@@ -245,10 +245,10 @@ export function BlogIndexView({ posts, featuredPost }: BlogIndexViewProps) {
                         />
                       </div>
                       <div className="text-left">
-                        <span className="font-sans text-xs font-medium text-white block">
+                        <span className="text-xs font-medium text-white block">
                           {post.author.name}
                         </span>
-                        <span className="font-mono text-[10px] text-[#71717A] block">
+                        <span className="text-xs text-[#71717A] block">
                           {post.formattedDate}
                         </span>
                       </div>

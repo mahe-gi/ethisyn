@@ -18,30 +18,30 @@ export function FinalCTA() {
           {/* Left Column: Heading & Assurances (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="font-mono text-xs uppercase tracking-[0.16em] text-[#71717A] block">
+              <span className="text-xs uppercase tracking-widest font-medium text-zinc-400 block">
                 LET&apos;S TALK
               </span>
               <h2
                 id="contact-heading"
-                className="font-sans font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05]"
+                className="font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08]"
               >
                 Ready to build something exceptional?
               </h2>
             </div>
 
-            <p className="font-sans text-[#A1A1AA] text-base md:text-lg font-light leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#A1A1AA] leading-relaxed">
               Tell us about what you want to build, automate, or scale. You will hear back directly from our founding engineers within 4 business hours with honest technical advice and a clear roadmap.
             </p>
 
             {/* Direct Channel Badges */}
             <div className="space-y-4 pt-2">
-              <div className="flex items-center gap-3 text-xs font-sans text-[#A1A1AA] font-light">
+              <div className="flex items-center gap-3 text-xs text-[#A1A1AA]">
                 <Badge variant="success" dot size="sm">
                   GUARANTEED SLA
                 </Badge>
                 <span>Direct engineer response within 4 business hours</span>
               </div>
-              <div className="flex items-center gap-3 text-xs font-sans text-[#A1A1AA] font-light">
+              <div className="flex items-center gap-3 text-xs text-[#A1A1AA]">
                 <Badge variant="neutral" size="sm">
                   CONFIDENTIALITY
                 </Badge>
@@ -50,7 +50,7 @@ export function FinalCTA() {
             </div>
 
             <div className="pt-4 space-y-3">
-              <span className="font-mono text-xs text-[#71717A] uppercase tracking-wider block">
+              <span className="text-xs text-zinc-400 uppercase tracking-widest font-medium block">
                 DIRECT CONTACT
               </span>
               <div className="flex flex-wrap gap-3">
@@ -92,10 +92,10 @@ export function FinalCTA() {
           <div className="lg:col-span-7">
             <Card variant="elevated" className="p-8 md:p-10 space-y-6">
               <div className="pb-6 border-b border-white/[0.06]">
-                <h3 id="contact-form-heading" className="font-sans text-lg font-medium text-white">
+                <h3 id="contact-form-heading" className="text-lg font-medium text-white">
                   Start a Project Discussion
                 </h3>
-                <p className="font-sans text-xs text-[#A1A1AA] font-light mt-1">
+                <p className="text-xs text-[#A1A1AA] mt-1">
                   Fill out the form below. We will review your requirements and respond with a scoped proposal.
                 </p>
               </div>

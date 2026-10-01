@@ -70,4 +70,11 @@ describe("Team Content", () => {
       expect(member.bio).toBeTruthy();
     });
   });
+
+  it("ensures each member has complete professional profiles and real portraits", () => {
+    teamContent.members.forEach((member) => {
+      expect(member.social.linkedin).toContain("linkedin.com");
+      expect(member.image).toMatch(/^\/team\/[a-z-]+\.png$/);
+    });
+  });
 });
