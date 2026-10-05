@@ -132,6 +132,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "We help businesses build their online presence, reach customers and generate opportunities through digital channels. We help businesses become more visible online, reach the right audience and turn digital attention into real business opportunities.",
     features: [
+      "Job Application & Reverse Recruiting Service",
       "Search Engine Optimization (SEO)",
       "Local SEO",
       "Google Business Profile Optimization",
@@ -148,6 +149,7 @@ export const servicesData: ServiceItem[] = [
       "Online Brand Promotion",
     ],
     whatWeBuild: [
+      "Job Application & Reverse Recruiting Service (Led by Patan Rabiya)",
       "Local SEO & Google Business 3-Pack Rankings",
       "Technical SEO & Generative Engine Optimization (GEO)",
       "High-Converting Google & Meta Paid Ad Campaigns",

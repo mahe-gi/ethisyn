@@ -46,8 +46,15 @@ const initialFormData: ContactFormData = {
   honeypot: "",
 };
 
-export function ContactForm() {
-  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+export interface ContactFormProps {
+  initialService?: string;
+}
+
+export function ContactForm({ initialService }: ContactFormProps = {}) {
+  const [formData, setFormData] = useState<ContactFormData>(() => ({
+    ...initialFormData,
+    services: initialService ? [initialService] : initialFormData.services,
+  }));
   const [state, setState] = useState<FormState>({ type: "idle" });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isOnline, setIsOnline] = useState<boolean>(true);

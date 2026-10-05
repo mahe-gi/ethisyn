@@ -75,6 +75,7 @@ const editorialConfig: Record<string, PillarEditorialConfig> = {
       "We help businesses become more visible online, reach the right audience, and turn digital attention into business opportunities.",
     scopeSummary: "SEO, Google Ads, Meta Ads, social media marketing, and lead generation.",
     categoryTags: [
+      "Job Application & Reverse Recruiting",
       "Search Engine Optimization (SEO)",
       "Local SEO & Google Maps",
       "Google Business Profile",
@@ -410,6 +411,23 @@ export function CorePillars() {
                               <p className="text-xs text-[#A1A1AA]">
                                 Targeted advertising campaigns with pixel tracking, funnel testing, and transparent CAC/ROAS attribution.
                               </p>
+                            </div>
+
+                            <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.03] space-y-2">
+                              <div className="flex items-center justify-between text-xs">
+                                <span className="font-medium text-white">Job Application & Reverse Recruiting</span>
+                                <span className="text-emerald-400 text-[10px]">LED BY PATAN RABIYA</span>
+                              </div>
+                              <p className="text-xs text-[#A1A1AA]">
+                                Dedicated experienced associates hand-filling applications with custom cover letters and daily team chat.
+                              </p>
+                              <Link
+                                href="/job-application-service"
+                                className="inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-white transition-colors font-medium pt-1"
+                              >
+                                <span>Explore Job Application Service</span>
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </Link>
                             </div>
                           </div>
                         )}

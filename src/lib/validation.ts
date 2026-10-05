@@ -5,6 +5,7 @@ export const availableServices = [
   "AUTOMATE: AI & Business Automation",
   "GROW: Digital Marketing & Growth",
   "CREATE: Creative & Video Content",
+  "Job Application & Reverse Recruiting Service",
   "Full Multi-Pillar Studio Engagement",
 ] as const;
 

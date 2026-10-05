@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
 
 export function Hero() {
@@ -34,6 +36,27 @@ export function Hero() {
 
         {/* Central Display Heading & Narrative */}
         <div className="py-6 sm:py-10 md:py-14 max-w-5xl space-y-8 md:space-y-10">
+          {/* New Service Announcement Pill */}
+          <div>
+            <Link
+              href="/job-application-service"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/[0.06] border border-emerald-500/30 hover:border-emerald-400/80 hover:bg-emerald-500/[0.12] transition-all group max-w-full"
+            >
+              <span className="flex h-2 w-2 relative flex-shrink-0" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              <span className="text-xs uppercase tracking-widest font-semibold text-emerald-400 flex-shrink-0">
+                New Service
+              </span>
+              <span className="text-zinc-600 hidden sm:inline">•</span>
+              <span className="text-xs text-zinc-200 font-normal truncate">
+                We manually apply to jobs for you with custom cover letters
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-1 transition-transform flex-shrink-0 ml-1" />
+            </Link>
+          </div>
+
           <h1 className="font-medium text-white text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08]">
             We build digital products, automate business operations, and help businesses grow.
           </h1>

@@ -31,6 +31,7 @@ export const footerNavLinks = {
     { label: "AUTOMATE // AI & Automation", href: "/#ai" },
     { label: "GROW // Digital Growth & SEO", href: "/#services" },
     { label: "CREATE // Creative & Content", href: "/#services" },
+    { label: "Job Application Service (Reverse Recruiting)", href: "/job-application-service" },
     { label: "Proprietary Products", href: "/#products" },
   ],
   company: [

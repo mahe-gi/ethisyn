@@ -13,6 +13,7 @@
 
 ## Navigation & Official Site Structure
 - [Services](https://ethisyn.in/#services): Engineering, AI automation, growth, and design services
+- [Job Application Service](https://ethisyn.in/job-application-service): Dedicated human-assisted reverse recruiting & manual job applications led by Patan Rabiya
 - [Products](https://ethisyn.in/#products): Proprietary software applications (The Rental Circle, GoWider)
 - [Team](https://ethisyn.in/team): 11 founding domain leads and technical partners
 - [Blog](https://ethisyn.in/blog): Engineering perspectives, AI architecture, and systems dispatches
@@ -22,13 +23,13 @@
 ## Core Studio Pillars (BUILD • AUTOMATE • GROW • CREATE)
 - [BUILD: Software & Digital Product Development](https://ethisyn.in/#services): Business websites, web applications, mobile applications, SaaS products, custom business software, CRM systems, admin & management portals, and backend architectures.
 - [AUTOMATE: AI & Business Automation](https://ethisyn.in/#services): AI agents, AI voice agents, AI chatbots, workflow automation, business process automation, CRM automation, document intelligence, and lead management systems.
-- [GROW: Digital Marketing & Growth](https://ethisyn.in/#services): Search engine optimization (SEO), local SEO, Google Business Profile optimization, Google Ads, Meta Ads, social media management, content marketing, and high-intent customer acquisition.
+- [GROW: Digital Marketing & Growth](https://ethisyn.in/#services): Search engine optimization (SEO), local SEO, Google Business Profile optimization, Google Ads, Meta Ads, social media management, content marketing, high-intent customer acquisition, and [Job Application & Reverse Recruiting Service](https://ethisyn.in/job-application-service) (100% human-managed job applications, custom cover letters, daily team chat).
 - [CREATE: Creative & Content](https://ethisyn.in/#services): Video production, videography, video editing, social media content, promotional videos, brand promotions, and marketing creatives.
 
 ## Founding Leadership (Domain Partners)
 - [Mahesh Ch](https://ethisyn.in/team#mahesh-ch): Chief Technology & Operations Officer (CTO)
 - [Ganesh Ch](https://ethisyn.in/team#ganesh-ch): Chief Business Officer (CBO)
-- [Patan Rabiya](https://ethisyn.in/team#patan-rabiya): Chief Marketing & Growth Officer (CMO)
+- [Patan Rabiya](https://ethisyn.in/team#patan-rabiya): Chief Marketing & Growth Officer (CMO) & Reverse Recruiting Lead
 - [Kavya Sharma](https://ethisyn.in/team#kavya-sharma): Head of Corporate Alliances & Partnerships
 - [Neeraja K](https://ethisyn.in/team#neeraja-k): Head of Design & UI/UX
 - [Sandhya Chirumamilla](https://ethisyn.in/team#sandhya-chirumamilla): Head of Software & Web Engineering
