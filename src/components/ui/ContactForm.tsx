@@ -265,10 +265,39 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
                 ? "You Are Offline"
                 : state.type === "timeout"
                 ? "Connection Timeout"
-                : "Please Review Form"
+                : Object.keys(fieldErrors).length > 0
+                ? "Please Review Form"
+                : "Email Delivery Notice"
             }
           >
-            {state.message}
+            <div className="space-y-3">
+              <p>{state.message}</p>
+              {state.type === "error" && Object.keys(fieldErrors).length === 0 && (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <a
+                    href={`mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(
+                      `Project Inquiry: ${formData.name || "Client"}`
+                    )}&body=${encodeURIComponent(
+                      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "N/A"}\nCompany: ${formData.company || "N/A"}\nServices: ${formData.services.join(", ")}\nBudget: ${formData.budget || "N/A"}\n\nProject Scope:\n${formData.message}`
+                    )}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black font-medium text-xs hover:bg-zinc-200 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Send via Email Client (Pre-filled)</span>
+                  </a>
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(
+                      `Hi Ethisyn team, my name is ${formData.name || "Client"}.\nServices: ${formData.services.join(", ")}\nBudget: ${formData.budget || "N/A"}\n\nScope:\n${formData.message}\n\nEmail: ${formData.email} | Phone: ${formData.phone || "N/A"}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 text-black font-medium text-xs hover:bg-emerald-400 transition-colors"
+                  >
+                    <span>Send via WhatsApp</span>
+                  </a>
+                </div>
+              )}
+            </div>
           </Alert>
         </div>
       )}
@@ -444,8 +473,8 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
             />
           </div>
 
-          {/* Submit Action */}
-          <div className="pt-2">
+          {/* Submit Action & Direct Channel Alternatives */}
+          <div className="pt-2 space-y-3">
             <Button
               type="submit"
               variant="primary"
@@ -456,6 +485,25 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
             >
               {state.type === "submitting" ? "Sending inquiry..." : "Send Project Inquiry"}
             </Button>
+
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-400 pt-1">
+              <span>Direct outreach:</span>
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="text-white hover:text-emerald-400 transition-colors font-medium underline underline-offset-4 decoration-zinc-700"
+              >
+                {siteConfig.contactEmail}
+              </a>
+              <span className="text-zinc-600">•</span>
+              <a
+                href="https://wa.me/?text=Hi%20Ethisyn%2C%20I%20have%20a%20project%20inquiry."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+              >
+                Chat on WhatsApp →
+              </a>
+            </div>
           </div>
         </form>
       )}

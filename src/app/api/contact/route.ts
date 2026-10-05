@@ -91,17 +91,33 @@ export async function POST(req: NextRequest) {
     // 6. Deliver via Resend API
     const resendApiKey = process.env.RESEND_API_KEY;
     const targetEmail = process.env.CONTACT_EMAIL || siteConfig.contactEmail;
+    const configuredFrom =
+      process.env.RESEND_FROM_EMAIL || "Ethisyn Projects <inquiry@ethisyn.in>";
+
+    // Inbound Lead payload for system logging
+    const leadPayload = {
+      name: cleanName,
+      email: cleanEmail,
+      phone: cleanPhone,
+      company: cleanCompany,
+      budget: cleanBudget,
+      services: cleanServices,
+      message: cleanMessage,
+      timestamp: new Date().toISOString(),
+    };
 
     if (resendApiKey) {
-      try {
-        const emailResponse = await fetch("https://api.resend.com/emails", {
+      let emailSent = false;
+
+      const sendEmail = async (fromAddress: string) => {
+        return fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${resendApiKey}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Ethisyn Projects <inquiry@ethisyn.in>",
+            from: fromAddress,
             to: [targetEmail],
             reply_to: cleanEmail,
             subject: `New Project Inquiry from ${cleanName}${cleanCompany !== "N/A" ? ` (${cleanCompany})` : ""}`,
@@ -119,37 +135,49 @@ ${cleanMessage}
 `,
           }),
         });
+      };
+
+      try {
+        const emailResponse = await sendEmail(configuredFrom);
 
         if (!emailResponse.ok) {
           const errData = await emailResponse.text();
-          console.error("Resend API error:", errData);
-          return NextResponse.json(
-            {
-              success: false,
-              message: "Unable to send email right now. Please email us directly at " + siteConfig.contactEmail,
-            },
-            { status: 502 }
-          );
+          console.error("Resend API error with configured sender:", errData);
+
+          // If domain is unverified or rejected, retry with Resend sandbox/onboarding sender
+          if (!configuredFrom.includes("onboarding@resend.dev")) {
+            console.log("Retrying delivery with fallback sender onboarding@resend.dev...");
+            const fallbackResponse = await sendEmail("Ethisyn <onboarding@resend.dev>");
+            if (fallbackResponse.ok) {
+              emailSent = true;
+            } else {
+              const fallbackErr = await fallbackResponse.text();
+              console.error("Resend fallback sender error:", fallbackErr);
+            }
+          }
+        } else {
+          emailSent = true;
         }
       } catch (sendErr) {
         console.error("Failed to connect to email provider:", sendErr);
+      }
+
+      // Always log inbound lead to system logs so the enquiry is NEVER lost
+      console.log("=== INBOUND PROJECT INQUIRY (PERSISTED IN SYSTEM LOGS) ===", JSON.stringify(leadPayload, null, 2));
+
+      if (!emailSent) {
         return NextResponse.json(
           {
             success: false,
-            message: "Unable to dispatch message. Please email us directly at " + siteConfig.contactEmail,
+            dispatchError: true,
+            message: "Unable to send email right now. Please email us directly at " + siteConfig.contactEmail,
           },
           { status: 502 }
         );
       }
     } else {
       // In development or when key is not yet set
-      console.log("=== INBOUND PROJECT INQUIRY (MOCK DISPATCH) ===");
-      console.log(`From: ${cleanName} <${cleanEmail}>`);
-      console.log(`Phone: ${cleanPhone} | Company: ${cleanCompany}`);
-      console.log(`Services: ${cleanServices}`);
-      console.log(`Budget: ${cleanBudget}`);
-      console.log(`Details: ${cleanMessage}`);
-      console.log("===============================================");
+      console.log("=== INBOUND PROJECT INQUIRY (MOCK DISPATCH) ===", JSON.stringify(leadPayload, null, 2));
     }
 
     return NextResponse.json({
