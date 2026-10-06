@@ -463,3 +463,156 @@ export function generateBlogPostingSchema(post: BlogPost) {
   };
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function generateFAQSchema(faqs: FAQItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export interface LocalizedServiceParams {
+  pagePath: string;
+  serviceName: string;
+  serviceType: string;
+  description: string;
+  serviceCategory: string;
+  offers?: Array<{ name: string; description: string; price?: string }>;
+}
+
+export function generateLocalizedServiceSchema({
+  pagePath,
+  serviceName,
+  serviceType,
+  description,
+  serviceCategory,
+  offers = [],
+}: LocalizedServiceParams) {
+  const pageUrl = `${siteConfig.url}${pagePath}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        legalName: "Ethisyn Digital Products & AI Systems Studio",
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/brand/ethisyn-monogram-original.png`,
+        image: `${siteConfig.url}/brand/opengraph-image.png`,
+        telephone: siteConfig.contactPhone,
+        email: siteConfig.emails.general,
+        priceRange: "$$",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Hyderabad",
+          addressRegion: "Telangana",
+          postalCode: "500081",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 17.4483,
+          longitude: 78.3915,
+        },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "HITEC City" },
+          { "@type": "AdministrativeArea", name: "Gachibowli" },
+          { "@type": "AdministrativeArea", name: "Madhapur" },
+          { "@type": "AdministrativeArea", name: "Financial District" },
+          { "@type": "AdministrativeArea", name: "Kondapur" },
+          { "@type": "AdministrativeArea", name: "Jubilee Hills" },
+          { "@type": "City", name: "Hyderabad" },
+          { "@type": "State", name: "Telangana" },
+          { "@type": "Country", name: "India" },
+          { "@type": "Place", name: "Worldwide" },
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ],
+            opens: "09:00",
+            closes: "20:00",
+          },
+        ],
+        sameAs: [
+          siteConfig.social.linkedin,
+          siteConfig.social.googleBusinessProfile,
+          ...(siteConfig.social.wellfound ? [siteConfig.social.wellfound] : []),
+          ...(siteConfig.social.goodfirms ? [siteConfig.social.goodfirms] : []),
+          ...(siteConfig.social.github ? [siteConfig.social.github] : []),
+        ],
+      },
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name: serviceName,
+        serviceType,
+        category: serviceCategory,
+        description,
+        provider: {
+          "@id": `${siteConfig.url}/#organization`,
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Hyderabad",
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `${serviceName} Packages & Engagement Models`,
+          itemListElement: offers.map((offer) => ({
+            "@type": "Offer",
+            name: offer.name,
+            description: offer.description,
+            priceSpecification: offer.price
+              ? {
+                  "@type": "PriceSpecification",
+                  priceCurrency: "INR",
+                  price: offer.price,
+                }
+              : undefined,
+          })),
+        },
+      },
+    ],
+  };
+}
+

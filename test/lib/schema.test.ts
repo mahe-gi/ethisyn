@@ -6,6 +6,9 @@ import {
   generateProfessionalServiceSchema,
   generateCoreServicesSchema,
   generateCareersPageSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  generateLocalizedServiceSchema,
 } from "@/lib/schema";
 
 describe("JSON-LD Schema Generators", () => {
@@ -59,4 +62,47 @@ describe("JSON-LD Schema Generators", () => {
     expect(careersSchema.url).toBe("https://ethisyn.in/careers");
     expect(careersSchema.mainEntity.itemListElement).toHaveLength(4);
   });
+
+  it("generates FAQPage schema correctly", () => {
+    const faq = generateFAQSchema([
+      { question: "Where are you located in Hyderabad?", answer: "HITEC City corridor, Hyderabad." },
+    ]);
+    expect(faq["@type"]).toBe("FAQPage");
+    expect(faq.mainEntity).toHaveLength(1);
+    expect(faq.mainEntity[0].name).toBe("Where are you located in Hyderabad?");
+  });
+
+  it("generates BreadcrumbList schema correctly", () => {
+    const breadcrumb = generateBreadcrumbSchema([
+      { name: "Home", url: "https://ethisyn.in" },
+      { name: "Software Development Hyderabad", url: "https://ethisyn.in/software-development-company-hyderabad" },
+    ]);
+    expect(breadcrumb["@type"]).toBe("BreadcrumbList");
+    expect(breadcrumb.itemListElement).toHaveLength(2);
+    expect(breadcrumb.itemListElement[1].position).toBe(2);
+  });
+
+  it("generates Localized Service Schema graph with LocalBusiness and Service", () => {
+    const schema = generateLocalizedServiceSchema({
+      pagePath: "/software-development-company-hyderabad",
+      serviceName: "Custom Software Development Hyderabad",
+      serviceType: "Software Engineering & Web Development",
+      description: "Premier software development studio in Hyderabad.",
+      serviceCategory: "BUILD",
+      offers: [
+        { name: "MVP Sprint", description: "2-4 week build", price: "150000" },
+      ],
+    });
+    expect(schema["@graph"]).toBeDefined();
+    expect(schema["@graph"]).toHaveLength(2);
+    expect(schema["@graph"][0]["@type"]).toContain("LocalBusiness");
+    const serviceNode = schema["@graph"][1] as {
+      "@type": string;
+      areaServed: { "@type": string; name: string };
+    };
+    expect(serviceNode["@type"]).toBe("Service");
+    expect(serviceNode.areaServed.name).toBe("Hyderabad");
+  });
 });
+
+
