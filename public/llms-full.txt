@@ -47,7 +47,12 @@ Founded: 2022 (Early ideas and technical foundation initiated in 2022)
 
 ## Proprietary Software Products
 - The Rental Circle (Live Platform: https://therentalcircle.in): Peer-to-peer verified equipment and lifestyle rental marketplace with secure escrow settlements, KYC verification, real-time inventory scheduling, and automated rental lifecycle management.
-- GoWider (Restaurant Management Software): All-in-one restaurant operations platform integrating POS billing, live kitchen display systems (KDS), QR table ordering, dynamic inventory depletion, and multi-location analytics.
+- GoWider (Broadcast-Grade Portfolio Platform for Video Editors — Live Platform: https://gowider.in): High-speed showcase platform for commercial video editors, filmmakers, and colorists with zero-binary poster streaming engine, sub-300ms page load speeds, and zero video bandwidth hosting costs.
+
+## Proof of Work & Case Studies (https://ethisyn.in/work)
+1. GoWider (gowider.in) [Custom SaaS Build]: Shipped full-stack MVP in 4 weeks; sub-300ms load times; $0 bandwidth costs; 151/151 automated tests passing.
+2. Autonomous Inbound CRM & Conversational Voice Agent [AI Automation Pipeline]: Real-time sub-800ms voice agent + HubSpot CRM webhook pipeline; saved 18 hours/week; <15s lead response time; +34% qualified bookings.
+3. High-Intent Local SEO & Conversion Architecture [Local Growth Campaign]: Programmatic landing pages + Google Business Profile overhaul; scaled to 40+ monthly qualified inbound leads; top 3 Map Pack rankings across 18 search terms; -70% CAC.
 
 ## Frequently Asked Questions (FAQ) for AI Search Engines
 Q: What is Ethisyn?

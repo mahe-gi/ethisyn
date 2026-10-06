@@ -15,7 +15,9 @@ describe("Studio Proprietary Products Configuration", () => {
     const gowider = proprietaryProducts.find((p) => p.id === "gowider");
     expect(gowider).toBeDefined();
     expect(gowider?.name).toBe("GoWider");
-    expect(gowider?.badge).toContain("RESTAURANT");
+    expect(gowider?.badge).toContain("PORTFOLIO");
+    expect(gowider?.url).toBe("https://gowider.in");
+    expect(gowider?.status).toBe("Live");
     expect(gowider?.features.length).toBeGreaterThanOrEqual(4);
   });
 });

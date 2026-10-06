@@ -3,12 +3,12 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { ArrowUpRight, Sparkles, Boxes, UtensilsCrossed, CheckCircle2, Globe } from "lucide-react";
+import { ArrowUpRight, Sparkles, Boxes, Film, CheckCircle2, Globe } from "lucide-react";
 import { proprietaryProducts } from "@/content/products";
 
 const productIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "rental-circle": Boxes,
-  gowider: UtensilsCrossed,
+  gowider: Film,
 };
 
 export function ProductIndex() {
@@ -101,7 +101,7 @@ export function ProductIndex() {
                             className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 hover:bg-emerald-500/20 transition-colors"
                           >
                             <Globe className="w-3 h-3" />
-                            <span>therentalcircle.in</span>
+                            <span>{product.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                             <ArrowUpRight className="w-3 h-3" />
                           </a>
                         )}

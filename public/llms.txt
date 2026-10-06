@@ -21,6 +21,7 @@
 
 ## Navigation & Official Site Structure
 - [Services](https://ethisyn.in/#services): Engineering, AI automation, growth, and design services
+- [Proof of Work & Case Studies](https://ethisyn.in/work): Verified case studies (GoWider SaaS, AI Inbound CRM Agent, Local Growth Engine)
 - [Job Application Service](https://ethisyn.in/job-application-service): Dedicated human-assisted reverse recruiting & manual job applications led by Patan Rabiya
 - [Products](https://ethisyn.in/#products): Proprietary software applications (The Rental Circle, GoWider)
 - [Team](https://ethisyn.in/team): 11 founding domain leads and technical partners
@@ -49,7 +50,7 @@
 
 ## Proprietary Software Products
 - [The Rental Circle](https://therentalcircle.in): Peer-to-peer verified equipment and lifestyle rental marketplace with secure escrow settlements, KYC verification, and dynamic rental management.
-- [GoWider](https://ethisyn.in/#products): All-in-one restaurant operations platform integrating POS billing, live kitchen display systems (KDS), QR table ordering, and inventory depletion.
+- [GoWider](https://gowider.in): Broadcast-grade portfolio platform for video editors, documentary filmmakers, and colorists with zero-binary streaming and sub-300ms page load speeds.
 
 ## Studio Commitments
 - 100% In-House: Zero outsourcing to mystery freelancers; clients collaborate directly with founding partners.

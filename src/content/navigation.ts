@@ -10,19 +10,21 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   { label: "Services", href: "/#services", index: "01" },
   { label: "Products", href: "/#products", index: "02" },
-  { label: "Team", href: "/team", index: "03" },
-  { label: "Blog", href: "/blog", index: "04" },
-  { label: "Careers", href: "/careers", index: "05" },
-  { label: "Contact", href: "/#contact", index: "06" },
+  { label: "Work", href: "/work", index: "03" },
+  { label: "Team", href: "/team", index: "04" },
+  { label: "Blog", href: "/blog", index: "05" },
+  { label: "Careers", href: "/careers", index: "06" },
+  { label: "Contact", href: "/#contact", index: "07" },
 ];
 
 export const allSectionNavItems: NavItem[] = [
   { label: "Services", href: "/#services", index: "01" },
   { label: "Products", href: "/#products", index: "02" },
-  { label: "Team", href: "/team", index: "03" },
-  { label: "Blog", href: "/blog", index: "04" },
-  { label: "Careers", href: "/careers", index: "05" },
-  { label: "Contact", href: "/#contact", index: "06" },
+  { label: "Work", href: "/work", index: "03" },
+  { label: "Team", href: "/team", index: "04" },
+  { label: "Blog", href: "/blog", index: "05" },
+  { label: "Careers", href: "/careers", index: "06" },
+  { label: "Contact", href: "/#contact", index: "07" },
 ];
 
 export const footerNavLinks = {
@@ -35,6 +37,7 @@ export const footerNavLinks = {
     { label: "Proprietary Products", href: "/#products" },
   ],
   company: [
+    { label: "Proof of Work / Case Studies", href: "/work" },
     { label: "Our Team", href: "/team" },
     { label: "Perspectives & Blog", href: "/blog" },
     { label: "Careers", href: "/careers" },
