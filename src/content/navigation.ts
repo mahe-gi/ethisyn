@@ -40,8 +40,14 @@ export const footerNavLinks = {
     { label: "Careers", href: "/careers" },
     { label: "Start a Project", href: "/#contact" },
     { label: "LinkedIn", href: siteConfig.social.linkedin, isExternal: true },
-    { label: "Google Profile", href: siteConfig.social.googleBusinessProfile, isExternal: true },
-    { label: siteConfig.contactEmail, href: `mailto:${siteConfig.contactEmail}`, isExternal: true },
+    { label: "Google Business Profile", href: siteConfig.social.googleBusinessProfile, isExternal: true },
+    { label: "Wellfound Profile", href: siteConfig.social.wellfound || "https://wellfound.com/company/ethisyn", isExternal: true },
+    { label: "GoodFirms Listing", href: siteConfig.social.goodfirms || "https://www.goodfirms.co/company/ethisyn", isExternal: true },
   ],
-  legal: [{ label: "Privacy Policy", href: "/privacy" }],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Inquiries: hello@ethisyn.in", href: "mailto:hello@ethisyn.in", isExternal: true },
+    { label: "Careers: careers@ethisyn.in", href: "mailto:careers@ethisyn.in", isExternal: true },
+    { label: "Legal: legal@ethisyn.in", href: "mailto:legal@ethisyn.in", isExternal: true },
+  ],
 };

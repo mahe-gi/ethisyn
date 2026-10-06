@@ -75,9 +75,13 @@ export default function PrivacyPage() {
           <div className="space-y-3">
             <h2 className="text-xl font-medium text-white">5. Your Rights & Contact</h2>
             <p>
-              You have the right to request a copy of any personal data we hold about you or ask us to delete it permanently. To make a request, email us directly at{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="underline text-white">
-                {siteConfig.contactEmail}
+              You have the right to request a copy of any personal data we hold about you or ask us to delete it permanently. For privacy inquiries, compliance, or legal matters, email us directly at{" "}
+              <a href={`mailto:${siteConfig.emails.legal}`} className="underline text-white">
+                {siteConfig.emails.legal}
+              </a>
+              . For general studio inquiries, reach us at{" "}
+              <a href={`mailto:${siteConfig.emails.general}`} className="underline text-white">
+                {siteConfig.emails.general}
               </a>
               .
             </p>

@@ -43,8 +43,23 @@ export function generateOrganizationSchema() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        contactType: "client inquiries",
-        email: siteConfig.contactEmail,
+        contactType: "customer support & inquiries",
+        email: siteConfig.emails.general,
+        telephone: siteConfig.contactPhone,
+        availableLanguage: ["English", "Telugu", "Hindi"],
+        areaServed: "Worldwide",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "recruitment & talent careers",
+        email: siteConfig.emails.careers,
+        availableLanguage: ["English", "Telugu", "Hindi"],
+        areaServed: "Worldwide",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "legal & compliance",
+        email: siteConfig.emails.legal,
         availableLanguage: ["English", "Telugu", "Hindi"],
         areaServed: "Worldwide",
       },
@@ -52,6 +67,8 @@ export function generateOrganizationSchema() {
     sameAs: [
       siteConfig.social.linkedin,
       siteConfig.social.googleBusinessProfile,
+      ...(siteConfig.social.wellfound ? [siteConfig.social.wellfound] : []),
+      ...(siteConfig.social.goodfirms ? [siteConfig.social.goodfirms] : []),
       ...(siteConfig.social.github ? [siteConfig.social.github] : []),
     ],
     employee: teamContent.members.map((member) => ({
@@ -120,7 +137,7 @@ export function generateProfessionalServiceSchema() {
       "@type": "GeoCoordinates",
       addressCountry: "India",
     },
-    telephone: siteConfig.contactEmail,
+    telephone: siteConfig.contactPhone,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

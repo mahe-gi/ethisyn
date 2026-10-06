@@ -41,17 +41,37 @@ export function Footer() {
               {siteConfig.tagline}
             </p>
 
-            <div className="space-y-1 text-xs text-[#71717A] uppercase tracking-wider">
-              <p>{siteConfig.location.formatted}</p>
-              <p>
-                Direct:{" "}
-                <a
-                  href={`mailto:${siteConfig.contactEmail}`}
-                  className="text-white hover:underline"
-                >
-                  {siteConfig.contactEmail}
-                </a>
-              </p>
+            <div className="space-y-2 text-xs text-[#71717A]">
+              <p className="uppercase tracking-wider">{siteConfig.location.formatted}</p>
+              <div className="pt-1 space-y-1.5 text-xs text-[#A1A1AA]">
+                <p>
+                  <span className="text-[#71717A]">Inquiries:</span>{" "}
+                  <a
+                    href={`mailto:${siteConfig.emails.general}`}
+                    className="text-white hover:underline"
+                  >
+                    {siteConfig.emails.general}
+                  </a>
+                </p>
+                <p>
+                  <span className="text-[#71717A]">Careers:</span>{" "}
+                  <a
+                    href={`mailto:${siteConfig.emails.careers}`}
+                    className="text-white hover:underline"
+                  >
+                    {siteConfig.emails.careers}
+                  </a>
+                </p>
+                <p>
+                  <span className="text-[#71717A]">Legal:</span>{" "}
+                  <a
+                    href={`mailto:${siteConfig.emails.legal}`}
+                    className="text-white hover:underline"
+                  >
+                    {siteConfig.emails.legal}
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -102,13 +122,22 @@ export function Footer() {
                 </li>
               ))}
               {footerNavLinks.legal.map((link) => (
-                <li key={link.label} className="pt-2">
-                  <Link
-                    href={link.href}
-                    className="text-[#71717A] hover:text-white transition-colors duration-150 text-xs"
-                  >
-                    {link.label}
-                  </Link>
+                <li key={link.label} className="pt-1.5">
+                  {link.isExternal ? (
+                    <a
+                      href={link.href}
+                      className="text-[#71717A] hover:text-white transition-colors duration-150 text-xs inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-[#71717A] hover:text-white transition-colors duration-150 text-xs"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

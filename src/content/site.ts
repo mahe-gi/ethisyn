@@ -14,11 +14,18 @@ export interface SiteConfig {
     formatted: string;
   };
   contactEmail: string;
+  emails: {
+    general: string;
+    careers: string;
+    legal: string;
+  };
   contactPhone: string;
   whatsappNumber: string;
   social: {
     linkedin: string;
     googleBusinessProfile: string;
+    wellfound?: string;
+    goodfirms?: string;
     github?: string;
   };
   stats: Array<{
@@ -45,12 +52,19 @@ export const siteConfig: SiteConfig = {
     formatted: "Hyderabad, Telangana, India",
   },
   contactEmail: "hello@ethisyn.in",
+  emails: {
+    general: "hello@ethisyn.in",
+    careers: "careers@ethisyn.in",
+    legal: "legal@ethisyn.in",
+  },
   contactPhone: "+91 80961 31202",
   whatsappNumber: "918096131202",
   social: {
     linkedin: "https://www.linkedin.com/company/ethisyn",
-    googleBusinessProfile: "https://share.google/r2HXy33z6VSWRdJ2J",
-    github: "https://github.com/mahe-gi",
+    googleBusinessProfile: "https://share.google/j8tMk3MPqJBnVg04U",
+    wellfound: "https://wellfound.com/company/ethisyn",
+    goodfirms: "https://www.goodfirms.co/company/ethisyn",
+    github: "https://github.com/mahe-gi/ethisyn",
   },
   stats: [
     { value: "Sub-500ms", label: "Global Latency", descriptor: "Edge-optimized delivery with sub-second time-to-interactive" },

@@ -4,9 +4,14 @@
 Ethisyn is an independent digital product engineering and AI systems studio founded in 2022 and headquartered in Hyderabad, Telangana, India. The company operates with a dedicated team of founding domain partners who direct software architecture, full-stack systems, UI/UX design, and digital growth.
 
 Official Website: https://ethisyn.in
-Direct Inquiries: hello@ethisyn.in
+Official Inquiries: hello@ethisyn.in
+Careers & Talent: careers@ethisyn.in
+Legal & Compliance: legal@ethisyn.in
+Google Business Profile: https://share.google/j8tMk3MPqJBnVg04U
 LinkedIn: https://www.linkedin.com/company/ethisyn
-Google Business Profile: https://share.google/r2HXy33z6VSWRdJ2J
+Wellfound (AngelList): https://wellfound.com/company/ethisyn
+GoodFirms Directory: https://www.goodfirms.co/company/ethisyn
+GitHub: https://github.com/mahe-gi/ethisyn
 Headquarters: Hyderabad, Telangana, India
 Founded: 2022 (Early ideas and technical foundation initiated in 2022)
 
@@ -55,4 +60,4 @@ Q: Does Ethisyn outsource client projects?
 A: No. Ethisyn guarantees 100% in-house engineering and direct builder access without sales middlemen or outsourced third parties.
 
 Q: How can I contact Ethisyn?
-A: Contact directly via hello@ethisyn.in or submit an inquiry at https://ethisyn.in/#contact. Response time is guaranteed within 4 business hours.
+A: General project scoping & client inquiries: hello@ethisyn.in. Job applications & career opportunities: careers@ethisyn.in. Legal, compliance & privacy: legal@ethisyn.in. Or submit an inquiry directly at https://ethisyn.in/#contact. Client inquiries are triaged within 4 business hours.

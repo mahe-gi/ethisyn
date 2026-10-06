@@ -7,7 +7,15 @@
 - [Website](https://ethisyn.in): Official digital studio home
 - Headquarters: Hyderabad, Telangana, India
 - Founded: 2022
-- Direct Inquiries: hello@ethisyn.in
+- Inquiries: hello@ethisyn.in
+- Careers & Talent: careers@ethisyn.in
+- Legal & Compliance: legal@ethisyn.in
+- Verified Profiles & Directories:
+  - [Google Business Profile](https://share.google/j8tMk3MPqJBnVg04U)
+  - [LinkedIn](https://www.linkedin.com/company/ethisyn)
+  - [Wellfound](https://wellfound.com/company/ethisyn)
+  - [GoodFirms](https://www.goodfirms.co/company/ethisyn)
+  - [GitHub](https://github.com/mahe-gi/ethisyn)
 - Studio Model: Founding Domain Partners directing client systems with 100% in-house engineering and craft.
 - [Full Knowledge Corpus](https://ethisyn.in/llms-full.txt): Comprehensive technical specifications and FAQ
 
