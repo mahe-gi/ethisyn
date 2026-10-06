@@ -101,7 +101,7 @@ export function AutonomousCompanion() {
       };
     }
 
-    // 3. Tech stack & architecture
+    // 3. Tech stack & architecture (Tech-agnostic)
     if (
       q.includes("tech stack") ||
       q.includes("stack") ||
@@ -114,11 +114,15 @@ export function AutonomousCompanion() {
       q.includes("typescript") ||
       q.includes("database") ||
       q.includes("cloud") ||
-      q.includes("aws")
+      q.includes("aws") ||
+      q.includes("go") ||
+      q.includes("node") ||
+      q.includes("mobile") ||
+      q.includes("flutter")
     ) {
       return {
-        text: "Our production stack includes Next.js, React, TypeScript, Tailwind CSS, and React Native for mobile. On the backend, we run Python (FastAPI), Node.js, PostgreSQL, Supabase, and AWS/Vercel. For AI, we use LangGraph, OpenAI, Claude, and custom voice agent pipelines.",
-        actionLink: { label: "Explore Technical Stack", href: "/#services" },
+        text: "We are architecture-first and tech-agnostic: we don't force a single tool. We engineer on React, Vue, Next.js, Node.js, Python (FastAPI), Go, Flutter, React Native, and deploy on AWS, GCP, Azure, and Cloudflare. We pick the exact architecture your business needs.",
+        actionLink: { label: "Explore Our Architecture", href: "/#services" },
       };
     }
 
@@ -140,7 +144,7 @@ export function AutonomousCompanion() {
       };
     }
 
-    // 5. Scheduling a call & contact
+    // 5. Scheduling a call & contact / WhatsApp
     if (
       q.includes("call") ||
       q.includes("contact") ||
@@ -151,15 +155,33 @@ export function AutonomousCompanion() {
       q.includes("consult") ||
       q.includes("email") ||
       q.includes("hire") ||
-      q.includes("start a project")
+      q.includes("start a project") ||
+      q.includes("phone") ||
+      q.includes("number")
     ) {
       return {
-        text: "You can submit your project requirements via our scope form or email us at hello@ethisyn.in. A founding engineer will review your brief and schedule a direct technical consultation within 4 business hours.",
-        actionLink: { label: "Schedule Technical Consultation", href: "/#contact" },
+        text: "You can reach us directly on WhatsApp at +91 80961 31202 or email hello@ethisyn.in. Our founding team responds within 4 business hours with direct technical advice.",
+        actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
       };
     }
 
-    // 6. AI Voice agents & automation
+    // 6. Reverse Recruiting / Job Application Service
+    if (
+      q.includes("job") ||
+      q.includes("career") ||
+      q.includes("resume") ||
+      q.includes("reverse recruit") ||
+      q.includes("apply") ||
+      q.includes("application") ||
+      q.includes("interview")
+    ) {
+      return {
+        text: "Our Job Application & Reverse Recruiting Service assigns you a dedicated talent associate who tailors your resume keywords, identifies verified roles, and submits 150+ to 300+ applications monthly so you can focus 100% on interview prep.",
+        actionLink: { label: "Explore Reverse Recruiting", href: "/job-application-service" },
+      };
+    }
+
+    // 7. AI Voice agents & automation (AUTOMATE pillar)
     if (
       q.includes("voice") ||
       q.includes("agent") ||
@@ -169,61 +191,57 @@ export function AutonomousCompanion() {
       (q.includes("ai") && !q.includes("detail"))
     ) {
       return {
-        text: "We engineer autonomous AI voice agents that speak naturally to answer customer calls and book appointments, custom WhatsApp workflows, and multi-agent systems that automate repetitive business operations 24/7.",
-        actionLink: { label: "View AI & Automations", href: "/#services" },
+        text: "Under our AUTOMATE pillar, we engineer autonomous AI agents, 24/7 inbound voice triage, CRM synchronizations, and intelligent data extraction that eliminate 15+ hours of manual operations every week.",
+        actionLink: { label: "Explore AI & Automation", href: "/#services" },
       };
     }
 
-    // 7. Proprietary products / R&D
+    // 8. Digital marketing & growth (GROW pillar)
     if (
-      q.includes("product") ||
-      q.includes("r&d") ||
-      q.includes("career") ||
-      q.includes("synapse") ||
-      q.includes("pulse") ||
-      q.includes("internal tool")
+      q.includes("marketing") ||
+      q.includes("seo") ||
+      q.includes("ad") ||
+      q.includes("meta") ||
+      q.includes("google ad") ||
+      q.includes("growth")
     ) {
       return {
-        text: "We are developing 3 proprietary products in active R&D: 1) Student & Job Career Suite (AI voice mock interviews & ATS resume optimizer), 2) Synapse Operations Hub (GST invoicing & lead hub), and 3) PulseEngine (Local Google Maps SEO copilot).",
-        actionLink: { label: "Explore Products in R&D", href: "/#products" },
+        text: "Under our GROW pillar, we engineer full-funnel acquisition: Local SEO and Google Business dominance, high-intent Google Search Ads, precision Meta campaigns with server-side CAPI tracking, and sub-second landing pages.",
+        actionLink: { label: "Explore Growth Marketing", href: "/#services" },
       };
     }
 
-    // 8. Why Ethisyn vs agencies
+    // 9. Video & Creative content (CREATE pillar)
     if (
-      q.includes("why") ||
-      q.includes("agency") ||
-      q.includes("differen") ||
-      q.includes("outsource") ||
-      q.includes("middlemen")
+      q.includes("video") ||
+      q.includes("create") ||
+      q.includes("reel") ||
+      q.includes("content") ||
+      q.includes("motion")
     ) {
       return {
-        text: "Unlike traditional agencies that pass you through sales middlemen and outsource to mystery freelancers, Ethisyn gives you direct access to 11 founding engineers in Hyderabad. We deliver sub-second performance, clean code you own 100%, and rapid 2-week sprints.",
-        actionLink: { label: "Read Our Manifesto", href: "/#manifesto" },
+        text: "Under our CREATE pillar, we produce high-retention video: technical product walkthroughs, short-form Reels and Shorts, cinematic brand promotional films, and performance ad creatives.",
+        actionLink: { label: "Explore Creative Production", href: "/#services" },
       };
     }
 
-    // 9. Core services overview (catch-all for services)
+    // 10. Core services overview (The 4 Pillars)
     if (
       q.includes("service") ||
       q.includes("what do you do") ||
       q.includes("capabilities") ||
-      q.includes("build") ||
-      q.includes("website") ||
-      q.includes("app") ||
-      q.includes("seo") ||
-      q.includes("design")
+      q.includes("build")
     ) {
       return {
-        text: "Ethisyn offers 6 core capabilities: high-speed web platforms (Next.js), iOS & Android apps (React Native), 24/7 AI voice agents & WhatsApp automations, digital growth & local SEO, Figma UI/UX design systems, and cloud infrastructure with 24/7 maintenance.",
-        actionLink: { label: "Explore All Services", href: "/#services" },
+        text: "Ethisyn operates across 4 core pillars: 1) BUILD (Web, Mobile & SaaS), 2) AUTOMATE (AI Agents & Operations), 3) GROW (Local SEO & Performance Marketing), and 4) CREATE (Video & Content), plus our dedicated Reverse Recruiting Service.",
+        actionLink: { label: "Explore All Pillars", href: "/#services" },
       };
     }
 
     // Default helpful fallback
     return {
-      text: "I'm here to answer any questions about Ethisyn. I can help with our engineering services, pricing models, project timelines, tech stack, or connecting you directly with our founding engineers in Hyderabad.",
-      actionLink: { label: "Start a Consultation", href: "/#contact" },
+      text: "I'm Syn, your Ethisyn studio assistant! I can help you with our 4 pillars (BUILD, AUTOMATE, GROW, CREATE), Reverse Recruiting service, pricing models, timelines, or connecting you directly with our founding team on WhatsApp.",
+      actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
     };
   };
 

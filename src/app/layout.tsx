@@ -12,6 +12,7 @@ import {
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { AutonomousCompanion } from "@/components/ui/AutonomousCompanion";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -171,6 +172,9 @@ export default function RootLayout({
 
         {/* Persistent Site Footer */}
         <Footer />
+
+        {/* Studio Mascot Assistant Syn */}
+        <AutonomousCompanion />
       </body>
     </html>
   );
