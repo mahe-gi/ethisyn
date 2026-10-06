@@ -191,13 +191,6 @@ export function ContactForm({
     const whatsappUrl = buildWhatsAppUrl(validationResult.data);
     const summaryText = buildInquirySummary(validationResult.data);
 
-    // Fire-and-forget background log for server record
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validationResult.data),
-    }).catch(() => {});
-
     // Open direct email client
     try {
       window.location.href = mailtoUrl;
@@ -250,12 +243,6 @@ export function ContactForm({
     const mailtoUrl = buildMailtoUrl(validationResult.data);
     const whatsappUrl = buildWhatsAppUrl(validationResult.data);
     const summaryText = buildInquirySummary(validationResult.data);
-
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validationResult.data),
-    }).catch(() => {});
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
