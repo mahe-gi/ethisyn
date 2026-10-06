@@ -3,14 +3,19 @@ import { describe, it, expect } from "vitest";
 import { ContactForm } from "@/components/ui/ContactForm";
 
 describe("ContactForm Component", () => {
-  it("renders all required form inputs and service options", () => {
+  it("renders all required form inputs and action buttons", () => {
     render(<ContactForm />);
 
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/what are you looking to build/i)).toBeInTheDocument();
-    expect(screen.getByText(/BUILD: Software & Digital Products/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/tell us about your project/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /send project inquiry/i })).toBeInTheDocument();
+  });
+
+  it("renders optional WhatsApp button when showWhatsAppButton is enabled", () => {
+    render(<ContactForm showWhatsAppButton />);
+
+    expect(screen.getByRole("button", { name: /chat on whatsapp/i })).toBeInTheDocument();
   });
 
   it("shows client-side validation error banner when submitted empty", async () => {

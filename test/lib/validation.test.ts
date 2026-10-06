@@ -19,13 +19,11 @@ describe("Validation and Sanitization", () => {
     expect(result.success).toBe(true);
   });
 
-  it("rejects when no services are selected", () => {
+  it("rejects when email is invalid", () => {
     const invalidData = {
       name: "Alex Smith",
-      email: "alex@company.com",
-      services: [],
+      email: "not-an-email",
       message: "Looking for consultation.",
-      consent: true,
       honeypot: "",
     };
 

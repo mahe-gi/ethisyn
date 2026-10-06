@@ -4,61 +4,66 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { Textarea } from "./Textarea";
-import { Select } from "./Select";
-import { Checkbox } from "./Checkbox";
 import { Alert } from "./Alert";
 import {
   contactFormSchema,
-  availableServices,
   ContactFormData,
-  ContactSubmissionResult,
 } from "@/lib/validation";
 import { trackEvent } from "@/lib/analytics";
 import { siteConfig } from "@/content/site";
-import { User, Mail, Phone, Building, Check } from "lucide-react";
+import { Mail, Phone, Check, Copy, MessageSquare } from "lucide-react";
 
 type FormState =
   | { type: "idle" }
   | { type: "submitting" }
-  | { type: "success"; message: string }
+  | {
+      type: "success";
+      message: string;
+      mailtoUrl?: string;
+      whatsappUrl?: string;
+      summaryText?: string;
+    }
   | { type: "error"; message: string; fieldErrors?: Record<string, string> }
   | { type: "offline"; message: string }
   | { type: "reconnected"; message: string }
   | { type: "timeout"; message: string };
-
-const budgetOptions = [
-  { value: "Under ₹50,000 / $600", label: "Under ₹50,000 / $600 (Small fix or mini site)" },
-  { value: "₹50,000 - ₹1,50,000 / $600 - $1,800", label: "₹50,000 - ₹1,50,000 / $600 - $1,800 (Full website or MVP)" },
-  { value: "₹1,50,000 - ₹5,00,000 / $1,800 - $6,000", label: "₹1,50,000 - ₹5,00,000 / $1,800 - $6,000 (Complete app / AI automation)" },
-  { value: "₹5,00,000+ / $6,000+", label: "₹5,00,000+ / $6,000+ (Enterprise product or custom system)" },
-  { value: "Undecided", label: "Not sure yet / Need consultation" },
-];
 
 const initialFormData: ContactFormData = {
   name: "",
   email: "",
   phone: "",
   company: "",
-  services: ["BUILD: Software & Digital Products"],
+  services: [],
   budget: "",
   message: "",
-  consent: false,
+  consent: true,
   honeypot: "",
 };
 
 export interface ContactFormProps {
   initialService?: string;
+  submitLabel?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  showWhatsAppButton?: boolean;
 }
 
-export function ContactForm({ initialService }: ContactFormProps = {}) {
+export function ContactForm({
+  initialService,
+  submitLabel = "Send Project Inquiry",
+  messageLabel = "Tell us about your project",
+  messagePlaceholder = "What are you looking to build, automate, or scale? Any timeline or details...",
+  showWhatsAppButton = false,
+}: ContactFormProps = {}) {
   const [formData, setFormData] = useState<ContactFormData>(() => ({
     ...initialFormData,
-    services: initialService ? [initialService] : initialFormData.services,
+    services: initialService ? [initialService] : [],
   }));
   const [state, setState] = useState<FormState>({ type: "idle" });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isOnline, setIsOnline] = useState<boolean>(true);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const errorSummaryRef = useRef<HTMLDivElement>(null);
 
@@ -72,7 +77,7 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
         if (prev.type === "offline") {
           return {
             type: "reconnected",
-            message: "Your connection has been restored. You can submit your inquiry now.",
+            message: "Your connection has been restored.",
           };
         }
         return prev;
@@ -97,23 +102,17 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
   }, []);
 
   const handleFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
 
     if (!hasInteracted) {
       setHasInteracted(true);
       trackEvent("contact_form_start");
     }
 
-    if (type === "checkbox") {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear field-specific error as user types
     if (fieldErrors[name]) {
       setFieldErrors((prev) => {
         const next = { ...prev };
@@ -123,27 +122,29 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
     }
   };
 
-  const handleServiceToggle = (service: string) => {
-    if (!hasInteracted) {
-      setHasInteracted(true);
-      trackEvent("contact_form_start");
+  const buildInquirySummary = (data: ContactFormData) => {
+    const lines = [
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+    ];
+    if (data.phone) lines.push(`Phone / WhatsApp: ${data.phone}`);
+    if (data.company) lines.push(`Company: ${data.company}`);
+    if (data.services && data.services.length > 0) {
+      lines.push(`Interest: ${data.services.join(", ")}`);
     }
+    lines.push("", "Project Details / Message:", data.message);
+    return lines.join("\n");
+  };
 
-    setFormData((prev) => {
-      const exists = prev.services.includes(service);
-      const nextServices = exists
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service];
-      return { ...prev, services: nextServices };
-    });
+  const buildMailtoUrl = (data: ContactFormData) => {
+    const subject = `Project Inquiry — ${data.name}${data.company ? ` (${data.company})` : ""}`;
+    const body = `Hi Ethisyn Team,\n\nI would like to inquire about working together.\n\n--- INQUIRY DETAILS ---\n${buildInquirySummary(data)}\n\nLooking forward to hearing from you!`;
+    return `mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
-    if (fieldErrors.services) {
-      setFieldErrors((prev) => {
-        const next = { ...prev };
-        delete next.services;
-        return next;
-      });
-    }
+  const buildWhatsAppUrl = (data: ContactFormData) => {
+    const text = `Hi Ethisyn Team! My name is ${data.name}${data.company ? ` from ${data.company}` : ""}.\n\nMessage:\n${data.message}\n\nEmail: ${data.email}${data.phone ? ` | Phone: ${data.phone}` : ""}`;
+    return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -185,69 +186,95 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
     }
 
     setFieldErrors({});
-    setState({ type: "submitting" });
 
-    // 10-second timeout guard
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const mailtoUrl = buildMailtoUrl(validationResult.data);
+    const whatsappUrl = buildWhatsAppUrl(validationResult.data);
+    const summaryText = buildInquirySummary(validationResult.data);
 
+    // Fire-and-forget background log for server record
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validationResult.data),
+    }).catch(() => {});
+
+    // Open direct email client
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validationResult.data),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-
-      const result: ContactSubmissionResult = await response.json();
-
-      if (!response.ok || !result.success) {
-        if (result.fieldErrors) {
-          setFieldErrors(result.fieldErrors);
-        }
-        setState({
-          type: "error",
-          message:
-            result.message ||
-            `We were unable to process your request. Please email us directly at ${siteConfig.contactEmail}.`,
-          fieldErrors: result.fieldErrors,
-        });
-        return;
-      }
-
-      // Success
-      setState({
-        type: "success",
-        message:
-          "Thank you for reaching out! We received your project details and will respond within 4 business hours with an honest estimate and roadmap.",
-      });
-
-      trackEvent("contact_form_submit", { success: true });
-      setFormData(initialFormData);
-    } catch (err: unknown) {
-      clearTimeout(timeoutId);
-
-      if (err instanceof Error && err.name === "AbortError") {
-        setState({
-          type: "timeout",
-          message: `Request timed out. Please check your connection or reach out directly at ${siteConfig.contactEmail}.`,
-        });
-      } else {
-        setState({
-          type: "error",
-          message: `A network error occurred. Please email us directly at ${siteConfig.contactEmail}.`,
-        });
-      }
+      window.location.href = mailtoUrl;
+    } catch {
+      // Guard
     }
+
+    trackEvent("contact_form_submit", { success: true, method: "direct_email" });
+
+    setState({
+      type: "success",
+      message: `Your inquiry has been formatted and opened in your email app addressed to ${siteConfig.contactEmail}. We will review your project and reply within 4 business hours.`,
+      mailtoUrl,
+      whatsappUrl,
+      summaryText,
+    });
+  };
+
+  const handleWhatsAppSubmit = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const validationResult = contactFormSchema.safeParse(formData);
+
+    if (!validationResult.success) {
+      const formattedErrors: Record<string, string> = {};
+      validationResult.error.errors.forEach((err) => {
+        const fieldName = err.path[0] as string;
+        if (!formattedErrors[fieldName]) {
+          formattedErrors[fieldName] = err.message;
+        }
+      });
+
+      setFieldErrors(formattedErrors);
+      setState({
+        type: "error",
+        message: "We couldn’t send your message. Please correct the highlighted fields below.",
+        fieldErrors: formattedErrors,
+      });
+
+      setTimeout(() => {
+        if (typeof errorSummaryRef.current?.scrollIntoView === "function") {
+          errorSummaryRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }, 50);
+      return;
+    }
+
+    setFieldErrors({});
+
+    const mailtoUrl = buildMailtoUrl(validationResult.data);
+    const whatsappUrl = buildWhatsAppUrl(validationResult.data);
+    const summaryText = buildInquirySummary(validationResult.data);
+
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validationResult.data),
+    }).catch(() => {});
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    trackEvent("contact_form_submit", { success: true, method: "direct_whatsapp" });
+
+    setState({
+      type: "success",
+      message: `Your inquiry has been formatted and opened in WhatsApp. You can also send via email to ${siteConfig.contactEmail} below.`,
+      mailtoUrl,
+      whatsappUrl,
+      summaryText,
+    });
   };
 
   return (
     <div className="w-full">
-      {/* Accessible Notifications / Error Summary */}
+      {/* Alert Banner */}
       {state.type !== "idle" && state.type !== "submitting" && (
-        <div ref={errorSummaryRef} className="mb-8">
+        <div ref={errorSummaryRef} className="mb-6">
           <Alert
             variant={
               state.type === "success"
@@ -260,72 +287,95 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
             }
             title={
               state.type === "success"
-                ? "Inquiry Received"
+                ? "Inquiry Ready"
                 : state.type === "offline"
                 ? "You Are Offline"
                 : state.type === "timeout"
                 ? "Connection Timeout"
-                : Object.keys(fieldErrors).length > 0
-                ? "Please Review Form"
-                : "Email Delivery Notice"
+                : "Please Review Form"
             }
           >
-            <div className="space-y-3">
-              <p>{state.message}</p>
-              {state.type === "error" && Object.keys(fieldErrors).length === 0 && (
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <a
-                    href={`mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(
-                      `Project Inquiry: ${formData.name || "Client"}`
-                    )}&body=${encodeURIComponent(
-                      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "N/A"}\nCompany: ${formData.company || "N/A"}\nServices: ${formData.services.join(", ")}\nBudget: ${formData.budget || "N/A"}\n\nProject Scope:\n${formData.message}`
-                    )}`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-black font-medium text-xs hover:bg-zinc-200 transition-colors"
-                  >
-                    <Mail className="w-3.5 h-3.5" />
-                    <span>Send via Email Client (Pre-filled)</span>
-                  </a>
-                  <a
-                    href={`https://wa.me/?text=${encodeURIComponent(
-                      `Hi Ethisyn team, my name is ${formData.name || "Client"}.\nServices: ${formData.services.join(", ")}\nBudget: ${formData.budget || "N/A"}\n\nScope:\n${formData.message}\n\nEmail: ${formData.email} | Phone: ${formData.phone || "N/A"}`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 text-black font-medium text-xs hover:bg-emerald-400 transition-colors"
-                  >
-                    <span>Send via WhatsApp</span>
-                  </a>
-                </div>
-              )}
-            </div>
+            <p>{state.message}</p>
           </Alert>
         </div>
       )}
 
       {/* Success State View */}
       {state.type === "success" ? (
-        <div className="p-8 border border-white/[0.08] rounded-2xl bg-[#080808] space-y-6 text-center sm:text-left animate-in fade-in duration-300">
-          <div className="space-y-2">
-            <h4 className="text-2xl font-medium text-white">
-              We have received your project scope.
-            </h4>
-            <p className="text-sm text-[#A1A1AA] leading-relaxed max-w-xl">
-              One of our founding engineers in Hyderabad will review your requirements and respond within 4 business hours.
-            </p>
+        <div className="p-6 sm:p-8 border border-emerald-500/20 rounded-2xl bg-[#080808] space-y-6 text-center sm:text-left animate-in fade-in duration-300">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <Check className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-lg font-medium text-white">
+                Inquiry Opened in Email
+              </h4>
+              <p className="text-xs text-emerald-400 uppercase tracking-widest font-medium">
+                Direct to {siteConfig.contactEmail} • Response within 4 business hours
+              </p>
+            </div>
           </div>
-          <div className="pt-2">
+
+          <p className="text-sm text-[#D4D4D8] leading-relaxed">
+            {state.message}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            {state.mailtoUrl && (
+              <a
+                href={state.mailtoUrl}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Open Email App Again</span>
+              </a>
+            )}
+
+            {state.whatsappUrl && (
+              <a
+                href={state.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 text-black font-semibold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-colors"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Send via WhatsApp</span>
+              </a>
+            )}
+
+            {state.summaryText && (
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(state.summaryText || "");
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2500);
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.12] text-white text-xs uppercase tracking-wider hover:bg-white/[0.1] transition-colors"
+              >
+                <Copy className="w-4 h-4" />
+                <span>{copied ? "Copied!" : "Copy Details"}</span>
+              </button>
+            )}
+          </div>
+
+          <div className="pt-4 border-t border-white/[0.08]">
             <Button
               type="button"
               variant="outline"
-              size="md"
-              onClick={() => setState({ type: "idle" })}
+              size="sm"
+              onClick={() => {
+                setState({ type: "idle" });
+                setFormData(initialFormData);
+              }}
             >
-              Submit another inquiry
+              Start New Inquiry
             </Button>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="space-y-5">
           {/* Honeypot field (hidden from real users, traps spam bots) */}
           <div className="hidden" aria-hidden="true">
             <label htmlFor="form-honeypot">Leave this blank</label>
@@ -340,49 +390,8 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
             />
           </div>
 
-          {/* Service Multi-Select Checkboxes */}
-          <div className="space-y-3">
-            <label className="block text-xs uppercase tracking-wider font-medium text-brand-faint select-none">
-              Services Needed <span className="text-emerald-400">*</span>
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {availableServices.map((service) => {
-                const isSelected = formData.services.includes(service);
-                return (
-                  <button
-                    key={service}
-                    type="button"
-                    onClick={() => handleServiceToggle(service)}
-                    className={`flex items-center gap-3 p-3.5 text-left border rounded-xl text-xs transition-all duration-150 cursor-pointer ${
-                      isSelected
-                        ? "bg-white/[0.08] border-white text-white font-medium shadow-sm"
-                        : "bg-[#080808] border-white/[0.06] text-[#A1A1AA] hover:border-white/[0.15] hover:text-white"
-                    }`}
-                  >
-                    <span
-                      className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${
-                        isSelected
-                          ? "border-white bg-white text-black"
-                          : "border-white/[0.12] bg-transparent"
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {isSelected && <Check className="w-3 h-3 text-black" strokeWidth={3} />}
-                    </span>
-                    <span>{service}</span>
-                  </button>
-                );
-              })}
-            </div>
-            {fieldErrors.services && (
-              <p className="text-xs text-rose-400" role="alert">
-                {fieldErrors.services}
-              </p>
-            )}
-          </div>
-
           {/* Name & Email Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               id="form-name"
               name="name"
@@ -392,8 +401,7 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
               value={formData.name}
               onChange={handleFieldChange}
               error={fieldErrors.name}
-              placeholder="Jane Doe"
-              leftIcon={<User className="w-4 h-4" />}
+              placeholder="e.g. Alex Chen"
             />
 
             <Input
@@ -406,104 +414,59 @@ export function ContactForm({ initialService }: ContactFormProps = {}) {
               value={formData.email}
               onChange={handleFieldChange}
               error={fieldErrors.email}
-              placeholder="jane@company.com"
+              placeholder="alex@company.com"
               leftIcon={<Mail className="w-4 h-4" />}
             />
           </div>
 
-          {/* Phone & Company Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Input
-              id="form-phone"
-              name="phone"
-              label="WhatsApp or Phone (Optional)"
-              type="tel"
-              autoComplete="tel"
-              value={formData.phone}
-              onChange={handleFieldChange}
-              placeholder="+91 98765 43210"
-              leftIcon={<Phone className="w-4 h-4" />}
-            />
-
-            <Input
-              id="form-company"
-              name="company"
-              label="Company or Startup (Optional)"
-              autoComplete="organization"
-              value={formData.company}
-              onChange={handleFieldChange}
-              placeholder="Acme Corp"
-              leftIcon={<Building className="w-4 h-4" />}
-            />
-          </div>
-
-          {/* Budget Estimate */}
-          <Select
-            id="form-budget"
-            name="budget"
-            label="Estimated Budget (Optional)"
-            placeholder="Select budget range..."
-            options={budgetOptions}
-            value={formData.budget}
+          {/* Phone / WhatsApp (Optional) */}
+          <Input
+            id="form-phone"
+            name="phone"
+            label="Phone or WhatsApp (Optional)"
+            type="tel"
+            autoComplete="tel"
+            value={formData.phone}
             onChange={handleFieldChange}
+            placeholder="+91 98765 43210"
+            leftIcon={<Phone className="w-4 h-4" />}
           />
 
           {/* Project Details */}
           <Textarea
             id="form-message"
             name="message"
-            label="What are you looking to build?"
+            label={messageLabel}
             isRequired
             rows={4}
             value={formData.message}
             onChange={handleFieldChange}
             error={fieldErrors.message}
-            placeholder="Describe what you want to build, any technical preferences, target timeline, or existing systems you want to automate..."
+            placeholder={messagePlaceholder}
           />
 
-          {/* Consent Checkbox */}
-          <div className="pt-1">
-            <Checkbox
-              id="form-consent"
-              name="consent"
-              checked={formData.consent}
-              onChange={handleFieldChange}
-              error={fieldErrors.consent}
-              label="I agree to be contacted by Ethisyn regarding this project inquiry. We respect your privacy and never spam or share your contact information."
-            />
-          </div>
-
-          {/* Submit Action & Direct Channel Alternatives */}
-          <div className="pt-2 space-y-3">
+          {/* Submit Action */}
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Button
               type="submit"
               variant="primary"
               size="lg"
-              loading={state.type === "submitting"}
-              disabled={state.type === "submitting"}
               showArrow
+              className={showWhatsAppButton ? "flex-1 justify-center" : "w-full justify-center"}
             >
-              {state.type === "submitting" ? "Sending inquiry..." : "Send Project Inquiry"}
+              {submitLabel}
             </Button>
 
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-400 pt-1">
-              <span>Direct outreach:</span>
-              <a
-                href={`mailto:${siteConfig.contactEmail}`}
-                className="text-white hover:text-emerald-400 transition-colors font-medium underline underline-offset-4 decoration-zinc-700"
+            {showWhatsAppButton && (
+              <button
+                type="button"
+                onClick={handleWhatsAppSubmit}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-500/50 text-emerald-400 font-medium text-xs uppercase tracking-widest transition-all"
               >
-                {siteConfig.contactEmail}
-              </a>
-              <span className="text-zinc-600">•</span>
-              <a
-                href="https://wa.me/?text=Hi%20Ethisyn%2C%20I%20have%20a%20project%20inquiry."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
-              >
-                Chat on WhatsApp →
-              </a>
-            </div>
+                <MessageSquare className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </button>
+            )}
           </div>
         </form>
       )}

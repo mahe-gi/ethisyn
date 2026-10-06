@@ -22,18 +22,14 @@ export const contactFormSchema = z.object({
     .max(150, "Email must be less than 150 characters."),
   phone: z.string().trim().max(30).optional().or(z.literal("")),
   company: z.string().trim().max(100).optional().or(z.literal("")),
-  services: z
-    .array(z.string())
-    .min(1, "Please select at least one service you need help with."),
+  services: z.array(z.string()).optional().default([]),
   budget: z.string().trim().optional().or(z.literal("")),
   message: z
     .string({ required_error: "Please tell us about your project." })
     .trim()
-    .min(10, "Please share a few details about what you want to build (at least 10 characters).")
+    .min(5, "Please share a few details about what you need (at least 5 characters).")
     .max(2500, "Message must be less than 2500 characters."),
-  consent: z.boolean().refine((val) => val === true, {
-    message: "Please agree to communication so we can reply to you.",
-  }),
+  consent: z.boolean().optional().default(true),
   honeypot: z.string().max(0, "Bot detected.").optional().or(z.literal("")),
 });
 

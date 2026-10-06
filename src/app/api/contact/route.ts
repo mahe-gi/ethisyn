@@ -88,13 +88,7 @@ export async function POST(req: NextRequest) {
     const cleanMessage = sanitizeInput(message);
     const cleanServices = services.map((s) => sanitizeInput(s)).join(", ");
 
-    // 6. Deliver via Resend API
-    const resendApiKey = process.env.RESEND_API_KEY;
-    const targetEmail = process.env.CONTACT_EMAIL || siteConfig.contactEmail;
-    const configuredFrom =
-      process.env.RESEND_FROM_EMAIL || "Ethisyn Projects <inquiry@ethisyn.in>";
-
-    // Inbound Lead payload for system logging
+    // 6. Record inbound lead in system logs
     const leadPayload = {
       name: cleanName,
       email: cleanEmail,
@@ -106,83 +100,16 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString(),
     };
 
-    if (resendApiKey) {
-      let emailSent = false;
-
-      const sendEmail = async (fromAddress: string) => {
-        return fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${resendApiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: fromAddress,
-            to: [targetEmail],
-            reply_to: cleanEmail,
-            subject: `New Project Inquiry from ${cleanName}${cleanCompany !== "N/A" ? ` (${cleanCompany})` : ""}`,
-            text: `New Project Inquiry on Ethisyn:
-
-Name: ${cleanName}
-Email: ${cleanEmail}
-Phone/WhatsApp: ${cleanPhone}
-Company: ${cleanCompany}
-Estimated Budget: ${cleanBudget}
-Selected Services: ${cleanServices}
-
-Project Details:
-${cleanMessage}
-`,
-          }),
-        });
-      };
-
-      try {
-        const emailResponse = await sendEmail(configuredFrom);
-
-        if (!emailResponse.ok) {
-          const errData = await emailResponse.text();
-          console.error("Resend API error with configured sender:", errData);
-
-          // If domain is unverified or rejected, retry with Resend sandbox/onboarding sender
-          if (!configuredFrom.includes("onboarding@resend.dev")) {
-            console.log("Retrying delivery with fallback sender onboarding@resend.dev...");
-            const fallbackResponse = await sendEmail("Ethisyn <onboarding@resend.dev>");
-            if (fallbackResponse.ok) {
-              emailSent = true;
-            } else {
-              const fallbackErr = await fallbackResponse.text();
-              console.error("Resend fallback sender error:", fallbackErr);
-            }
-          }
-        } else {
-          emailSent = true;
-        }
-      } catch (sendErr) {
-        console.error("Failed to connect to email provider:", sendErr);
-      }
-
-      // Always log inbound lead to system logs so the enquiry is NEVER lost
-      console.log("=== INBOUND PROJECT INQUIRY (PERSISTED IN SYSTEM LOGS) ===", JSON.stringify(leadPayload, null, 2));
-
-      if (!emailSent) {
-        return NextResponse.json(
-          {
-            success: false,
-            dispatchError: true,
-            message: "Unable to send email right now. Please email us directly at " + siteConfig.contactEmail,
-          },
-          { status: 502 }
-        );
-      }
-    } else {
-      // In development or when key is not yet set
-      console.log("=== INBOUND PROJECT INQUIRY (MOCK DISPATCH) ===", JSON.stringify(leadPayload, null, 2));
-    }
+    console.log(
+      "=== INBOUND PROJECT INQUIRY (RECORDED) ===",
+      JSON.stringify(leadPayload, null, 2)
+    );
 
     return NextResponse.json({
       success: true,
-      message: "Your project inquiry has been received. We will respond within 24 hours.",
+      message:
+        "Your project inquiry has been recorded. Direct message routed to " +
+        siteConfig.contactEmail,
     });
   } catch (error) {
     console.error("Unhandled contact API error:", error);

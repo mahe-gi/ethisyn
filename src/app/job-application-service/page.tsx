@@ -19,6 +19,7 @@ import {
   Layers,
 } from "lucide-react";
 import { jobServiceContent } from "@/content/job-service";
+import { siteConfig } from "@/content/site";
 import { ContactForm } from "@/components/ui/ContactForm";
 
 export const metadata: Metadata = {
@@ -428,21 +429,45 @@ export default function JobApplicationServicePage() {
         id="onboarding-form"
         className="py-24 sm:py-32 px-5 sm:px-8 md:px-12 relative overflow-hidden"
       >
-        <div className="max-w-[1200px] mx-auto space-y-12">
+        <div className="max-w-[1200px] mx-auto space-y-10 sm:space-y-12">
           <div className="space-y-4 text-center max-w-3xl mx-auto">
             <span className="text-xs uppercase tracking-widest font-medium text-emerald-400 block">
-              GET STARTED
+              FAST-TRACK ONBOARDING
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight">
-              Talk to Patan Rabiya&apos;s team and get your associate assigned.
+              Ready to stop filling job applications? Let us take over.
             </h2>
-            <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed font-light">
-              Submit your inquiry below. We will reach out via WhatsApp/Email within 4 business hours to align on your target roles and allocate your dedicated associate.
+            <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed font-light max-w-2xl mx-auto">
+              Tell us your target roles and preferences. We will review your profile and match you with your dedicated associate within 4 business hours.
             </p>
+            <div className="pt-2">
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi! I'm interested in the Job Application & Reverse Recruiting Service. Can we discuss assigning a dedicated associate for my search?")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/50 text-xs sm:text-sm uppercase tracking-widest font-semibold transition-all group shadow-lg"
+              >
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>Instant WhatsApp Consultation ({siteConfig.contactPhone})</span>
+              </a>
+            </div>
           </div>
 
           <div className="max-w-2xl mx-auto p-8 sm:p-12 rounded-3xl border border-white/15 bg-gradient-to-b from-[#111111] via-[#090909] to-black shadow-2xl">
-            <ContactForm initialService="Job Application & Reverse Recruiting Service" />
+            <div className="pb-6 mb-6 border-b border-white/[0.08] text-center sm:text-left">
+              <h3 className="text-lg font-medium text-white">
+                Or Submit Your Details Below
+              </h3>
+              <p className="text-xs text-[#A1A1AA] mt-1">
+                Tell us your target roles or link your resume. We will respond within 4 business hours.
+              </p>
+            </div>
+            <ContactForm
+              initialService="Job Application & Reverse Recruiting Service"
+              submitLabel="Submit Application Details"
+              messageLabel="Target roles, industries, or resume link"
+              messagePlaceholder="e.g. Senior Full-Stack / Frontend roles in Hyderabad or Remote. Resume link: https://..."
+            />
           </div>
         </div>
       </section>

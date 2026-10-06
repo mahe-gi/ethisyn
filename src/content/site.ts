@@ -14,6 +14,8 @@ export interface SiteConfig {
     formatted: string;
   };
   contactEmail: string;
+  contactPhone: string;
+  whatsappNumber: string;
   social: {
     linkedin: string;
     googleBusinessProfile: string;
@@ -43,6 +45,8 @@ export const siteConfig: SiteConfig = {
     formatted: "Hyderabad, Telangana, India",
   },
   contactEmail: "hello@ethisyn.in",
+  contactPhone: "+91 80961 31202",
+  whatsappNumber: "918096131202",
   social: {
     linkedin: "https://www.linkedin.com/company/ethisyn",
     googleBusinessProfile: "https://share.google/r2HXy33z6VSWRdJ2J",

@@ -763,7 +763,7 @@ export function setPerformanceHeaders(res: Response, tag: string) {
   "@id": "https://ethisyn.in/#localbusiness",
   "name": "Ethisyn Software Technologies",
   "url": "https://ethisyn.in",
-  "telephone": "+91-40-8829-0199",
+  "telephone": "+91 80961 31202",
   "priceRange": "$$$$",
   "address": {
     "@type": "PostalAddress",

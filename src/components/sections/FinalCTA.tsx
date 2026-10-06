@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { siteConfig } from "@/content/site";
-import { Mail } from "lucide-react";
+import { Mail, MessageSquare, Phone } from "lucide-react";
 
 export function FinalCTA() {
   return (
@@ -49,41 +49,68 @@ export function FinalCTA() {
               </div>
             </div>
 
-            <div className="pt-4 space-y-3">
+            {/* Direct Quick Action CTAs */}
+            <div className="pt-2 space-y-4">
               <span className="text-xs text-zinc-400 uppercase tracking-widest font-medium block">
-                DIRECT CONTACT
+                DIRECT INQUIRY CHANNELS
               </span>
-              <div className="flex flex-wrap gap-3">
+
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Button
-                  href={`mailto:${siteConfig.contactEmail}`}
+                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi Ethisyn team, I would like to discuss a new software and AI project.")}`}
                   isExternal
-                  variant="secondary"
-                  size="md"
-                  aria-label={`Send email to ${siteConfig.contactEmail}`}
+                  variant="primary"
+                  size="lg"
+                  className="justify-center"
+                  aria-label="Chat directly on WhatsApp"
+                >
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  Chat on WhatsApp
+                </Button>
+
+                <Button
+                  href={`mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent("Project Inquiry — ETHISYN")}&body=${encodeURIComponent("Hi Ethisyn Team,\n\nI would like to discuss a new project with your team.\n\n--- PROJECT OVERVIEW ---\nServices Needed: \nEstimated Budget: \nTarget Timeline: \nKey Requirements: \n\nLooking forward to your response!")}`}
+                  isExternal
+                  variant="outline"
+                  size="lg"
+                  className="justify-center"
+                  aria-label={`Compose direct email to ${siteConfig.contactEmail}`}
                 >
                   <Mail className="w-4 h-4 mr-2" />
-                  {siteConfig.contactEmail}
+                  Email {siteConfig.contactEmail}
                 </Button>
-                <Button
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-zinc-400">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Response within 4 business hours
+                </span>
+                <span className="text-zinc-600">•</span>
+                <a
+                  href={`tel:${siteConfig.whatsappNumber}`}
+                  className="hover:text-white transition-colors"
+                >
+                  Phone: {siteConfig.contactPhone}
+                </a>
+                <span className="text-zinc-600">•</span>
+                <a
                   href={siteConfig.social.linkedin}
-                  isExternal
-                  variant="outline"
-                  size="md"
-                  showArrow
-                  aria-label="Visit Ethisyn on LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
                 >
                   LinkedIn
-                </Button>
-                <Button
+                </a>
+                <span className="text-zinc-600">•</span>
+                <a
                   href={siteConfig.social.googleBusinessProfile}
-                  isExternal
-                  variant="outline"
-                  size="md"
-                  showArrow
-                  aria-label="View Google Business Profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
                 >
                   Google Profile
-                </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -93,10 +120,10 @@ export function FinalCTA() {
             <Card variant="elevated" className="p-8 md:p-10 space-y-6">
               <div className="pb-6 border-b border-white/[0.06]">
                 <h3 id="contact-form-heading" className="text-lg font-medium text-white">
-                  Start a Project Discussion
+                  Send a Message
                 </h3>
                 <p className="text-xs text-[#A1A1AA] mt-1">
-                  Fill out the form below. We will review your requirements and respond with a scoped proposal.
+                  Tell us about your goals or requirements. We respond within 4 business hours.
                 </p>
               </div>
               <div className="pt-2">
