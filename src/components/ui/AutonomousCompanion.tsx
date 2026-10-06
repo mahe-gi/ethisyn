@@ -104,11 +104,46 @@ export function AutonomousCompanion() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Direct, intelligent Q&A knowledge engine
+  // Direct, intelligent Q&A knowledge engine with robust word boundary matching
   const generateBotResponse = (query: string): { text: string; actionLink?: { label: string; href: string } } => {
     const q = query.toLowerCase().trim();
 
-    // 1. Casual Greetings & Salutations (hi, hello, hey, he, sup, yo, etc.)
+    // Word boundary helper to prevent accidental substring collisions (e.g. "whatsapp" matching "ats")
+    const hasWord = (...words: string[]) => {
+      return words.some((w) => {
+        const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        return new RegExp(`(?:^|[^a-zA-Z0-9])${escaped}(?:$|[^a-zA-Z0-9])`, "i").test(q);
+      });
+    };
+
+    const hasPhrase = (...phrases: string[]) => {
+      return phrases.some((p) => q.includes(p.toLowerCase()));
+    };
+
+    // 1. Direct Contact, WhatsApp, Phone, Call, Email, Meeting (Highest Priority)
+    if (
+      hasWord("whatsapp", "wa", "call", "phone", "contact", "email", "mail", "number", "reach", "consultation") ||
+      hasPhrase(
+        "connect on whatsapp",
+        "chat on whatsapp",
+        "on whatsapp",
+        "phone number",
+        "talk to",
+        "schedule a call",
+        "book a call",
+        "chat with someone",
+        "talk to someone",
+        "how can i contact",
+        "how to contact"
+      )
+    ) {
+      return {
+        text: "You can connect directly with our founding team on WhatsApp at +91 80961 31202 or via email at hello@ethisyn.in. We guarantee a direct technical response within 4 business hours.",
+        actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
+      };
+    }
+
+    // 2. Casual Greetings & Salutations (hi, hello, hey, he, sup, yo, etc.)
     if (
       q === "hi" ||
       q === "hello" ||
@@ -121,87 +156,68 @@ export function AutonomousCompanion() {
       q.startsWith("hi ") ||
       q.startsWith("hello ") ||
       q.startsWith("hey ") ||
-      q.includes("good morning") ||
-      q.includes("good afternoon") ||
-      q.includes("good evening")
+      hasPhrase("good morning", "good afternoon", "good evening")
     ) {
       return {
-        text: "Hello! I am Syn, your Ethisyn studio assistant. I can answer questions about our services across BUILD, AUTOMATE, GROW, and CREATE, our Reverse Recruiting service, tech stack, or direct WhatsApp inquiries. What can I help you with?",
+        text: "Hello! I am Syn, your Ethisyn studio assistant. I can answer questions about our services across BUILD, AUTOMATE, GROW, and CREATE, our Reverse Recruiting service, tech architecture, pricing, or direct WhatsApp inquiries. What can I help you with?",
         actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
       };
     }
 
-    // 2. Friendly check-in & small talk ("how are you", "what's up")
+    // 3. Friendly check-in & small talk ("how are you", "what's up")
     if (
-      q.includes("how are you") ||
-      q.includes("how are u") ||
-      q.includes("how r u") ||
-      q.includes("how do you do") ||
-      q.includes("how's it going") ||
-      q.includes("hows it going") ||
-      q.includes("whats up") ||
-      q.includes("what's up")
+      hasPhrase(
+        "how are you",
+        "how are u",
+        "how r u",
+        "how do you do",
+        "how's it going",
+        "hows it going",
+        "whats up",
+        "what's up"
+      )
     ) {
       return {
-        text: "I am operating at full speed. Ready to assist with software engineering, AI automation, or career search. What would you like to know?",
+        text: "I am operating at full speed. Ready to assist with software engineering, AI automation, growth marketing, or career search. What would you like to know?",
         actionLink: { label: "Explore Our Services", href: "/#services" },
       };
     }
 
-    // 3. Identity ("who are you", "what is your name", "what can you do")
+    // 4. Identity ("who are you", "what is your name", "what can you do")
     if (
-      q.includes("who are you") ||
-      q.includes("what is your name") ||
-      q.includes("what's your name") ||
-      q.includes("your name") ||
-      q.includes("who made you") ||
+      hasPhrase("who are you", "what is your name", "what's your name", "your name", "who made you") ||
       q === "syn"
     ) {
       return {
-        text: "I am Syn, Ethisyn's studio mascot and technical assistant. I track your cursor, guide visitors through our work, and answer questions about our engineering, AI systems, and talent services.",
+        text: "I am Syn, Ethisyn's studio mascot and assistant. I help visitors navigate our engineering, AI automation, growth marketing, and reverse recruiting services.",
         actionLink: { label: "Meet the Team in Hyderabad", href: "/team" },
       };
     }
 
-    // 4. "What can you do" / Help / Menu
+    // 5. "What can you do" / Help / Menu
     if (
-      q.includes("what can you do") ||
-      q.includes("what do you do") ||
-      q.includes("help") ||
-      q.includes("menu") ||
-      q.includes("options")
+      hasPhrase("what can you do", "what do you do") ||
+      hasWord("help", "menu", "options")
     ) {
       return {
-        text: "I can answer anything about Ethisyn:\n- Our 4 Pillars: BUILD, AUTOMATE, GROW, CREATE\n- Reverse Recruiting (Job Application Service)\n- Architecture & Tech Stack (Tech-agnostic)\n- Project Timelines (2-week sprints) & Milestone Pricing\n- Hyderabad Studio & Team\n- Direct WhatsApp & Contact (+91 80961 31202)",
+        text: "I can assist you with:\n- Our 4 Pillars: BUILD, AUTOMATE, GROW, CREATE\n- Reverse Recruiting: dedicated job application service\n- Architecture: tech-agnostic engineering\n- Timelines & Pricing: 2-week sprints, milestone pricing\n- Hyderabad Studio & Team\n- Direct WhatsApp: +91 80961 31202",
         actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
-      };
-    }
-
-    // 5. Studio Overview ("What is Ethisyn", "About Ethisyn")
-    if (
-      q.includes("what is ethisyn") ||
-      q.includes("about ethisyn") ||
-      q.includes("about us") ||
-      q.includes("company") ||
-      q.includes("overview")
-    ) {
-      return {
-        text: "Ethisyn is an independent product engineering and digital systems studio established in 2022 in Hyderabad. We build custom software (BUILD), automate operations with AI (AUTOMATE), scale brands with performance marketing (GROW), and produce high-retention video (CREATE). Zero bureaucracy, senior craftsmanship.",
-        actionLink: { label: "Explore Studio Services", href: "/#services" },
       };
     }
 
     // 6. Reverse Recruiting / Job Application Service
     if (
-      q.includes("job") ||
-      q.includes("career") ||
-      q.includes("resume") ||
-      q.includes("reverse recruit") ||
-      q.includes("apply") ||
-      q.includes("application") ||
-      q.includes("interview") ||
-      q.includes("ats") ||
-      q.includes("workday")
+      hasPhrase(
+        "reverse recruit",
+        "reverse recruiting",
+        "job application service",
+        "job search",
+        "ats black hole",
+        "apply for jobs for me",
+        "apply to jobs for me",
+        "apply on my behalf"
+      ) ||
+      hasWord("ats", "workday", "resume", "cv", "interview", "interviews")
     ) {
       return {
         text: "Tired of ATS black holes? In our Reverse Recruiting Service, we assign you a dedicated talent associate who tailors your resume keywords, curates verified roles, and submits 150+ to 300+ applications monthly on your behalf. You focus 100% on interview prep.",
@@ -209,167 +225,12 @@ export function AutonomousCompanion() {
       };
     }
 
-    // 7. BUILD Pillar — Custom Software, Web, Mobile, SaaS
+    // 7. Careers & Hiring AT Ethisyn (Open roles)
     if (
-      q.includes("build") ||
-      q.includes("website") ||
-      q.includes("web app") ||
-      q.includes("mobile") ||
-      q.includes("saas") ||
-      q.includes("portal") ||
-      q.includes("software") ||
-      q.includes("frontend") ||
-      q.includes("backend") ||
-      q.includes("mvp")
-    ) {
-      return {
-        text: "Under our BUILD pillar, we engineer custom business web platforms, native and cross-platform mobile apps (Flutter, React Native), scalable SaaS MVPs, and internal admin portals. We engineer sub-second speeds with pristine code you own 100%. Zero clunky templates.",
-        actionLink: { label: "Explore BUILD Capabilities", href: "/#services" },
-      };
-    }
-
-    // 8. AUTOMATE Pillar — AI Agents, Voice Bots, Workflows
-    if (
-      q.includes("automat") ||
-      q.includes("agent") ||
-      q.includes("voice") ||
-      q.includes("bot") ||
-      q.includes("crm") ||
-      q.includes("workflow") ||
-      q.includes("zapier") ||
-      q.includes("sheets") ||
-      (q.includes("ai") && !q.includes("detail"))
-    ) {
-      return {
-        text: "Under our AUTOMATE pillar, we build autonomous AI agents, 24/7 AI voice and chat assistants, and automated CRM pipelines that eliminate 15+ hours of manual operations every week. From lead triage to invoice parsing, we automate repetitive tasks.",
-        actionLink: { label: "Explore AI & Automation", href: "/#services" },
-      };
-    }
-
-    // 9. GROW Pillar — Digital Marketing, Local SEO, Ads
-    if (
-      q.includes("grow") ||
-      q.includes("marketing") ||
-      q.includes("seo") ||
-      q.includes("local seo") ||
-      q.includes("ad") ||
-      q.includes("meta") ||
-      q.includes("google ad") ||
-      q.includes("capi") ||
-      q.includes("traffic")
-    ) {
-      return {
-        text: "Under our GROW pillar, we engineer full-funnel acquisition: Local SEO and Google Business Profile dominance so nearby clients call you first, high-intent Google Search Ads, precision Meta campaigns with server-side CAPI tracking, and sub-second landing pages.",
-        actionLink: { label: "Explore Digital Growth", href: "/#services" },
-      };
-    }
-
-    // 10. CREATE Pillar — Video, Reels, Motion Graphics
-    if (
-      q.includes("create") ||
-      q.includes("video") ||
-      q.includes("reel") ||
-      q.includes("short") ||
-      q.includes("content") ||
-      q.includes("motion") ||
-      q.includes("film") ||
-      q.includes("edit")
-    ) {
-      return {
-        text: "Under our CREATE pillar, we produce high-retention video: technical product walkthroughs with motion design, cinematic brand promotional films, short-form Reels & Shorts, and performance ad creatives built to capture attention and elevate pricing power.",
-        actionLink: { label: "Explore Creative Production", href: "/#services" },
-      };
-    }
-
-    // 11. Tech Stack & Architecture (Tech-Agnostic)
-    if (
-      q.includes("tech stack") ||
-      q.includes("stack") ||
-      q.includes("technolog") ||
-      q.includes("framework") ||
-      q.includes("react") ||
-      q.includes("next") ||
-      q.includes("node") ||
-      q.includes("python") ||
-      q.includes("go") ||
-      q.includes("flutter") ||
-      q.includes("cloud") ||
-      q.includes("aws") ||
-      q.includes("azure") ||
-      q.includes("gcp") ||
-      q.includes("database")
-    ) {
-      return {
-        text: "We are architecture-first and tech-agnostic: we don't force a single tool. We engineer on React, Vue, Next.js, Node.js, Python (FastAPI), Go, Flutter, React Native, and deploy on AWS, GCP, Azure, and Cloudflare. We select the exact architecture your business needs.",
-        actionLink: { label: "Explore Our Architecture", href: "/#services" },
-      };
-    }
-
-    // 12. Pricing, Cost & Retainers
-    if (
-      q.includes("price") ||
-      q.includes("pricing") ||
-      q.includes("cost") ||
-      q.includes("rate") ||
-      q.includes("fee") ||
-      q.includes("how much") ||
-      q.includes("budget") ||
-      q.includes("quote") ||
-      q.includes("charge") ||
-      q.includes("retainer")
-    ) {
-      return {
-        text: "We provide transparent, milestone-based pricing for custom builds and flexible monthly retainers for ongoing engineering and automations. Every project begins with a clear scope breakdown and fixed milestones with zero hidden fees.",
-        actionLink: { label: "Request a Project Scope & Quote", href: "/#contact" },
-      };
-    }
-
-    // 13. Timelines, Sprints & Delivery Process
-    if (
-      q.includes("timeline") ||
-      q.includes("turnaround") ||
-      q.includes("how long") ||
-      q.includes("sprint") ||
-      q.includes("process") ||
-      q.includes("approach") ||
-      q.includes("methodology") ||
-      q.includes("delivery") ||
-      q.includes("sla")
-    ) {
-      return {
-        text: "We follow a proven 5-phase delivery model: 1) Understand, 2) Plan, 3) Build, 4) Launch, 5) Improve. We ship in rapid 2-week technical sprints with weekly live staging previews. Typical websites and MVPs launch in 2 to 6 weeks, with guaranteed 4-hour SLA client communication.",
-        actionLink: { label: "View Our 5-Phase Process", href: "/#process" },
-      };
-    }
-
-    // 14. Team & Hyderabad Location
-    if (
-      q.includes("team") ||
-      q.includes("founder") ||
-      q.includes("patan") ||
-      q.includes("rabiya") ||
-      q.includes("who runs") ||
-      q.includes("hyderabad") ||
-      q.includes("location") ||
-      q.includes("where are you") ||
-      q.includes("office") ||
-      q.includes("address")
-    ) {
-      return {
-        text: "Ethisyn was established in Hyderabad, India in 2022. We are an independent studio of 11 in-house founding engineers, designers, and growth partners led by Patan Rabiya. You collaborate directly with senior builders with 100% in-house craft and zero outsourced middlemen.",
-        actionLink: { label: "Meet the Founding Team", href: "/team" },
-      };
-    }
-
-    // 15. Careers & Hiring at Ethisyn
-    if (
-      q.includes("hiring") ||
-      q.includes("career at ethisyn") ||
-      q.includes("jobs at ethisyn") ||
-      q.includes("open role") ||
-      q.includes("internship") ||
-      q.includes("work with you") ||
-      q.includes("join")
+      hasPhrase("careers at ethisyn", "jobs at ethisyn", "work at ethisyn", "join ethisyn", "open positions", "open roles", "hire me") ||
+      hasWord("hiring", "internship", "internships") ||
+      (hasWord("career", "careers") && !hasWord("service")) ||
+      (hasWord("job", "jobs") && hasWord("ethisyn", "team", "engineer", "designer", "opening", "openings"))
     ) {
       return {
         text: "We are always looking for high-craft builders! Open roles include Senior Full-Stack Engineer, AI & Automation Systems Architect, Growth & Performance Specialist, and Creative Director. Apply directly at careers@ethisyn.in.",
@@ -377,32 +238,109 @@ export function AutonomousCompanion() {
       };
     }
 
-    // 16. Contact, Phone, WhatsApp & Meeting
+    // 8. Pricing, Cost & Retainers
     if (
-      q.includes("call") ||
-      q.includes("contact") ||
-      q.includes("whatsapp") ||
-      q.includes("phone") ||
-      q.includes("number") ||
-      q.includes("schedule") ||
-      q.includes("meeting") ||
-      q.includes("talk") ||
-      q.includes("email") ||
-      q.includes("reach")
+      hasWord("price", "prices", "pricing", "cost", "costs", "fee", "fees", "rate", "rates", "budget", "quote", "charge", "retainer", "retainers") ||
+      hasPhrase("how much", "how expensive")
     ) {
       return {
-        text: "You can reach our founding team directly on WhatsApp at +91 80961 31202 or email hello@ethisyn.in. We guarantee a direct technical response within 4 business hours.",
-        actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
+        text: "We provide transparent, milestone-based pricing for custom builds and flexible monthly retainers for ongoing engineering and automations. Every project begins with a clear scope breakdown and fixed milestones with zero hidden fees.",
+        actionLink: { label: "Request a Project Scope & Quote", href: "/#contact" },
+      };
+    }
+
+    // 9. Timelines, Sprints & Delivery Process
+    if (
+      hasWord("timeline", "timelines", "turnaround", "sprint", "sprints", "process", "delivery", "sla", "methodology") ||
+      hasPhrase("how long", "how fast", "turnaround time")
+    ) {
+      return {
+        text: "We follow a proven 5-phase delivery model: 1) Understand, 2) Plan, 3) Build, 4) Launch, 5) Improve. We ship in rapid 2-week technical sprints with weekly live staging previews. Typical websites and MVPs launch in 2 to 6 weeks, with guaranteed 4-hour SLA client communication.",
+        actionLink: { label: "View Our 5-Phase Process", href: "/#process" },
+      };
+    }
+
+    // 10. Tech Stack & Architecture (Tech-Agnostic)
+    if (
+      hasWord("stack", "tech", "technology", "technologies", "architecture", "framework", "frameworks", "react", "vue", "nextjs", "node", "nodejs", "python", "fastapi", "golang", "go", "flutter", "cloud", "aws", "gcp", "azure", "database") ||
+      hasPhrase("tech stack", "what stack", "next js", "next.js")
+    ) {
+      return {
+        text: "We are architecture-first and tech-agnostic: we do not force a single framework. We engineer on React, Vue, Next.js, Node.js, Python (FastAPI), Go, Flutter, and React Native, and deploy on AWS, GCP, Azure, and Cloudflare based strictly on your project requirements.",
+        actionLink: { label: "Explore Our Architecture", href: "/#services" },
+      };
+    }
+
+    // 11. AUTOMATE Pillar — AI Agents, Voice Bots, Workflows
+    if (
+      hasWord("automate", "automation", "automations", "agent", "agents", "bot", "bots", "chatbot", "chatbots", "voice", "n8n", "zapier") ||
+      hasPhrase("ai agent", "ai workflow", "crm automation", "voice agent", "ai agents")
+    ) {
+      return {
+        text: "Under our AUTOMATE pillar, we build autonomous AI agents, 24/7 AI voice and chat assistants, and automated CRM pipelines that eliminate 15+ hours of manual operations every week. From lead triage to invoice parsing, we automate repetitive tasks.",
+        actionLink: { label: "Explore AI & Automation", href: "/#services" },
+      };
+    }
+
+    // 12. GROW Pillar — Digital Marketing, Local SEO, Ads
+    if (
+      hasWord("grow", "growth", "marketing", "seo", "ads", "meta", "traffic") ||
+      hasPhrase("local seo", "google ads", "meta ads", "google business", "lead gen")
+    ) {
+      return {
+        text: "Under our GROW pillar, we engineer full-funnel acquisition: Local SEO and Google Business Profile dominance so nearby clients call you first, high-intent Google Search Ads, precision Meta campaigns with server-side CAPI tracking, and sub-second landing pages.",
+        actionLink: { label: "Explore Digital Growth", href: "/#services" },
+      };
+    }
+
+    // 13. CREATE Pillar — Video, Reels, Motion Graphics
+    if (
+      hasWord("create", "video", "videos", "reel", "reels", "shorts", "motion", "cinematic", "videography", "editing") ||
+      hasPhrase("video production", "motion graphics", "video edit")
+    ) {
+      return {
+        text: "Under our CREATE pillar, we produce high-retention video: technical product walkthroughs with motion design, cinematic brand promotional films, short-form Reels & Shorts, and performance ad creatives built to capture attention and elevate pricing power.",
+        actionLink: { label: "Explore Creative Production", href: "/#services" },
+      };
+    }
+
+    // 14. BUILD Pillar — Custom Software, Web, Mobile, SaaS
+    if (
+      hasWord("build", "website", "websites", "software", "webapp", "saas", "portal", "portals", "mvp", "backend", "frontend", "mobile", "app", "apps") ||
+      hasPhrase("custom software", "web app", "mobile app")
+    ) {
+      return {
+        text: "Under our BUILD pillar, we engineer custom business web platforms, native and cross-platform mobile apps (Flutter, React Native), scalable SaaS MVPs, and internal admin portals. We engineer sub-second speeds with pristine code you own 100%. Zero clunky templates.",
+        actionLink: { label: "Explore BUILD Capabilities", href: "/#services" },
+      };
+    }
+
+    // 15. Team & Hyderabad Location
+    if (
+      hasWord("team", "founder", "founders", "patan", "rabiya", "hyderabad", "location", "office", "address") ||
+      hasPhrase("who runs", "where are you", "who founded")
+    ) {
+      return {
+        text: "Ethisyn was established in Hyderabad, India in 2022. We are an independent studio of 11 in-house founding engineers, designers, and growth partners led by Patan Rabiya. You collaborate directly with senior builders with 100% in-house craft and zero outsourced middlemen.",
+        actionLink: { label: "Meet the Founding Team", href: "/team" },
+      };
+    }
+
+    // 16. Studio Overview ("What is Ethisyn", "About Ethisyn")
+    if (
+      hasPhrase("what is ethisyn", "about ethisyn", "about us", "company overview") ||
+      (hasWord("ethisyn") && hasWord("about", "who", "what"))
+    ) {
+      return {
+        text: "Ethisyn is an independent product engineering and digital systems studio established in 2022 in Hyderabad. We build custom software (BUILD), automate operations with AI (AUTOMATE), scale brands with performance marketing (GROW), and produce high-retention video (CREATE). Zero bureaucracy, senior craftsmanship.",
+        actionLink: { label: "Explore Studio Services", href: "/#services" },
       };
     }
 
     // 17. Blog & Case Studies
     if (
-      q.includes("blog") ||
-      q.includes("article") ||
-      q.includes("case study") ||
-      q.includes("insights") ||
-      q.includes("guide")
+      hasWord("blog", "article", "articles", "insights", "guide") ||
+      hasPhrase("case study", "case studies")
     ) {
       return {
         text: "We publish in-depth engineering breakdowns, AI agent architecture playbooks, local growth marketing guides, and video conversion teardowns on our studio blog.",
@@ -412,12 +350,8 @@ export function AutonomousCompanion() {
 
     // 18. Privacy, Security & NDA
     if (
-      q.includes("privacy") ||
-      q.includes("security") ||
-      q.includes("nda") ||
-      q.includes("confidential") ||
-      q.includes("ip") ||
-      q.includes("ownership")
+      hasWord("privacy", "security", "nda", "confidential", "confidentiality", "ip") ||
+      hasPhrase("intellectual property")
     ) {
       return {
         text: "We enforce strict confidentiality: mutual NDAs from Day 1, enterprise-grade cloud security, and 100% intellectual property transfer to you upon milestone delivery.",
@@ -427,14 +361,7 @@ export function AutonomousCompanion() {
 
     // 19. Gratitude & Compliments
     if (
-      q.includes("thank") ||
-      q.includes("thx") ||
-      q.includes("appreciate") ||
-      q.includes("cool") ||
-      q.includes("awesome") ||
-      q.includes("great") ||
-      q.includes("nice") ||
-      q.includes("perfect")
+      hasWord("thank", "thanks", "thx", "appreciate", "cool", "awesome", "great", "nice", "perfect")
     ) {
       return {
         text: "You are welcome! Let me know if you need anything else, or feel free to message our founding team on WhatsApp anytime.",
@@ -447,8 +374,7 @@ export function AutonomousCompanion() {
       q === "bye" ||
       q === "goodbye" ||
       q === "cya" ||
-      q.includes("see you") ||
-      q.includes("have a good day")
+      hasPhrase("see you", "have a good day")
     ) {
       return {
         text: "Have a great day! Whenever you are ready to build, automate, or scale, we are right here to help.",
@@ -458,7 +384,7 @@ export function AutonomousCompanion() {
 
     // Default intelligent fallback
     return {
-      text: "I'm Syn, your Ethisyn studio assistant! I can help you with our 4 pillars (BUILD, AUTOMATE, GROW, CREATE), Reverse Recruiting service, pricing models, timelines, or connecting you directly with our founding team on WhatsApp.",
+      text: "I am Syn, your Ethisyn studio assistant. I can help you with our 4 pillars (BUILD, AUTOMATE, GROW, CREATE), Reverse Recruiting service, pricing models, timelines, or connecting you directly with our founding team on WhatsApp.",
       actionLink: { label: "Chat on WhatsApp (+91 80961 31202)", href: `https://wa.me/${siteConfig.whatsappNumber}` },
     };
   };
