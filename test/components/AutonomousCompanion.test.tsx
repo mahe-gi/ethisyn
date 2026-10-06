@@ -10,10 +10,14 @@ vi.mock("@/components/ui/TrackingMascot", () => ({
 describe("AutonomousCompanion Component", () => {
   beforeEach(() => {
     vi.useFakeTimers();
+    // Default fetch mocks network fallback for local rule tests
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("Local fallback")));
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
   });
 
   it("renders the floating mascot trigger", () => {
@@ -34,11 +38,11 @@ describe("AutonomousCompanion Component", () => {
     fireEvent.change(input, { target: { value: "Can I connect on WhatsApp?" } });
     fireEvent.submit(form!);
 
-    act(() => {
-      vi.advanceTimersByTime(600);
+    await act(async () => {
+      await Promise.resolve();
+      await vi.advanceTimersByTimeAsync(500);
     });
 
-    // Should return WhatsApp answer and NOT Reverse Recruiting
     expect(screen.getByText(/You can connect directly with our founding team on WhatsApp/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Chat on WhatsApp/i })).toHaveAttribute("href", expect.stringContaining("wa.me"));
   });
@@ -54,8 +58,9 @@ describe("AutonomousCompanion Component", () => {
     fireEvent.change(input, { target: { value: "How does the Reverse Recruiting service work?" } });
     fireEvent.submit(form!);
 
-    act(() => {
-      vi.advanceTimersByTime(600);
+    await act(async () => {
+      await Promise.resolve();
+      await vi.advanceTimersByTimeAsync(500);
     });
 
     expect(screen.getByText(/Tired of ATS black holes\? In our Reverse Recruiting Service/i)).toBeInTheDocument();
@@ -73,10 +78,40 @@ describe("AutonomousCompanion Component", () => {
     fireEvent.change(input, { target: { value: "What is your tech stack and architecture?" } });
     fireEvent.submit(form!);
 
-    act(() => {
-      vi.advanceTimersByTime(600);
+    await act(async () => {
+      await Promise.resolve();
+      await vi.advanceTimersByTimeAsync(500);
     });
 
     expect(screen.getByText(/We are architecture-first and tech-agnostic/i)).toBeInTheDocument();
+  });
+
+  it("displays AI response when /api/chat returns an intelligent reply", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          reply: "I am Syn powered by Groq AI! We build custom systems in Hyderabad.",
+          actionLink: { label: "Explore Studio", href: "/#services" },
+        }),
+      })
+    );
+
+    render(<AutonomousCompanion />);
+    const trigger = screen.getByRole("button", { name: /open ethisyn studio assistant/i });
+    fireEvent.click(trigger);
+
+    const input = screen.getByPlaceholderText(/ask about services, pricing, timelines, stack/i);
+    const form = input.closest("form");
+
+    fireEvent.change(input, { target: { value: "What makes your AI studio unique?" } });
+    fireEvent.submit(form!);
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(screen.getByText(/I am Syn powered by Groq AI! We build custom systems in Hyderabad./i)).toBeInTheDocument();
   });
 });

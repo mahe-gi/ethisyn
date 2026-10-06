@@ -389,7 +389,7 @@ export function AutonomousCompanion() {
     };
   };
 
-  const handleSendMessage = (textToSend?: string) => {
+  const handleSendMessage = async (textToSend?: string) => {
     const text = textToSend || inputValue.trim();
     if (!text) return;
 
@@ -404,6 +404,40 @@ export function AutonomousCompanion() {
     setInputValue("");
     setIsTyping(true);
 
+    // 1. Try querying real Groq AI via Cloudflare Pages Function (/api/chat)
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          history: messages.slice(-4).map((m) => ({
+            role: m.sender === "user" ? "user" : "assistant",
+            content: m.text,
+          })),
+        }),
+      });
+
+      if (res.ok) {
+        const data = (await res.json()) as { reply?: string; actionLink?: { label: string; href: string } };
+        if (data.reply) {
+          const botMessage: Message = {
+            id: `bot-${Date.now()}`,
+            sender: "bot",
+            text: data.reply,
+            actionLink: data.actionLink,
+            timestamp: "Just now",
+          };
+          setMessages((prev) => [...prev, botMessage]);
+          setIsTyping(false);
+          return;
+        }
+      }
+    } catch {
+      // Network failure, offline, or local static dev without edge runtime
+    }
+
+    // 2. Seamless local knowledge engine fallback
     setTimeout(() => {
       const response = generateBotResponse(text);
       const botMessage: Message = {
@@ -415,7 +449,7 @@ export function AutonomousCompanion() {
       };
       setMessages((prev) => [...prev, botMessage]);
       setIsTyping(false);
-    }, 450);
+    }, 300);
   };
 
   return (
