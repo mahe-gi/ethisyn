@@ -315,14 +315,47 @@ export function AutonomousCompanion() {
       };
     }
 
-    // 15. Team & Hyderabad Location
+    // 15. Specific Leadership Roles (CTO, CBO, CMO)
+    if (
+      hasWord("cto") ||
+      hasWord("mahesh") ||
+      hasPhrase("who is your cto", "who is the cto", "chief technology officer")
+    ) {
+      return {
+        text: "That would be Mahesh Ch, our Chief Technology & Operations Officer (CTO). He commands our systems architecture and cloud infrastructure resilience, ensuring our code runs sub-second while others are still restarting their servers.",
+        actionLink: { label: "Meet Mahesh Ch on Team Page", href: "/team" },
+      };
+    }
+
+    if (
+      hasWord("cbo") ||
+      hasWord("ganesh") ||
+      hasPhrase("who is your cbo", "chief business officer")
+    ) {
+      return {
+        text: "That's Ganesh Ch, our Chief Business Officer (CBO). He orchestrates commercial strategy, solution economics, and global partnerships across enterprise markets.",
+        actionLink: { label: "Meet Ganesh Ch on Team Page", href: "/team" },
+      };
+    }
+
+    if (
+      hasWord("cmo") ||
+      hasPhrase("who is your cmo", "chief marketing officer")
+    ) {
+      return {
+        text: "That's Patan Rabiya, our Chief Marketing & Growth Officer (CMO). She leads growth architecture and oversees our high-touch Reverse Recruiting service so candidates skip the ATS black hole.",
+        actionLink: { label: "Meet Patan Rabiya on Team Page", href: "/team" },
+      };
+    }
+
+    // 16. Team & Hyderabad Location
     if (
       hasWord("team", "founder", "founders", "patan", "rabiya", "hyderabad", "location", "office", "address") ||
       hasPhrase("who runs", "where are you", "who founded")
     ) {
       return {
-        text: "Ethisyn was established in Hyderabad, India in 2022. We are an independent studio of 11 in-house founding engineers, designers, and growth partners led by Patan Rabiya. You collaborate directly with senior builders with 100% in-house craft and zero outsourced middlemen.",
-        actionLink: { label: "Meet the Founding Team", href: "/team" },
+        text: "Ethisyn was established in Hyderabad in 2022. We are an assembly of 11 in-house founding partners—featuring Mahesh Ch (CTO), Ganesh Ch (CBO), and Patan Rabiya (CMO)—with zero outsourced middlemen and 100% craft.",
+        actionLink: { label: "Meet the Full 11-Partner Team", href: "/team" },
       };
     }
 

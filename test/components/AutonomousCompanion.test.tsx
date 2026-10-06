@@ -114,4 +114,24 @@ describe("AutonomousCompanion Component", () => {
 
     expect(screen.getByText(/I am Syn powered by Groq AI! We build custom systems in Hyderabad./i)).toBeInTheDocument();
   });
+
+  it("answers CTO query accurately with Mahesh Ch", async () => {
+    render(<AutonomousCompanion />);
+    const trigger = screen.getByRole("button", { name: /open ethisyn studio assistant/i });
+    fireEvent.click(trigger);
+
+    const input = screen.getByPlaceholderText(/ask about services, pricing, timelines, stack/i);
+    const form = input.closest("form");
+
+    fireEvent.change(input, { target: { value: "who is your cto?" } });
+    fireEvent.submit(form!);
+
+    await act(async () => {
+      await Promise.resolve();
+      await vi.advanceTimersByTimeAsync(500);
+    });
+
+    expect(screen.getByText(/That would be Mahesh Ch, our Chief Technology & Operations Officer \(CTO\)/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Meet Mahesh Ch on Team Page/i })).toHaveAttribute("href", "/team");
+  });
 });
