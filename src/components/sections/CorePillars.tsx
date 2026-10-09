@@ -282,7 +282,7 @@ export function CorePillars() {
                           </Link>
 
                           <Link
-                            href="/#products"
+                            href="/case-studies"
                             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/[0.04] border border-white/[0.12] text-white hover:border-white/30 text-xs uppercase tracking-widest transition-colors"
                           >
                             <span>View Case Studies</span>

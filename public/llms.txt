@@ -20,11 +20,15 @@
 - [Full Knowledge Corpus](https://ethisyn.in/llms-full.txt): Comprehensive technical specifications and FAQ
 
 ## Navigation & Official Site Structure
-- [Services](https://ethisyn.in/#services): Engineering, AI automation, growth, and design services
-- [Software Development Company in Hyderabad](https://ethisyn.in/software-development-company-hyderabad): Sub-second web engineering, Next.js 15, SaaS, and native mobile development in HITEC City / Gachibowli
-- [Digital Marketing Company in Hyderabad](https://ethisyn.in/digital-marketing-company-hyderabad): Generative Engine Optimization (GEO), technical SEO, Local 3-Pack, performance ads, and cinematic video
-- [Proof of Work & Case Studies](https://ethisyn.in/work): Verified case studies (GoWider SaaS, AI Inbound CRM Agent, Local Growth Engine)
-- [Job Application Service](https://ethisyn.in/job-application-service): Dedicated human-assisted reverse recruiting & manual job applications led by Patan Rabiya
+- [Homepage](https://ethisyn.in): AI Automation & Custom Software Development
+- [AI Agent Development](https://ethisyn.in/ai-agent-development): Autonomous multi-agent swarms, LangGraph, Python, LiveKit voice bots, and deterministic LLM pipelines
+- [AI Workflow Automation](https://ethisyn.in/ai-workflow-automation): Business process automation, intelligent document parsing, CRM synchronization, and self-hosted n8n pipelines
+- [Custom Software Development](https://ethisyn.in/custom-software-development): High-speed web applications, native mobile apps, and distributed backends
+- [SaaS Product Engineering](https://ethisyn.in/saas-development): Multi-tenant SaaS, subscription billing, and rapid 4-week MVP sprints (GoWider)
+- [Web Application Development](https://ethisyn.in/web-app-development): Next.js 15, React 19, TypeScript, sub-500ms TTFB, and 100/100 Core Web Vitals
+- [Hyderabad Studio](https://ethisyn.in/hyderabad): AI Automation & Software Development company in Hyderabad (HITEC City & Madhapur)
+- [Case Studies & Proof of Work](https://ethisyn.in/case-studies): Verified production case studies (GoWider SaaS, AI Inbound CRM, Local Growth Engine)
+- [Job Application Service](https://ethisyn.in/job-application-service): Dedicated human reverse recruiting & manual job applications led by Patan Rabiya
 - [Products](https://ethisyn.in/#products): Proprietary software applications (The Rental Circle, GoWider)
 - [Team](https://ethisyn.in/team): 11 founding domain leads and technical partners
 - [Blog](https://ethisyn.in/blog): Engineering perspectives, AI architecture, and systems dispatches

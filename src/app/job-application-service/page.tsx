@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: "Job Application Service | We Apply For You With Custom Cover Letters | ETHISYN",
   description:
     "We manually apply to jobs on your behalf with custom resumes and tailored cover letters in under 24 hours. Talk to your dedicated associate every day in team chat. Directed by Patan Rabiya.",
+  alternates: {
+    canonical: "/job-application-service",
+  },
   openGraph: {
     title: "Job Application Service | We Apply For You | ETHISYN",
     description:

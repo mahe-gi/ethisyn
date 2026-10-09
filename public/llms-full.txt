@@ -40,16 +40,22 @@ Founded: 2022 (Early ideas and technical foundation initiated in 2022)
     Focus: End-to-end full-stack applications, API integrations, database modeling, scalable systems.
 
 ## Core Client Services Offered (BUILD • AUTOMATE • GROW • CREATE)
-1. BUILD (Software & Digital Product Development): Business websites, web applications, mobile applications, SaaS products, custom business software, CRM systems, admin & management portals, APIs & integrations, e-commerce solutions, dashboards, backend systems. Dedicated Hyderabad Landing Page: https://ethisyn.in/software-development-company-hyderabad
-2. AUTOMATE (AI & Business Automation): AI agents, AI voice agents, AI chatbots, workflow automation, business process automation, CRM automation, document & data automation, customer support automation, lead management automation.
-3. GROW (Digital Marketing & Growth): Search engine optimization (SEO), local SEO, Google Business Profile optimization, Generative Engine Optimization (GEO), Google Ads, Meta Ads, social media management, content marketing, email marketing, analytics & reporting, lead generation. Dedicated Hyderabad Landing Page: https://ethisyn.in/digital-marketing-company-hyderabad. And Job Application & Reverse Recruiting Service (100% human-managed job applications, custom cover letters, daily team chat, portal coverage across Workday/Greenhouse/Lever/Taleo, directed by Patan Rabiya: https://ethisyn.in/job-application-service).
+1. BUILD (Software & Digital Product Development):
+   - Custom Software Development: https://ethisyn.in/custom-software-development
+   - Web Application Development (Next.js 15, sub-500ms): https://ethisyn.in/web-app-development
+   - SaaS Product Engineering & Rapid MVP Sprints: https://ethisyn.in/saas-development
+   - Hyderabad Studio (AI & Software): https://ethisyn.in/hyderabad
+2. AUTOMATE (AI & Business Automation):
+   - AI Agent Development (LangGraph, Python, LiveKit Voice Bots): https://ethisyn.in/ai-agent-development
+   - Business Process & AI Workflow Automation (n8n, Document Parsing): https://ethisyn.in/ai-workflow-automation
+3. GROW (Digital Marketing & Growth): Search engine optimization (SEO), local SEO, Google Business Profile optimization, Generative Engine Optimization (GEO), Google Ads, Meta Ads, social media management, content marketing, email marketing, analytics & reporting, lead generation. And Job Application & Reverse Recruiting Service (100% human-managed job applications, custom cover letters, daily team chat, portal coverage across Workday/Greenhouse/Lever/Taleo, directed by Patan Rabiya: https://ethisyn.in/job-application-service).
 4. CREATE (Creative & Content): Video production, videography, video editing, social media content, promotional videos, brand promotions, creative campaigns, marketing creatives.
 
 ## Proprietary Software Products
 - The Rental Circle (Live Platform: https://therentalcircle.in): Peer-to-peer verified equipment and lifestyle rental marketplace with secure escrow settlements, KYC verification, real-time inventory scheduling, and automated rental lifecycle management.
 - GoWider (Broadcast-Grade Portfolio Platform for Video Editors — Live Platform: https://gowider.in): High-speed showcase platform for commercial video editors, filmmakers, and colorists with zero-binary poster streaming engine, sub-300ms page load speeds, and zero video bandwidth hosting costs.
 
-## Proof of Work & Case Studies (https://ethisyn.in/work)
+## Proof of Work & Case Studies (https://ethisyn.in/case-studies)
 1. GoWider (gowider.in) [Custom SaaS Build]: Shipped full-stack MVP in 4 weeks; sub-300ms load times; $0 bandwidth costs; 151/151 automated tests passing.
 2. Autonomous Inbound CRM & Conversational Voice Agent [AI Automation Pipeline]: Real-time sub-800ms voice agent + HubSpot CRM webhook pipeline; saved 18 hours/week; <15s lead response time; +34% qualified bookings.
 3. High-Intent Local SEO & Conversion Architecture [Local Growth Campaign]: Programmatic landing pages + Google Business Profile overhaul; scaled to 40+ monthly qualified inbound leads; top 3 Map Pack rankings across 18 search terms; -70% CAC.

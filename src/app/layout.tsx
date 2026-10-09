@@ -24,21 +24,23 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Ethisyn | Build. Automate. Grow. Create.",
+    default: "Ethisyn | AI Automation & Custom Software Development",
     template: "%s | Ethisyn",
   },
   description: siteConfig.tagline,
   keywords: [
-    "BUILD AUTOMATE GROW CREATE",
-    "Build Automate Grow Create",
-    "Web Engineering Studio Hyderabad",
+    "AI Automation Company",
+    "Custom Software Development",
+    "AI Agent Development",
+    "Business Process Automation",
+    "SaaS Product Engineering",
+    "Web Application Development",
+    "Software Development Company Hyderabad",
     "Autonomous AI Agents India",
-    "AI Voice Agents Hyderabad",
     "Full-Stack Next.js Product Engineering",
     "Mobile App Development iOS Android",
     "Generative Engine Optimization GEO",
     "Enterprise Automation Hyderabad",
-    "Custom Software Studio",
     "Ethisyn",
   ],
   authors: [{ name: "Ethisyn", url: siteConfig.url }],
@@ -52,20 +54,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Ethisyn | Build. Automate. Grow. Create.",
+    title: "Ethisyn | AI Automation & Custom Software Development",
     description: siteConfig.tagline,
     images: [
       {
         url: "/brand/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Ethisyn: Build. Automate. Grow. Create. | Technology, AI and digital growth for ambitious businesses.",
+        alt: "Ethisyn: AI Automation & Custom Software Development studio in Hyderabad.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ethisyn | Build. Automate. Grow. Create.",
+    title: "Ethisyn | AI Automation & Custom Software Development",
     description: siteConfig.tagline,
     images: ["/brand/opengraph-image.png"],
   },
@@ -80,6 +82,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   robots: {
     index: true,
     follow: true,
@@ -103,6 +108,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

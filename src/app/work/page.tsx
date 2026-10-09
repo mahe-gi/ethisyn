@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     "Explore case studies and proof of work by Ethisyn: Custom SaaS platforms (GoWider), Autonomous AI CRM voice agents, and high-intent local growth architectures.",
   alternates: {
-    canonical: "/work",
+    canonical: "/case-studies",
   },
   openGraph: {
     title: "Proof of Work & Case Studies | Ethisyn",

@@ -1,3 +1,17 @@
+# -------------------------------------------------------------
+# Domain Standardization: Force Apex Domain (https://ethisyn.in)
+# Permanent 301 redirects from www to apex domain to prevent signal splitting
+# -------------------------------------------------------------
+https://www.ethisyn.in/* https://ethisyn.in/:splat 301!
+http://www.ethisyn.in/* https://ethisyn.in/:splat 301!
+http://ethisyn.in/* https://ethisyn.in/:splat 301!
+
+# -------------------------------------------------------------
+# Canonical Route Consolidations & Alias Redirects
+# -------------------------------------------------------------
 /about /#company 301
 /products /#products 301
 /contact /#contact 301
+/work /case-studies 301
+/software-development-company-hyderabad /hyderabad 301
+/digital-marketing-company-hyderabad /hyderabad 301
