@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Agent Development Services | Ethisyn",
     description:
-      "Deterministic autonomous agents, stateful cyclic graphs, and voice bots that run 24/7 without hallucinations.",
+      "Deterministic autonomous agents, stateful cyclic graphs, and voice bots engineered with multi-layer hallucination safeguards.",
   },
 };
 
@@ -63,9 +63,9 @@ const agentCapabilities = [
   {
     icon: PhoneCall,
     title: "24/7 Conversational Voice Agents",
-    tagline: "Sub-800ms ultra-low latency voice pipelines",
+    tagline: "Low-latency streaming voice pipelines",
     description:
-      "Real-time voice assistants powered by LiveKit, Deepgram, and Cartesia that answer incoming customer inquiries, schedule appointments, and qualify inbound leads with zero lag.",
+      "Real-time voice assistants powered by LiveKit, Deepgram, and Cartesia that answer incoming customer inquiries, schedule appointments, and qualify inbound leads with minimal latency.",
     deliverables: [
       "WebRTC audio streaming infrastructure",
       "Smart interruption handling & VAD",
@@ -76,9 +76,9 @@ const agentCapabilities = [
   {
     icon: Database,
     title: "Deterministic Enterprise RAG",
-    tagline: "Zero-hallucination semantic knowledge retrieval",
+    tagline: "Citation-backed semantic knowledge retrieval",
     description:
-      "Private semantic search and document reasoning pipelines utilizing pgvector, hybrid BM25 + dense vector reranking, and citation-backed deterministic answers for internal knowledge bases.",
+      "Private semantic search and document reasoning pipelines utilizing pgvector, hybrid BM25 + dense vector reranking, and citation verification layers for internal knowledge bases.",
     deliverables: [
       "Hybrid dense + sparse semantic search",
       "Cohere / BGE cross-encoder rerankers",
@@ -209,7 +209,7 @@ export default function AIAgentDevelopmentPage() {
           </h1>
 
           <p className="text-lg sm:text-xl text-zinc-400 max-w-3xl leading-relaxed font-sans mb-10">
-            We architect production-grade AI agents that operate 24/7 without hallucinating. Powered by LangGraph cyclic state machines, sub-800ms conversational voice pipelines, and private semantic knowledge retrieval.
+            We architect production-grade AI agents with multi-layer hallucination safeguards, LangGraph cyclic state machines, low-latency conversational voice pipelines, and citation-backed knowledge retrieval.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -230,20 +230,20 @@ export default function AIAgentDevelopmentPage() {
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/[0.08]">
             <div>
-              <div className="text-2xl sm:text-3xl font-mono text-white">&lt; 800ms</div>
-              <div className="text-xs text-zinc-400 font-sans mt-1">Live Voice Latency</div>
+              <div className="text-2xl sm:text-3xl font-mono text-white">Sub-Second</div>
+              <div className="text-xs text-zinc-400 font-sans mt-1">Target Voice Latency</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-mono text-white">100%</div>
               <div className="text-xs text-zinc-400 font-sans mt-1">Code & Prompt Ownership</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-mono text-white">18+ hrs</div>
-              <div className="text-xs text-zinc-400 font-sans mt-1">Saved Per Week / Workflow</div>
+              <div className="text-2xl sm:text-3xl font-mono text-white">Multi-Step</div>
+              <div className="text-xs text-zinc-400 font-sans mt-1">Automated Workflows</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-mono text-white">0%</div>
-              <div className="text-xs text-zinc-400 font-sans mt-1">Customer Data Training</div>
+              <div className="text-2xl sm:text-3xl font-mono text-white">Strict Privacy</div>
+              <div className="text-xs text-zinc-400 font-sans mt-1">Zero Training on Enterprise Data</div>
             </div>
           </div>
         </div>

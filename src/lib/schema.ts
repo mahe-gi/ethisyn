@@ -135,7 +135,8 @@ export function generateProfessionalServiceSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      addressCountry: "India",
+      latitude: 17.4483,
+      longitude: 78.3915,
     },
     telephone: siteConfig.contactPhone,
     openingHoursSpecification: [

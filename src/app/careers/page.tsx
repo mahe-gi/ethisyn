@@ -4,10 +4,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/content/site";
 import { careersData } from "@/content/careers";
-import {
-  generateCareersPageSchema,
-  generateJobPostingSchemas,
-} from "@/lib/schema";
+import { generateCareersPageSchema } from "@/lib/schema";
 import { CareersView } from "@/components/sections/CareersView";
 import { Sparkles, ArrowDown } from "lucide-react";
 
@@ -35,18 +32,13 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   const pageSchema = generateCareersPageSchema();
-  const jobPostingSchemas = generateJobPostingSchemas();
 
   return (
     <div className="pt-28 md:pt-36 pb-28 px-5 sm:px-8 md:px-12 bg-black min-h-screen">
-      {/* JSON-LD Schemas for Search Engines & Google Jobs */}
+      {/* JSON-LD WebPage Schema for Search Engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchemas) }}
       />
 
       <div className="max-w-[1520px] mx-auto space-y-16 md:space-y-24">

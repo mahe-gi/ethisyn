@@ -51,7 +51,7 @@ const automationPillars = [
     title: "Intelligent Document & Invoice Parsing",
     tagline: "Extract structured JSON from PDFs, bills & forms",
     description:
-      "Autonomous optical character recognition and multi-modal LLM extraction pipelines that parse invoices, legal contracts, receipts, and medical records directly into your accounting or ERP database with 99.8% field accuracy.",
+      "Autonomous optical character recognition and multi-modal LLM extraction pipelines that parse invoices, legal contracts, receipts, and records directly into your accounting or ERP database with field-level schema validation.",
     benefits: [
       "Sub-2s processing per complex document",
       "Automated line-item validation against purchase orders",
@@ -88,11 +88,11 @@ const automationPillars = [
   {
     icon: Clock,
     title: "Automated Customer Support Triage",
-    tagline: "Resolve 60%+ of routine inquiries instantly",
+    tagline: "Resolve routine inquiries instantly",
     description:
       "Intelligent classification pipelines that read incoming support tickets or email inquiries, detect intent and urgency, draft accurate responses using company docs, or escalate to on-duty specialists with pre-filled context.",
     benefits: [
-      "Under 30-second ticket first-response time",
+      "Rapid ticket first-response time",
       "Automatic sentiment analysis & priority tagging",
       "Knowledge base lookup with strict guardrails",
       "Seamless Zendesk, Intercom, and Freshdesk hooks",
@@ -104,7 +104,7 @@ const faqs = [
   {
     question: "How much time and cost does AI workflow automation actually save?",
     answer:
-      "Our clients routinely save 15 to 25+ hours per team member every week by eliminating manual data entry, PDF parsing, and multi-tool copy-pasting. In operational cost, companies typically reduce repetitive operational expenditure by 40% to 65% within the first 60 days of deployment.",
+      "Our clients save substantial operational hours every week by eliminating manual data entry, PDF parsing, and multi-tool copy-pasting. By automating high-friction repetitive handoffs, teams significantly reduce administrative backlogs and reallocate bandwidth to core client deliverables.",
   },
   {
     question: "Why should we build self-hosted automation instead of using Zapier or Make?",
@@ -212,12 +212,12 @@ export default function AIWorkflowAutomationPage() {
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/[0.08]">
             <div>
-              <div className="text-2xl sm:text-3xl font-mono text-white">15-25+ hrs</div>
-              <div className="text-xs text-zinc-400 font-sans mt-1">Saved Per Week / Team</div>
+              <div className="text-2xl sm:text-3xl font-mono text-white">High Velocity</div>
+              <div className="text-xs text-zinc-400 font-sans mt-1">Reduced Manual Bottlenecks</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-mono text-white">99.8%</div>
-              <div className="text-xs text-zinc-400 font-sans mt-1">Extraction Field Accuracy</div>
+              <div className="text-2xl sm:text-3xl font-mono text-white">Schema-Validated</div>
+              <div className="text-xs text-zinc-400 font-sans mt-1">Structured Extraction</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-mono text-white">$0</div>

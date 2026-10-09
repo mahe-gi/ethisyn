@@ -67,9 +67,9 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/mahe-gi/ethisyn",
   },
   stats: [
-    { value: "Sub-500ms", label: "Global Latency", descriptor: "Edge-optimized delivery with sub-second time-to-interactive" },
+    { value: "Sub-Second", label: "Target Latency", descriptor: "Edge-optimized delivery with sub-second time-to-interactive" },
     { value: "100%", label: "In-House Builders", descriptor: "Architected and built directly by domain leads, with zero junior outsourcing" },
-    { value: "99.99%", label: "Cloud Reliability", descriptor: "Zero single-point-of-failure infrastructure with continuous SLAs" },
-    { value: "11", label: "Domain Partners", descriptor: "Ambitious startups and enterprises scaled across global markets" },
+    { value: "High-Availability", label: "Cloud Systems", descriptor: "Fault-tolerant infrastructure with automated health checks" },
+    { value: "11", label: "Domain Partners", descriptor: "Senior domain leads directing client systems across global markets" },
   ],
 };

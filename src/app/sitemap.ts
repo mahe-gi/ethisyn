@@ -7,92 +7,28 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
+  // Static core routes: Omit fake new Date() and ignored priority/changefreq tags
+  // in compliance with Google Search Central sitemap guidelines.
   const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: `${siteConfig.url}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${siteConfig.url}/ai-agent-development`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/ai-workflow-automation`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/custom-software-development`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/saas-development`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/web-app-development`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/hyderabad`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteConfig.url}/case-studies`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/team`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/careers`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/job-application-service`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    { url: `${siteConfig.url}` },
+    { url: `${siteConfig.url}/ai-agent-development` },
+    { url: `${siteConfig.url}/ai-workflow-automation` },
+    { url: `${siteConfig.url}/custom-software-development` },
+    { url: `${siteConfig.url}/saas-development` },
+    { url: `${siteConfig.url}/web-app-development` },
+    { url: `${siteConfig.url}/hyderabad` },
+    { url: `${siteConfig.url}/case-studies` },
+    { url: `${siteConfig.url}/blog` },
+    { url: `${siteConfig.url}/team` },
+    { url: `${siteConfig.url}/careers` },
+    { url: `${siteConfig.url}/job-application-service` },
+    { url: `${siteConfig.url}/privacy` },
   ];
 
+  // Editorial posts: Include genuine, verified publication timestamps
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.publishDate),
-    changeFrequency: "monthly",
-    priority: 0.8,
   }));
 
   return [...staticRoutes, ...postRoutes];

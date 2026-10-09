@@ -1,14 +1,11 @@
-# -------------------------------------------------------------
-# Domain Standardization: Force Apex Domain (https://ethisyn.in)
-# Permanent 301 redirects from www to apex domain to prevent signal splitting
-# -------------------------------------------------------------
-https://www.ethisyn.in/* https://ethisyn.in/:splat 301!
-http://www.ethisyn.in/* https://ethisyn.in/:splat 301!
-http://ethisyn.in/* https://ethisyn.in/:splat 301!
+# -----------------------------------------------------------------------------
+# Cloudflare Pages Path-Level 301 Redirects
+# NOTE: Cloudflare Pages _redirects ONLY supports path sources starting with "/"
+# Hostname-level redirection (www.ethisyn.in -> ethisyn.in) MUST be configured
+# via Cloudflare Dashboard -> Rules -> Redirect Rules.
+# -----------------------------------------------------------------------------
 
-# -------------------------------------------------------------
 # Canonical Route Consolidations & Alias Redirects
-# -------------------------------------------------------------
 /about /#company 301
 /products /#products 301
 /contact /#contact 301
